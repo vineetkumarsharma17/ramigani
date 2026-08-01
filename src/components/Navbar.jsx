@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Cpu, Sparkles, Send } from 'lucide-react';
+import { Menu, X, ChevronDown, Sparkles, Send } from 'lucide-react';
 
 export default function Navbar({ onOpenQuoteModal }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,9 +47,11 @@ export default function Navbar({ onOpenQuoteModal }) {
           
           {/* Logo matching AstraSilica styling */}
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-[#FF5500] flex items-center justify-center shadow-md shadow-orange-500/20 group-hover:scale-105 transition-transform">
-              <Cpu className="w-5 h-5 text-white" />
-            </div>
+            <img 
+              src="/rlogo.webp" 
+              alt="Ramigani Tech Logo" 
+              className="w-10 h-10 rounded-xl object-contain bg-white shadow-md shadow-orange-500/10 group-hover:scale-105 transition-transform" 
+            />
             <div>
               <span className="text-xl font-black tracking-tight text-[#FF5500] font-heading block leading-none">
                 Ramigani<span className="text-[#1E293B]">Tech</span>

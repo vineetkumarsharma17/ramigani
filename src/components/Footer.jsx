@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Cpu, 
   MapPin, 
   Mail, 
   Phone, 
@@ -49,10 +48,12 @@ export default function Footer() {
           
           {/* Brand Info & Contact Column (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#FF5500] flex items-center justify-center shadow-md">
-                <Cpu className="w-5 h-5 text-white" />
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <img 
+                src="/rlogo.webp" 
+                alt="Ramigani Tech Logo" 
+                className="w-10 h-10 rounded-xl object-contain bg-white shadow-md group-hover:scale-105 transition-transform" 
+              />
               <div>
                 <span className="text-xl font-black tracking-tight text-white font-heading block leading-none">
                   Ramigani<span className="text-[#FF5500]">Tech</span>

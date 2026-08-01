@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  MapPin, 
-  Mail, 
-  Phone, 
-  Clock, 
-  MessageSquare, 
-  Send, 
-  CheckCircle2, 
-  Twitter, 
-  Facebook, 
-  Linkedin, 
-  Instagram, 
-  Youtube 
+import {
+  MapPin,
+  Mail,
+  Phone,
+  Clock,
+  MessageSquare,
+  Send,
+  CheckCircle2,
+  Twitter,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Youtube
 } from 'lucide-react';
 
 export default function Contact() {
@@ -59,7 +59,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF0E6] text-[#FF5500] text-xs font-bold uppercase tracking-wider mb-3">
@@ -76,7 +76,7 @@ export default function Contact() {
 
         {/* Top Split Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-          
+
           {/* Left Column: Contact Info Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -134,7 +134,7 @@ export default function Contact() {
               {/* WhatsApp Button */}
               <div className="mt-6">
                 <a
-                  href="https://api.whatsapp.com/send/?phone=919912340255&text=I'm+interested+in+your+Product."
+                  href="https://api.whatsapp.com/send/?phone=919912340255&text=I%27m+interested+in+your+Product.&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all"

@@ -14,7 +14,7 @@ export default function WhatsAppButton() {
 
       {/* Main Button */}
       <a
-        href="https://api.whatsapp.com/send/?phone=919912340255&text=I'm+interested+in+your+Product."
+        href="https://api.whatsapp.com/send/?phone=919912340255&text=I%27m+interested+in+your+Product.&type=phone_number&app_absent=0"
         target="_blank"
         rel="noopener noreferrer"
         className="relative w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl shadow-emerald-500/40 hover:scale-110 active:scale-95 transition-all duration-300"
