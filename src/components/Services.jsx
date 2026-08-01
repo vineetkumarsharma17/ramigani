@@ -101,7 +101,7 @@ export default function Services({ onOpenQuoteModal }) {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="/assets/microchip_circuit.jpg"
+                src={`${import.meta.env.BASE_URL}assets/microchip_circuit.jpg`}
                 alt="High tech orange microchip circuit board"
                 className="w-full h-[460px] object-cover hover:scale-105 transition-transform duration-500"
               />

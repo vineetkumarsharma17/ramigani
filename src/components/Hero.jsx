@@ -102,10 +102,10 @@ export default function Hero({ onOpenQuoteModal }) {
             muted
             loop
             playsInline
-            poster="/assets/hero-poster.svg"
+            poster={`${import.meta.env.BASE_URL}assets/hero-poster.svg`}
             className="absolute inset-0 w-full h-full object-cover z-0 opacity-60 mix-blend-screen pointer-events-none rounded-[3rem] transform scale-105 group-hover:scale-110 transition-transform duration-1000"
           >
-            <source src="/assets/hero-glow-bg.mp4" type="video/mp4" />
+            <source src={`${import.meta.env.BASE_URL}assets/hero-glow-bg.mp4`} type="video/mp4" />
           </video>
 
           {/* 2. Full-bleed Glowing Particle Canvas Layer */}

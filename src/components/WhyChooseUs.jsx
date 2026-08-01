@@ -46,7 +46,7 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
           >
             <div className="relative arch-image-mask overflow-hidden shadow-2xl border-4 border-white max-w-md mx-auto">
               <img
-                src="/assets/arch_tech_touch.jpg"
+                src={`${import.meta.env.BASE_URL}assets/arch_tech_touch.jpg`}
                 alt="Technology interface with glowing orange light circles"
                 className="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-500"
               />
