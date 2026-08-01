@@ -54,7 +54,7 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-[#0B0F19] text-[#A8B0C3] selection:bg-accent-cyan selection:text-[#0B0F19] font-sans flex flex-col justify-between">
         <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
 
