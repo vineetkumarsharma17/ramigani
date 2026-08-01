@@ -38,15 +38,16 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
           
           {/* Left Column: Arch Masked Image matching Screenshot #3 */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -40, scale: 0.92 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             className="lg:col-span-5 relative"
           >
             <div className="relative arch-image-mask overflow-hidden shadow-2xl border-4 border-white max-w-md mx-auto">
               <img
-                src="/assets/arch_tech_touch.jpg"
+                src={`${import.meta.env.BASE_URL}assets/arch_tech_touch.jpg`}
                 alt="Technology interface with glowing orange light circles"
                 className="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -56,10 +57,10 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
 
           {/* Right Column: Text Content matching Screenshot #3 */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6"
           >
             <div>
@@ -83,16 +84,21 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
               Let us help you transform your ideas into reality with our innovative and reliable technology solutions.
             </p>
 
-            {/* Feature Cards matching Screenshot #3 (Orange gradient top card header fills) */}
+            {/* Feature Cards with Staggered Scroll Animation */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
               {miniCards.map((card, idx) => (
-                <div
+                <motion.div
                   key={idx}
-                  className="rounded-2xl bg-white border border-orange-200 overflow-hidden shadow-sm hover:shadow-md transition-all group"
+                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -8, scale: 1.04, transition: { type: "spring", stiffness: 300 } }}
+                  className="rounded-2xl bg-white border border-orange-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-orange-400 transition-all group cursor-pointer"
                 >
                   {/* Top orange gradient header block matching screenshot #3 */}
-                  <div className="bg-gradient-to-b from-[#FFF0E6] to-white p-4 border-b border-orange-100 text-center">
-                    <h4 className="text-sm font-black text-[#FF5500] font-heading leading-tight">
+                  <div className="bg-gradient-to-b from-[#FFF0E6] to-white p-4 border-b border-orange-100 text-center group-hover:from-[#FF5500] group-hover:to-[#FF6A00] transition-colors duration-300">
+                    <h4 className="text-sm font-black text-[#FF5500] group-hover:text-white font-heading leading-tight transition-colors duration-300">
                       {card.title}
                     </h4>
                   </div>
@@ -101,7 +107,7 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
                       {card.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -109,8 +115,14 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
 
         </div>
 
-        {/* Marquee Strip below */}
-        <div className="mt-20 pt-10 border-t border-slate-100 overflow-hidden marquee-container">
+        {/* Marquee Strip below with Scroll Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 pt-10 border-t border-slate-100 overflow-hidden marquee-container"
+        >
           <div className="text-center mb-6">
             <span className="text-xs uppercase tracking-widest text-slate-400 font-bold">
               Our Core Engineering Pillars
@@ -133,7 +145,7 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
               })}
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

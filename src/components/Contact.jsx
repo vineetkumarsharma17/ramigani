@@ -61,7 +61,13 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF0E6] text-[#FF5500] text-xs font-bold uppercase tracking-wider mb-3">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Get In Touch</span>
@@ -72,18 +78,19 @@ export default function Contact() {
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
             Have a project in mind or want to discuss technology solutions? Our team in Hyderabad is ready to help.
           </p>
-        </div>
+        </motion.div>
 
         {/* Top Split Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
 
           {/* Left Column: Contact Info Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -40, scale: 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm flex flex-col justify-between"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -4, transition: { duration: 0.3 } }}
+            className="lg:col-span-5 bg-white border border-slate-200 hover:border-orange-300 p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
           >
             <div>
               <h3 className="text-xl font-bold text-slate-900 font-heading mb-1">
@@ -137,7 +144,7 @@ export default function Contact() {
                   href="https://api.whatsapp.com/send/?phone=919912340255&text=I%27m+interested+in+your+Product.&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all"
+                  className="w-full py-3 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all hover:scale-102"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
                   <span>Chat on WhatsApp (+91 99123 40255)</span>
@@ -177,16 +184,18 @@ export default function Contact() {
                 {socialLinks.map((s) => {
                   const IconComp = s.icon;
                   return (
-                    <a
+                    <motion.a
+                      whileHover={{ scale: 1.15, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
                       key={s.name}
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full bg-slate-100 hover:bg-[#FF5500] text-slate-600 hover:text-white flex items-center justify-center transition-colors"
+                      className="w-9 h-9 rounded-full bg-slate-100 hover:bg-[#FF5500] text-slate-600 hover:text-white flex items-center justify-center transition-colors shadow-sm"
                       aria-label={s.name}
                     >
                       <IconComp className="w-4 h-4" />
-                    </a>
+                    </motion.a>
                   );
                 })}
               </div>
@@ -196,11 +205,12 @@ export default function Contact() {
 
           {/* Right Column: Embedded Google Map */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 40, scale: 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7 bg-white border border-slate-200 p-2 rounded-3xl shadow-sm min-h-[400px] flex flex-col"
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -4, transition: { duration: 0.3 } }}
+            className="lg:col-span-7 bg-white border border-slate-200 hover:border-orange-300 p-2 rounded-3xl shadow-sm hover:shadow-xl transition-all min-h-[400px] flex flex-col"
           >
             <iframe
               title="Ramigani Tech Solutions Location"
@@ -219,11 +229,11 @@ export default function Contact() {
 
         {/* Contact Form Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="bg-white border border-slate-200 p-8 sm:p-12 rounded-3xl shadow-sm max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white border border-slate-200 hover:border-orange-300 p-8 sm:p-12 rounded-3xl shadow-sm hover:shadow-xl transition-all max-w-4xl mx-auto"
         >
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-slate-900 font-heading">

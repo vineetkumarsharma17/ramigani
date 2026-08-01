@@ -34,7 +34,13 @@ export default function Services({ onOpenQuoteModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF0E6] text-[#FF5500] text-xs font-bold uppercase tracking-wider mb-3">
             <Layers className="w-3.5 h-3.5" />
             <span>End-to-End Capabilities</span>
@@ -45,18 +51,18 @@ export default function Services({ onOpenQuoteModal }) {
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
             Empowering modern enterprises with scalable software engineering and high-impact digital growth strategies.
           </p>
-        </div>
+        </motion.div>
 
         {/* Split Layout matching Screenshot #2 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: White Card with Orange Border (matching Screenshot #2) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -40, scale: 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-7 orange-card-border p-8 sm:p-10 rounded-3xl space-y-6"
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 orange-card-border p-8 sm:p-10 rounded-3xl space-y-6 shadow-xl shadow-orange-500/5 hover:shadow-orange-500/15 transition-all"
           >
             <div>
               <h3 className="text-3xl font-extrabold text-[#FF5500] font-heading mb-4">
@@ -67,41 +73,50 @@ export default function Services({ onOpenQuoteModal }) {
               </p>
             </div>
 
-            {/* Sub-capability Pill Grid matching Screenshot #2 */}
+            {/* Sub-capability Pill Grid matching Screenshot #2 with Staggered Scroll Animation */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
-              {capabilities.map((cap) => (
-                <button
+              {capabilities.map((cap, idx) => (
+                <motion.button
                   key={cap.id}
                   onClick={() => setActiveModalService(cap)}
-                  className="orange-pill-btn px-4 py-3 rounded-2xl text-xs font-bold text-center leading-snug flex items-center justify-between group shadow-sm"
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.4, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ scale: 1.05, y: -3, transition: { type: "spring", stiffness: 400 } }}
+                  whileTap={{ scale: 0.97 }}
+                  className="orange-pill-btn px-4 py-3 rounded-2xl text-xs font-bold text-center leading-snug flex items-center justify-between group shadow-sm cursor-pointer"
                 >
                   <span>{cap.name}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0" />
-                </button>
+                </motion.button>
               ))}
             </div>
 
             <div className="pt-2 flex items-center gap-4">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={onOpenQuoteModal}
-                className="px-6 py-3 rounded-full text-xs font-bold text-white bg-[#FF6A00] hover:bg-[#FF5500] shadow-md shadow-orange-500/20 transition-all"
+                className="px-6 py-3 rounded-full text-xs font-bold text-white bg-[#FF6A00] hover:bg-[#FF5500] shadow-md shadow-orange-500/20 transition-all cursor-pointer"
               >
                 Request Custom Solution Quote
-              </button>
+              </motion.button>
             </div>
           </motion.div>
 
           {/* Right Column: High-tech Circuit Microchip Visual matching Screenshot #2 */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 40, scale: 0.96 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -6, transition: { duration: 0.3 } }}
             className="lg:col-span-5 relative"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="/assets/microchip_circuit.jpg"
+                src={`${import.meta.env.BASE_URL}assets/microchip_circuit.jpg`}
                 alt="High tech orange microchip circuit board"
                 className="w-full h-[460px] object-cover hover:scale-105 transition-transform duration-500"
               />

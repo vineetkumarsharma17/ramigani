@@ -48,7 +48,7 @@ export default function Navbar({ onOpenQuoteModal }) {
           {/* Logo matching AstraSilica styling */}
           <Link to="/" className="flex items-center gap-2.5 group">
             <img 
-              src="/rlogo.webp" 
+              src={`${import.meta.env.BASE_URL}rlogo.webp`} 
               alt="Ramigani Tech Logo" 
               className="w-10 h-10 rounded-xl object-contain bg-white shadow-md shadow-orange-500/10 group-hover:scale-105 transition-transform" 
             />

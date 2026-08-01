@@ -50,7 +50,7 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-4">
             <Link to="/" className="flex items-center gap-2.5 group">
               <img 
-                src="/rlogo.webp" 
+                src={`${import.meta.env.BASE_URL}rlogo.webp`} 
                 alt="Ramigani Tech Logo" 
                 className="w-10 h-10 rounded-xl object-contain bg-white shadow-md group-hover:scale-105 transition-transform" 
               />
