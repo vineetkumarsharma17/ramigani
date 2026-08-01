@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  
+  body {
+    background-color: #FFFFFF;
+    color: #334155;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAFAFA;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF5500;
+  }
+}
+
+@layer utilities {
+  .orange-card-border {
+    border: 2px solid #FF5500;
+    background: #FFFFFF;
+    box-shadow: 0 10px 30px -10px rgba(255, 85, 0, 0.08);
+  }
+
+  .orange-pill-btn {
+    border: 1.5px solid #FF5500;
+    color: #FF5500;
+    background: #FFFFFF;
+    transition: all 0.25s ease-in-out;
+  }
+
+  .orange-pill-btn:hover {
+    background: #FF5500;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(255, 85, 0, 0.25);
+  }
+
+  .gradient-text-orange {
+    background: linear-gradient(135deg, #FF9100 0%, #FF3D00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Arch shape clip for image */
+  .arch-image-mask {
+    border-top-left-radius: 200px;
+    border-top-right-radius: 200px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
+
+  /* Continuous marquee pause on hover */
+  .marquee-container:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+}
