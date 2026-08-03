@@ -10,6 +10,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 
@@ -34,6 +35,7 @@ function AnimatedRoutes({ onOpenQuoteModal }) {
           <Route path="/" element={<HomePage onOpenQuoteModal={onOpenQuoteModal} />} />
           <Route path="/about" element={<AboutPage onOpenQuoteModal={onOpenQuoteModal} />} />
           <Route path="/services" element={<ServicesPage onOpenQuoteModal={onOpenQuoteModal} />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage onOpenQuoteModal={onOpenQuoteModal} />} />
           <Route path="/careers" element={<CareersPage onOpenQuoteModal={onOpenQuoteModal} />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

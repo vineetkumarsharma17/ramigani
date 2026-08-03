@@ -13,6 +13,7 @@ import {
   Youtube,
   ArrowUp
 } from 'lucide-react';
+import Brand from './Brand';
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -48,21 +49,7 @@ export default function Footer() {
           
           {/* Brand Info & Contact Column (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <img 
-                src={`${import.meta.env.BASE_URL}rlogo.webp`} 
-                alt="Ramigani Tech Logo" 
-                className="w-10 h-10 rounded-xl object-contain bg-white shadow-md group-hover:scale-105 transition-transform" 
-              />
-              <div>
-                <span className="text-xl font-black tracking-tight text-white font-heading block leading-none">
-                  Ramigani<span className="text-[#FF5500]">Tech</span>
-                </span>
-                <span className="text-[9px] tracking-widest text-slate-400 font-bold uppercase block mt-0.5">
-                  Empowering The Future
-                </span>
-              </div>
-            </Link>
+            <Brand variant="dark" />
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Building Tomorrow's Technology — From Concept to Cloud. Dedicated to delivering exceptional service and innovative solutions for enterprises worldwide.
@@ -121,19 +108,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link to="/services" className="hover:text-[#FF5500] transition-colors">Mobile App Development</Link>
+                <Link to="/services/app-development" className="hover:text-[#FF5500] transition-colors">Mobile App Development</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-[#FF5500] transition-colors">Web Application Design</Link>
+                <Link to="/services/web-development" className="hover:text-[#FF5500] transition-colors">Web App Development</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-[#FF5500] transition-colors">Digital Marketing & SEO</Link>
+                <Link to="/services/digital-marketing" className="hover:text-[#FF5500] transition-colors">Digital Marketing</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-[#FF5500] transition-colors">AI & ML Custom Models</Link>
+                <Link to="/services/ai-ml-solutions" className="hover:text-[#FF5500] transition-colors">AI & ML Solutions</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-[#FF5500] transition-colors">Software QA & Testing</Link>
+                <Link to="/services/seo-optimization" className="hover:text-[#FF5500] transition-colors">SEO Optimization</Link>
               </li>
             </ul>
           </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Sparkles, Send } from 'lucide-react';
+import Brand from './Brand';
 
 export default function Navbar({ onOpenQuoteModal }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,10 +28,11 @@ export default function Navbar({ onOpenQuoteModal }) {
       name: 'Services', 
       path: '/services',
       dropdown: [
-        { name: 'App Development', path: '/services' },
-        { name: 'Web Development', path: '/services' },
-        { name: 'Digital Marketing', path: '/services' },
-        { name: 'AI/ML Solutions', path: '/services' },
+        { name: 'Mobile App Development', path: '/services/app-development' },
+        { name: 'Web App Development', path: '/services/web-development' },
+        { name: 'Digital Marketing', path: '/services/digital-marketing' },
+        { name: 'UI/UX Design', path: '/services/ui-ux-design' },
+        { name: 'AI/ML Solutions', path: '/services/ai-ml-solutions' },
       ]
     },
     { name: 'Careers', path: '/careers' },
@@ -45,22 +47,8 @@ export default function Navbar({ onOpenQuoteModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Logo matching AstraSilica styling */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <img 
-              src={`${import.meta.env.BASE_URL}rlogo.webp`} 
-              alt="Ramigani Tech Logo" 
-              className="w-10 h-10 rounded-xl object-contain bg-white shadow-md shadow-orange-500/10 group-hover:scale-105 transition-transform" 
-            />
-            <div>
-              <span className="text-xl font-black tracking-tight text-[#FF5500] font-heading block leading-none">
-                Ramigani<span className="text-[#1E293B]">Tech</span>
-              </span>
-              <span className="text-[9px] tracking-widest text-slate-400 font-bold uppercase block mt-0.5">
-                Empowering The Future
-              </span>
-            </div>
-          </Link>
+          {/* Brand wordmark (no image logo) */}
+          <Brand variant="light" />
 
           {/* Desktop Nav Links matching screenshot active pill style */}
           <nav className="hidden md:flex items-center gap-2">
