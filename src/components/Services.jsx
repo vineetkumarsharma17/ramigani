@@ -8,6 +8,8 @@ import {
   TrendingUp,
   Search,
   BrainCircuit,
+  CheckSquare,
+  Share2,
   ArrowUpRight,
   Layers,
 } from 'lucide-react';
@@ -20,6 +22,8 @@ const iconMap = {
   'ui-ux-design': Palette,
   'seo-optimization': Search,
   'ai-ml-solutions': BrainCircuit,
+  'qa-testing': CheckSquare,
+  'social-media': Share2,
 };
 
 export default function Services({ onOpenQuoteModal }) {

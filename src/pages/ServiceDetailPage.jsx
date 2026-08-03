@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Smartphone, Globe, Palette, TrendingUp, Search, BrainCircuit,
-  ArrowLeft, ArrowRight, CheckCircle2, Layers, Sparkles
+  CheckSquare, Share2, ArrowLeft, ArrowRight, CheckCircle2, Layers, Sparkles
 } from 'lucide-react';
 import { services, getService } from '../data/services';
 import CTA from '../components/CTA';
@@ -15,6 +15,8 @@ const iconMap = {
   'ui-ux-design': Palette,
   'seo-optimization': Search,
   'ai-ml-solutions': BrainCircuit,
+  'qa-testing': CheckSquare,
+  'social-media': Share2,
 };
 
 export default function ServiceDetailPage({ onOpenQuoteModal }) {

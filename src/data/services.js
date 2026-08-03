@@ -85,6 +85,34 @@ export const services = [
       { title: 'AI Integration', desc: 'Embedding intelligence into your existing apps.' },
     ],
   },
+  {
+    id: 'qa-testing',
+    name: 'Software Testing & QA',
+    short: 'Automated testing, security audits, and load profiling.',
+    tagline: 'Ship with confidence — quality assured at every release.',
+    description:
+      'We build quality into your product with automated testing pipelines, security vulnerability audits, and performance profiling — catching issues before your users do.',
+    features: [
+      { title: 'Automated Testing Pipelines', desc: 'CI-integrated test suites for fast, reliable releases.' },
+      { title: 'Manual & Exploratory QA', desc: 'Human-driven testing for edge cases and UX.' },
+      { title: 'Security & Vulnerability Audits', desc: 'Identifying and closing security gaps.' },
+      { title: 'Performance & Load Testing', desc: 'Ensuring your app scales under real-world load.' },
+    ],
+  },
+  {
+    id: 'social-media',
+    name: 'Social Media Management',
+    short: 'Content creation, brand building, and community engagement.',
+    tagline: 'Build a brand your audience wants to follow.',
+    description:
+      'We grow and manage your social presence with strategic content, consistent branding, and active community engagement across the platforms that matter to your business.',
+    features: [
+      { title: 'Content Strategy & Calendar', desc: 'Planned, on-brand content that stays consistent.' },
+      { title: 'Creative & Post Design', desc: 'Scroll-stopping visuals and copy.' },
+      { title: 'Community Management', desc: 'Engaging followers and building loyalty.' },
+      { title: 'Analytics & Reporting', desc: 'Tracking reach, engagement, and growth.' },
+    ],
+  },
 ];
 
 export const getService = (id) => services.find((s) => s.id === id);
