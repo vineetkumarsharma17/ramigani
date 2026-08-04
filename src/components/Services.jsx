@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Smartphone, Globe, Palette, CheckSquare, BrainCircuit, ArrowUpRight, Layers,
+  Smartphone, Globe, Palette, CheckSquare, BrainCircuit, Search, Share2, ArrowUpRight, Layers,
 } from 'lucide-react';
 import { services } from '../data/services';
 import Reveal from './Reveal';
@@ -12,6 +12,8 @@ const iconMap = {
   'ui-ux-design': Palette,
   'qa-testing': CheckSquare,
   'ai-ml-solutions': BrainCircuit,
+  'seo-optimization': Search,
+  'social-media': Share2,
 };
 
 export default function Services({ onOpenQuoteModal }) {

@@ -60,8 +60,8 @@ export default function Navbar({ onOpenQuoteModal }) {
               <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${
                 solutionsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
               }`}>
-                <div className="w-[660px] card rounded-3xl overflow-hidden">
-                  <div className="p-7 grid grid-cols-2 gap-x-8">
+                <div className="w-[820px] card rounded-3xl overflow-hidden">
+                  <div className="p-7 grid grid-cols-3 gap-x-6">
                     {categories.map((cat) => (
                       <div key={cat}>
                         <h4 className="text-[11px] font-bold uppercase tracking-widest text-brand-muted mb-2 pb-2 border-b border-brand-line">{cat}</h4>

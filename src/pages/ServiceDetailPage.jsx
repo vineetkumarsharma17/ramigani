@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
-  Smartphone, Globe, Palette, CheckSquare, BrainCircuit,
+  Smartphone, Globe, Palette, CheckSquare, BrainCircuit, Search, Share2,
   ArrowLeft, ArrowRight, Check, Layers,
 } from 'lucide-react';
 import { services, getService } from '../data/services';
@@ -14,6 +14,8 @@ const iconMap = {
   'ui-ux-design': Palette,
   'qa-testing': CheckSquare,
   'ai-ml-solutions': BrainCircuit,
+  'seo-optimization': Search,
+  'social-media': Share2,
 };
 
 export default function ServiceDetailPage({ onOpenQuoteModal }) {

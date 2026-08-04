@@ -77,9 +77,39 @@ export const services = [
       { title: 'AI Integration', desc: 'Embedding intelligence into your existing apps.' },
     ],
   },
+  {
+    id: 'seo-optimization',
+    name: 'SEO Optimization',
+    category: 'Digital Growth',
+    short: 'Technical audits, keyword strategy, and rank tracking.',
+    tagline: 'Get found by the customers already searching for you.',
+    description:
+      'We improve your organic visibility with technical SEO audits, high-intent keyword strategies, and continuous rank tracking — driving sustainable, high-quality traffic to your site.',
+    features: [
+      { title: 'Technical SEO Audits', desc: 'Fixing crawl, speed, and structure issues.' },
+      { title: 'Keyword Strategy', desc: 'Targeting high-intent, high-value search terms.' },
+      { title: 'On-Page Optimization', desc: 'Content and metadata tuned to rank.' },
+      { title: 'Rank Tracking & Reporting', desc: 'Transparent reporting on progress and ROI.' },
+    ],
+  },
+  {
+    id: 'social-media',
+    name: 'Social Media Management',
+    category: 'Digital Growth',
+    short: 'Content creation, brand building, and community engagement.',
+    tagline: 'Build a brand your audience wants to follow.',
+    description:
+      'We grow and manage your social presence with strategic content, consistent branding, and active community engagement across the platforms that matter to your business.',
+    features: [
+      { title: 'Content Strategy & Calendar', desc: 'Planned, on-brand content that stays consistent.' },
+      { title: 'Creative & Post Design', desc: 'Scroll-stopping visuals and copy.' },
+      { title: 'Community Management', desc: 'Engaging followers and building loyalty.' },
+      { title: 'Analytics & Reporting', desc: 'Tracking reach, engagement, and growth.' },
+    ],
+  },
 ];
 
 // Ordered category list for the mega-menu columns
-export const categories = ['Engineering & Design', 'Quality & Intelligence'];
+export const categories = ['Engineering & Design', 'Quality & Intelligence', 'Digital Growth'];
 
 export const getService = (id) => services.find((s) => s.id === id);
