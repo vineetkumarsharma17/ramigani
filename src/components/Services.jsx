@@ -33,15 +33,15 @@ export default function Services({ onOpenQuoteModal }) {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF0E6] text-[#FF5500] text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF3FA] text-[#1E4F87] text-xs font-bold uppercase tracking-wider mb-3">
             <Layers className="w-3.5 h-3.5" />
             <span>End-to-End Capabilities</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-heading">
-            Our <span className="text-[#FF5500]">Solutions &amp; Services</span>
+            Our <span className="text-[#1E4F87]">Solutions</span>
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
-            Empowering modern enterprises with scalable software engineering and high-impact digital growth strategies. Tap any service to explore what we deliver.
+            Empowering modern enterprises with scalable software engineering and design. Tap any solution to explore what we deliver.
           </p>
         </div>
 
@@ -58,26 +58,26 @@ export default function Services({ onOpenQuoteModal }) {
                 transition={{ duration: 0.4, delay: (idx % 3) * 0.08 }}
               >
                 <Link
-                  to={`/services/${svc.id}`}
-                  className="group block h-full p-6 rounded-3xl bg-white border-2 border-slate-100 hover:border-[#FF5500] hover:shadow-xl hover:shadow-orange-500/10 hover:-translate-y-1 transition-all duration-300"
+                  to={`/solutions/${svc.id}`}
+                  className="group block h-full p-6 rounded-3xl bg-white border-2 border-slate-100 hover:border-[#1E4F87] hover:shadow-xl hover:shadow-red-600/10 hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#FFF0E6] group-hover:bg-[#FF5500] flex items-center justify-center transition-colors">
-                      <Icon className="w-6 h-6 text-[#FF5500] group-hover:text-white transition-colors" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#EEF3FA] group-hover:bg-[#1E4F87] flex items-center justify-center transition-colors">
+                      <Icon className="w-6 h-6 text-[#1E4F87] group-hover:text-white transition-colors" />
                     </div>
-                    <span className="w-9 h-9 rounded-full bg-slate-50 group-hover:bg-[#FFF0E6] flex items-center justify-center transition-colors">
-                      <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#FF5500] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <span className="w-9 h-9 rounded-full bg-slate-50 group-hover:bg-[#EEF3FA] flex items-center justify-center transition-colors">
+                      <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#1E4F87] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 font-heading mb-2 group-hover:text-[#FF5500] transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 font-heading mb-2 group-hover:text-[#1E4F87] transition-colors">
                     {svc.name}
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
                     {svc.short}
                   </p>
 
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#FF5500]">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#1E4F87]">
                     View Details
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </span>
@@ -91,7 +91,7 @@ export default function Services({ onOpenQuoteModal }) {
         <div className="mt-12 text-center">
           <button
             onClick={onOpenQuoteModal}
-            className="px-8 py-3.5 rounded-full text-sm font-bold text-white bg-[#FF6A00] hover:bg-[#FF5500] shadow-md shadow-orange-500/25 hover:-translate-y-0.5 transition-all"
+            className="px-8 py-3.5 rounded-full text-sm font-bold text-white bg-[#1E4F87] hover:bg-[#1E4F87] shadow-md shadow-red-600/25 hover:-translate-y-0.5 transition-all"
           >
             Request a Custom Solution Quote
           </button>

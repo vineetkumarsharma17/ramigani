@@ -34,8 +34,8 @@ function AnimatedRoutes({ onOpenQuoteModal }) {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage onOpenQuoteModal={onOpenQuoteModal} />} />
           <Route path="/about" element={<AboutPage onOpenQuoteModal={onOpenQuoteModal} />} />
-          <Route path="/services" element={<ServicesPage onOpenQuoteModal={onOpenQuoteModal} />} />
-          <Route path="/services/:slug" element={<ServiceDetailPage onOpenQuoteModal={onOpenQuoteModal} />} />
+          <Route path="/solutions" element={<ServicesPage onOpenQuoteModal={onOpenQuoteModal} />} />
+          <Route path="/solutions/:slug" element={<ServiceDetailPage onOpenQuoteModal={onOpenQuoteModal} />} />
           <Route path="/careers" element={<CareersPage onOpenQuoteModal={onOpenQuoteModal} />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

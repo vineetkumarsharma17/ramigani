@@ -57,20 +57,20 @@ export default function Footer() {
 
             <div className="space-y-2 text-xs text-slate-300 pt-2">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#FF5500] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#1E4F87] flex-shrink-0 mt-0.5" />
                 <span className="text-[11px] leading-relaxed text-slate-300">
                   8-3-191/95, MIG-H, 3rd Floor, Laxmi Plaza, Vengalrao Nagar Circle, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#FF5500] flex-shrink-0" />
-                <a href="mailto:info@ramigani.com" className="text-[11px] hover:text-[#FF5500] transition-colors">
+                <Mail className="w-4 h-4 text-[#1E4F87] flex-shrink-0" />
+                <a href="mailto:info@ramigani.com" className="text-[11px] hover:text-[#1E4F87] transition-colors">
                   info@ramigani.com
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#FF5500] flex-shrink-0" />
-                <a href="tel:+919912340255" className="text-[11px] hover:text-[#FF5500] transition-colors">
+                <Phone className="w-4 h-4 text-[#1E4F87] flex-shrink-0" />
+                <a href="tel:+919912340255" className="text-[11px] hover:text-[#1E4F87] transition-colors">
                   +91 99123 40255
                 </a>
               </div>
@@ -84,19 +84,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link to="/" className="hover:text-[#FF5500] transition-colors">Home</Link>
+                <Link to="/" className="hover:text-[#1E4F87] transition-colors">Home</Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-[#FF5500] transition-colors">About Us</Link>
+                <Link to="/about" className="hover:text-[#1E4F87] transition-colors">About Us</Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-[#FF5500] transition-colors">Services</Link>
+                <Link to="/solutions" className="hover:text-[#1E4F87] transition-colors">Solutions</Link>
               </li>
               <li>
-                <Link to="/careers" className="hover:text-[#FF5500] transition-colors">Careers</Link>
+                <Link to="/careers" className="hover:text-[#1E4F87] transition-colors">Careers</Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-[#FF5500] transition-colors">Contact</Link>
+                <Link to="/contact" className="hover:text-[#1E4F87] transition-colors">Contact</Link>
               </li>
             </ul>
           </div>
@@ -104,23 +104,23 @@ export default function Footer() {
           {/* Our Services Column (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white font-heading">
-              Our Services
+              Our Solutions
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link to="/services/app-development" className="hover:text-[#FF5500] transition-colors">Mobile App Development</Link>
+                <Link to="/solutions/app-development" className="hover:text-[#1E4F87] transition-colors">Mobile App Development</Link>
               </li>
               <li>
-                <Link to="/services/web-development" className="hover:text-[#FF5500] transition-colors">Web App Development</Link>
+                <Link to="/solutions/web-development" className="hover:text-[#1E4F87] transition-colors">Web Development</Link>
               </li>
               <li>
-                <Link to="/services/digital-marketing" className="hover:text-[#FF5500] transition-colors">Digital Marketing</Link>
+                <Link to="/solutions/ui-ux-design" className="hover:text-[#1E4F87] transition-colors">UI/UX Design</Link>
               </li>
               <li>
-                <Link to="/services/ai-ml-solutions" className="hover:text-[#FF5500] transition-colors">AI & ML Solutions</Link>
+                <Link to="/solutions/qa-testing" className="hover:text-[#1E4F87] transition-colors">Software Testing & QA</Link>
               </li>
               <li>
-                <Link to="/services/seo-optimization" className="hover:text-[#FF5500] transition-colors">SEO Optimization</Link>
+                <Link to="/solutions/ai-ml-solutions" className="hover:text-[#1E4F87] transition-colors">AI/ML Solutions</Link>
               </li>
             </ul>
           </div>
@@ -148,12 +148,12 @@ export default function Footer() {
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-[#FF5500]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-[#1E4F87]"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 rounded-full text-xs font-bold text-white bg-[#FF6A00] hover:bg-[#FF5500] shadow-md transition-all flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 rounded-full text-xs font-bold text-white bg-[#1E4F87] hover:bg-[#1E4F87] shadow-md transition-all flex items-center justify-center gap-1.5"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Sign Up</span>
@@ -181,7 +181,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-400 hover:text-white hover:bg-[#FF5500] hover:border-[#FF5500] transition-all flex items-center justify-center"
+                  className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-400 hover:text-white hover:bg-[#1E4F87] hover:border-[#1E4F87] transition-all flex items-center justify-center"
                   aria-label={s.name}
                 >
                   <IconComp className="w-3.5 h-3.5" />
@@ -191,7 +191,7 @@ export default function Footer() {
 
             <button
               onClick={scrollToTop}
-              className="w-8 h-8 rounded-full bg-[#FF5500]/20 text-[#FF5500] hover:bg-[#FF5500] hover:text-white transition-all flex items-center justify-center ml-2"
+              className="w-8 h-8 rounded-full bg-[#1E4F87]/20 text-[#1E4F87] hover:bg-[#1E4F87] hover:text-white transition-all flex items-center justify-center ml-2"
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-4 h-4" />

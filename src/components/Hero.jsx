@@ -30,7 +30,7 @@ export default function Hero({ onOpenQuoteModal }) {
     };
     window.addEventListener('resize', handleResize);
 
-    // IT Network Nodes matching Logo Brand Colors (#FF5500 & #FFB700)
+    // IT Network Nodes matching Logo Brand Colors (#1E4F87 & #3A72C4)
     const nodeCount = Math.min(Math.floor(width / 18), 75);
     const nodes = [];
     const maxDistance = 140;
@@ -44,7 +44,7 @@ export default function Hero({ onOpenQuoteModal }) {
         radius: Math.random() * 2.2 + 1.5,
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: 0.02 + Math.random() * 0.02,
-        color: Math.random() > 0.35 ? '#FF5500' : '#FFB700',
+        color: Math.random() > 0.35 ? '#1E4F87' : '#3A72C4',
       });
     }
 
@@ -163,7 +163,7 @@ export default function Hero({ onOpenQuoteModal }) {
               ctx.beginPath();
               ctx.arc(px, py, 2, 0, Math.PI * 2);
               ctx.fillStyle = '#FFFFFF';
-              ctx.shadowColor = '#FF5500';
+              ctx.shadowColor = '#1E4F87';
               ctx.shadowBlur = 8;
               ctx.fill();
               ctx.shadowBlur = 0;
@@ -202,7 +202,7 @@ export default function Hero({ onOpenQuoteModal }) {
           initial={{ opacity: 0, scale: 0.98, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="relative w-full rounded-[3rem] bg-gradient-to-br from-[#1F0A02] via-[#2D1204] to-[#120501] p-8 sm:p-14 lg:p-20 overflow-hidden border-2 border-[#FF5500]/40 shadow-2xl shadow-[#FF5500]/30 text-center group"
+          className="relative w-full rounded-[3rem] bg-gradient-to-br from-[#061631] via-[#0A1E3F] to-[#061631] p-8 sm:p-14 lg:p-20 overflow-hidden border-2 border-[#1E4F87]/40 shadow-2xl shadow-[#1E4F87]/30 text-center group"
         >
 
           {/* 1. Ultra-Luxury 3D IT Background Image & Seamless Video Layer */}
@@ -231,13 +231,13 @@ export default function Hero({ onOpenQuoteModal }) {
             className="absolute inset-0 w-full h-full z-0 pointer-events-none mix-blend-screen rounded-[3rem]"
           />
 
-          {/* 3. Glowing Ambient Orbs (Brand Orange #FF5500, Amber #FF9100, Flame Red) */}
-          <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#FF5500]/30 rounded-full blur-[120px] pointer-events-none animate-pulse" />
-          <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#FF9100]/25 rounded-full blur-[140px] pointer-events-none animate-pulse" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF3D00]/20 rounded-full blur-[160px] pointer-events-none" />
+          {/* 3. Glowing Ambient Orbs (Brand Orange #1E4F87, Amber #3A72C4, Flame Red) */}
+          <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#1E4F87]/30 rounded-full blur-[120px] pointer-events-none animate-pulse" />
+          <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#3A72C4]/25 rounded-full blur-[140px] pointer-events-none animate-pulse" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0A1E3F]/20 rounded-full blur-[160px] pointer-events-none" />
 
           {/* 4. Cyber Holographic Tech Dot Overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(#FF5500_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-20 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(#1E4F87_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-20 pointer-events-none" />
 
           {/* Hero Content */}
           <div className="relative z-10 max-w-4xl mx-auto space-y-6">
@@ -247,9 +247,9 @@ export default function Hero({ onOpenQuoteModal }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FF5500]/25 backdrop-blur-md border border-[#FF5500]/50 text-amber-200 text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#FF5500]/20"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1E4F87]/25 backdrop-blur-md border border-[#1E4F87]/50 text-sky-200 text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#1E4F87]/20"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#FFB700] animate-spin" style={{ animationDuration: '8s' }} />
+              <Sparkles className="w-3.5 h-3.5 text-[#3A72C4] animate-spin" style={{ animationDuration: '8s' }} />
               <span>RAMIGANI TECH SOLUTIONS PVT. LTD.</span>
             </motion.div>
 
@@ -283,17 +283,17 @@ export default function Hero({ onOpenQuoteModal }) {
             >
               <Link
                 to="/about"
-                className="w-full sm:w-auto px-9 py-3.5 rounded-full font-extrabold text-sm text-slate-950 bg-white hover:bg-slate-100 shadow-xl shadow-orange-950/40 hover:scale-105 active:scale-100 transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto px-9 py-3.5 rounded-full font-extrabold text-sm text-slate-950 bg-white hover:bg-slate-100 shadow-xl shadow-red-950/40 hover:scale-105 active:scale-100 transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 <span>Learn More</span>
-                <ArrowRight className="w-4 h-4 text-[#FF5500] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#1E4F87] group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <button
                 onClick={onOpenQuoteModal}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-sm text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-[#FF5500]/50 shadow-xl transition-all duration-300 flex items-center justify-center gap-2 hover:border-[#FF5500]"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-sm text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-[#1E4F87]/50 shadow-xl transition-all duration-300 flex items-center justify-center gap-2 hover:border-[#1E4F87]"
               >
-                <Rocket className="w-4 h-4 text-[#FFB700]" />
+                <Rocket className="w-4 h-4 text-[#3A72C4]" />
                 <span>Get a Quote</span>
               </button>
             </motion.div>
@@ -319,12 +319,12 @@ export default function Hero({ onOpenQuoteModal }) {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8, scale: 1.04, transition: { type: "spring", stiffness: 300 } }}
-                className="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:border-orange-300 transition-all text-center group cursor-pointer"
+                className="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:border-red-400 transition-all text-center group cursor-pointer"
               >
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-orange-50 text-[#FF5500] mb-3 group-hover:scale-110 group-hover:bg-[#FF5500] group-hover:text-white transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-red-50 text-[#1E4F87] mb-3 group-hover:scale-110 group-hover:bg-[#1E4F87] group-hover:text-white transition-all duration-300">
                   <Icon className="w-5 h-5" />
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-[#FF5500] font-heading">
+                <div className="text-2xl sm:text-3xl font-black text-[#1E4F87] font-heading">
                   {stat.value}
                 </div>
                 <div className="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">

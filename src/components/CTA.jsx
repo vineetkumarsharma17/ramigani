@@ -14,16 +14,16 @@ export default function CTA({ onOpenQuoteModal }) {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ scale: 1.015, transition: { duration: 0.3 } }}
-          className="relative rounded-[2.5rem] bg-ember-gradient p-8 sm:p-14 lg:p-16 text-center text-white shadow-2xl shadow-orange-500/25 overflow-hidden group"
+          className="relative rounded-[2.5rem] bg-ember-gradient p-8 sm:p-14 lg:p-16 text-center text-white shadow-2xl shadow-red-600/25 overflow-hidden group"
         >
           
-          <div className="absolute top-0 right-0 w-80 h-80 bg-amber-300/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-sky-300/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-red-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
 
           <div className="relative z-10 max-w-3xl mx-auto space-y-6">
             
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <Sparkles className="w-3.5 h-3.5 text-sky-300" />
               <span>Let's Build Together</span>
             </div>
 
@@ -42,7 +42,7 @@ export default function CTA({ onOpenQuoteModal }) {
                 onClick={onOpenQuoteModal}
                 className="w-full sm:w-auto px-10 py-4 rounded-full font-extrabold text-sm text-slate-900 bg-white hover:bg-slate-100 shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Calendar className="w-4 h-4 text-[#FF5500]" />
+                <Calendar className="w-4 h-4 text-[#1E4F87]" />
                 <span>Book a Consultation</span>
               </motion.button>
             </div>

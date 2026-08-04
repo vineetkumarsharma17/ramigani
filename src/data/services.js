@@ -1,10 +1,11 @@
-// Central services catalog. Core content (Mobile App, Web App, Digital Marketing)
-// is sourced from the existing ramigani.com site; remaining entries extend the offering.
+// Central solutions catalog, grouped into categories for the mega-menu.
+// Core content sourced from the existing ramigani.com site.
 
 export const services = [
   {
     id: 'app-development',
     name: 'Mobile App Development',
+    category: 'Engineering & Design',
     short: 'Native & cross-platform iOS & Android apps built for performance and scale.',
     tagline: 'We craft innovative mobile apps that engage, inspire, and drive business results.',
     description:
@@ -18,7 +19,8 @@ export const services = [
   },
   {
     id: 'web-development',
-    name: 'Web App Development',
+    name: 'Web Development',
+    category: 'Engineering & Design',
     short: 'Custom websites, e-commerce, and full-stack web applications.',
     tagline: 'Robust, scalable web platforms tailored to your brand and goals.',
     description:
@@ -31,21 +33,9 @@ export const services = [
     ],
   },
   {
-    id: 'digital-marketing',
-    name: 'Digital Marketing Services',
-    short: 'Targeted campaigns across social, content, and email channels.',
-    tagline: 'Data-driven marketing that turns attention into measurable growth.',
-    description:
-      'We help brands reach and convert the right audience through strategic, multi-channel campaigns — combining creative content with performance data to maximize return on every rupee spent.',
-    features: [
-      { title: 'Social Media Marketing', desc: 'Running targeted campaigns across platforms.' },
-      { title: 'Content Marketing', desc: 'Engaging content for various channels.' },
-      { title: 'Email Marketing', desc: 'Strategically crafted campaigns for conversions.' },
-    ],
-  },
-  {
     id: 'ui-ux-design',
     name: 'UI/UX Design',
+    category: 'Engineering & Design',
     short: 'User research, wireframing, prototypes, and modern design systems.',
     tagline: 'Interfaces that are intuitive, accessible, and a pleasure to use.',
     description:
@@ -58,36 +48,9 @@ export const services = [
     ],
   },
   {
-    id: 'seo-optimization',
-    name: 'SEO Optimization',
-    short: 'Technical audits, keyword strategy, and rank tracking.',
-    tagline: 'Get found by the customers who are already searching for you.',
-    description:
-      'We improve your organic visibility with technical SEO audits, high-intent keyword strategies, and continuous rank tracking — driving sustainable, high-quality traffic to your site.',
-    features: [
-      { title: 'Technical SEO Audits', desc: 'Fixing crawl, speed, and structure issues.' },
-      { title: 'Keyword Strategy', desc: 'Targeting high-intent, high-value search terms.' },
-      { title: 'On-Page Optimization', desc: 'Content and metadata tuned to rank.' },
-      { title: 'Rank Tracking & Reporting', desc: 'Transparent reporting on progress and ROI.' },
-    ],
-  },
-  {
-    id: 'ai-ml-solutions',
-    name: 'AI/ML Solutions',
-    short: 'Custom machine learning models and workflow automation.',
-    tagline: 'Put your data to work with practical, production-ready AI.',
-    description:
-      'We build custom machine learning models and intelligent automations that solve real business problems — from predictive analytics to document processing and workflow automation.',
-    features: [
-      { title: 'Custom ML Models', desc: 'Models tailored to your data and use case.' },
-      { title: 'Predictive Analytics', desc: 'Forecasting and insight from your data.' },
-      { title: 'Workflow Automation', desc: 'Automating repetitive, rules-based tasks.' },
-      { title: 'AI Integration', desc: 'Embedding intelligence into your existing apps.' },
-    ],
-  },
-  {
     id: 'qa-testing',
     name: 'Software Testing & QA',
+    category: 'Quality & Intelligence',
     short: 'Automated testing, security audits, and load profiling.',
     tagline: 'Ship with confidence — quality assured at every release.',
     description:
@@ -100,19 +63,23 @@ export const services = [
     ],
   },
   {
-    id: 'social-media',
-    name: 'Social Media Management',
-    short: 'Content creation, brand building, and community engagement.',
-    tagline: 'Build a brand your audience wants to follow.',
+    id: 'ai-ml-solutions',
+    name: 'AI/ML Solutions',
+    category: 'Quality & Intelligence',
+    short: 'Custom machine learning models and workflow automation.',
+    tagline: 'Put your data to work with practical, production-ready AI.',
     description:
-      'We grow and manage your social presence with strategic content, consistent branding, and active community engagement across the platforms that matter to your business.',
+      'We build custom machine learning models and intelligent automations that solve real business problems — from predictive analytics to document processing and workflow automation.',
     features: [
-      { title: 'Content Strategy & Calendar', desc: 'Planned, on-brand content that stays consistent.' },
-      { title: 'Creative & Post Design', desc: 'Scroll-stopping visuals and copy.' },
-      { title: 'Community Management', desc: 'Engaging followers and building loyalty.' },
-      { title: 'Analytics & Reporting', desc: 'Tracking reach, engagement, and growth.' },
+      { title: 'Custom ML Models', desc: 'Models tailored to your data and use case.' },
+      { title: 'Predictive Analytics', desc: 'Forecasting and insight from your data.' },
+      { title: 'Workflow Automation', desc: 'Automating repetitive, rules-based tasks.' },
+      { title: 'AI Integration', desc: 'Embedding intelligence into your existing apps.' },
     ],
   },
 ];
+
+// Ordered category list for the mega-menu columns
+export const categories = ['Engineering & Design', 'Quality & Intelligence'];
 
 export const getService = (id) => services.find((s) => s.id === id);

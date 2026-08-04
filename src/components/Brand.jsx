@@ -14,13 +14,13 @@ export default function Brand({ variant = 'light', className = '' }) {
       {/* Accent mark: a small gradient bar that reads as a logo device */}
       <span
         aria-hidden="true"
-        className="h-7 w-1.5 rounded-full bg-gradient-to-b from-[#FF9100] via-[#FF5500] to-[#D50000] group-hover:scale-y-110 origin-center transition-transform"
+        className="h-7 w-1.5 rounded-full bg-gradient-to-b from-[#3A72C4] via-[#1E4F87] to-[#0A1E3F] group-hover:scale-y-110 origin-center transition-transform"
       />
       <span className="flex flex-col leading-none">
         <span className="font-heading font-black text-[1.35rem] tracking-tight">
           <span className={nameColor}>Ramigani</span>
           <span className="gradient-text-orange">Tech</span>
-          <span className="text-[#FF5500]">.</span>
+          <span className="text-[#1E4F87]">.</span>
         </span>
         <span className={`text-[8.5px] tracking-[0.28em] font-bold uppercase mt-1 ${taglineColor}`}>
           Empowering The Future

@@ -51,7 +51,7 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
                 alt="Technology interface with glowing orange light circles"
                 className="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-orange-600/30 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-red-700/30 via-transparent to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
@@ -64,10 +64,10 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
             className="lg:col-span-7 space-y-6"
           >
             <div>
-              <span className="text-xs uppercase font-bold tracking-widest text-[#FF5500] block mb-1">
+              <span className="text-xs uppercase font-bold tracking-widest text-[#1E4F87] block mb-1">
                 About Ramigani
               </span>
-              <h2 className="text-4xl sm:text-5xl font-black text-[#FF5500] font-heading tracking-tight">
+              <h2 className="text-4xl sm:text-5xl font-black text-[#1E4F87] font-heading tracking-tight">
                 Why Choose Us?
               </h2>
             </div>
@@ -94,11 +94,11 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -8, scale: 1.04, transition: { type: "spring", stiffness: 300 } }}
-                  className="rounded-2xl bg-white border border-orange-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-orange-400 transition-all group cursor-pointer"
+                  className="rounded-2xl bg-white border border-red-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-red-500 transition-all group cursor-pointer"
                 >
                   {/* Top orange gradient header block matching screenshot #3 */}
-                  <div className="bg-gradient-to-b from-[#FFF0E6] to-white p-4 border-b border-orange-100 text-center group-hover:from-[#FF5500] group-hover:to-[#FF6A00] transition-colors duration-300">
-                    <h4 className="text-sm font-black text-[#FF5500] group-hover:text-white font-heading leading-tight transition-colors duration-300">
+                  <div className="bg-gradient-to-b from-[#EEF3FA] to-white p-4 border-b border-red-100 text-center group-hover:from-[#1E4F87] group-hover:to-[#1E4F87] transition-colors duration-300">
+                    <h4 className="text-sm font-black text-[#1E4F87] group-hover:text-white font-heading leading-tight transition-colors duration-300">
                       {card.title}
                     </h4>
                   </div>
@@ -136,9 +136,9 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
                 return (
                   <div
                     key={index}
-                    className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#FFF5F0] border border-orange-200 text-slate-800 text-xs font-bold shadow-sm"
+                    className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#EEF3FA] border border-red-200 text-slate-800 text-xs font-bold shadow-sm"
                   >
-                    <PillIcon className="w-4 h-4 text-[#FF5500]" />
+                    <PillIcon className="w-4 h-4 text-[#1E4F87]" />
                     <span>{pill.label}</span>
                   </div>
                 );
