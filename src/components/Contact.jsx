@@ -68,12 +68,12 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF3FA] text-[#1E4F87] text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF0FF] text-[#4F46E5] text-xs font-bold uppercase tracking-wider mb-3">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Get In Touch</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-heading">
-            Let's <span className="text-[#1E4F87]">Connect</span>
+            Let's <span className="text-[#4F46E5]">Connect</span>
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
             Have a project in mind or want to discuss technology solutions? Our team in Hyderabad is ready to help.
@@ -96,13 +96,13 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-slate-900 font-heading mb-1">
                 Ramigani Tech Solutions Pvt. Ltd.
               </h3>
-              <p className="text-xs text-[#1E4F87] font-bold mb-6">
+              <p className="text-xs text-[#4F46E5] font-bold mb-6">
                 Corporate Office & Development Hub
               </p>
 
               <div className="space-y-4 text-xs text-slate-600">
                 <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-[#EEF3FA] text-[#1E4F87] flex-shrink-0 mt-0.5">
+                  <div className="p-2 rounded-xl bg-[#EEF0FF] text-[#4F46E5] flex-shrink-0 mt-0.5">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
@@ -114,24 +114,24 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-[#EEF3FA] text-[#1E4F87] flex-shrink-0">
+                  <div className="p-2 rounded-xl bg-[#EEF0FF] text-[#4F46E5] flex-shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="font-bold text-slate-900 block mb-0.5">Email:</span>
-                    <a href="mailto:info@ramigani.com" className="hover:text-[#1E4F87] transition-colors font-medium">
+                    <a href="mailto:info@ramigani.com" className="hover:text-[#4F46E5] transition-colors font-medium">
                       info@ramigani.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-[#EEF3FA] text-[#1E4F87] flex-shrink-0">
+                  <div className="p-2 rounded-xl bg-[#EEF0FF] text-[#4F46E5] flex-shrink-0">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="font-bold text-slate-900 block mb-0.5">Phone:</span>
-                    <a href="tel:+919912340255" className="hover:text-[#1E4F87] transition-colors font-medium">
+                    <a href="tel:+919912340255" className="hover:text-[#4F46E5] transition-colors font-medium">
                       +91 99123 40255
                     </a>
                   </div>
@@ -154,7 +154,7 @@ export default function Contact() {
               {/* Business Hours */}
               <div className="mt-6 pt-6 border-t border-slate-100">
                 <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-3">
-                  <Clock className="w-4 h-4 text-[#1E4F87]" />
+                  <Clock className="w-4 h-4 text-[#4F46E5]" />
                   <span>Business Hours</span>
                 </div>
                 <div className="space-y-1.5 text-[11px] text-slate-600">
@@ -191,7 +191,7 @@ export default function Contact() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full bg-slate-100 hover:bg-[#1E4F87] text-slate-600 hover:text-white flex items-center justify-center transition-colors shadow-sm"
+                      className="w-9 h-9 rounded-full bg-slate-100 hover:bg-[#4F46E5] text-slate-600 hover:text-white flex items-center justify-center transition-colors shadow-sm"
                       aria-label={s.name}
                     >
                       <IconComp className="w-4 h-4" />
@@ -269,7 +269,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-2">
-                    Your Name <span className="text-[#1E4F87]">*</span>
+                    Your Name <span className="text-[#4F46E5]">*</span>
                   </label>
                   <input
                     type="text"
@@ -278,13 +278,13 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="John Doe"
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-2">
-                    Email Address <span className="text-[#1E4F87]">*</span>
+                    Email Address <span className="text-[#4F46E5]">*</span>
                   </label>
                   <input
                     type="email"
@@ -293,7 +293,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="john@example.com"
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                   />
                 </div>
               </div>
@@ -309,7 +309,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 99123 40255"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                   />
                 </div>
 
@@ -323,14 +323,14 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Project Inquiry / Consultation"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                   />
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-2">
-                  Message <span className="text-[#1E4F87]">*</span>
+                  Message <span className="text-[#4F46E5]">*</span>
                 </label>
                 <textarea
                   name="message"
@@ -339,7 +339,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Tell us about your project goals, timelines, or technical requirements..."
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                 />
               </div>
 
@@ -347,7 +347,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-xs text-white bg-[#1E4F87] hover:bg-[#1E4F87] shadow-md shadow-red-600/20 transition-all flex items-center justify-center gap-2 mx-auto disabled:opacity-50"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-xs text-white bg-[#4F46E5] hover:bg-[#4F46E5] shadow-md shadow-red-600/20 transition-all flex items-center justify-center gap-2 mx-auto disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <span>Sending Message...</span>

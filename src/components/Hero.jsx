@@ -1,343 +1,132 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Rocket, Cpu, ShieldCheck, Cloud, Database } from 'lucide-react';
+import { ArrowRight, Sparkles, Star, Activity, Cpu, ShieldCheck } from 'lucide-react';
+
+const ease = [0.16, 1, 0.3, 1];
 
 export default function Hero({ onOpenQuoteModal }) {
-  const canvasRef = useRef(null);
-
-  const stats = [
-    { label: 'Enterprise Projects', value: '150+', icon: Cpu },
-    { label: 'Client Satisfaction', value: '99.8%', icon: ShieldCheck },
-    { label: 'Expert Engineers', value: '50+', icon: Cloud },
-    { label: 'Cloud Availability', value: '99.99%', icon: Database },
-  ];
-
-  // High-Tech IT Sector Infinite Loop Canvas Animation (Logo Brand Orange Theme)
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let animationFrameId;
-
-    let width = (canvas.width = canvas.parentElement.offsetWidth);
-    let height = (canvas.height = canvas.parentElement.offsetHeight);
-
-    const handleResize = () => {
-      if (!canvas.parentElement) return;
-      width = canvas.width = canvas.parentElement.offsetWidth;
-      height = canvas.height = canvas.parentElement.offsetHeight;
-    };
-    window.addEventListener('resize', handleResize);
-
-    // IT Network Nodes matching Logo Brand Colors (#1E4F87 & #3A72C4)
-    const nodeCount = Math.min(Math.floor(width / 18), 75);
-    const nodes = [];
-    const maxDistance = 140;
-
-    for (let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
-        radius: Math.random() * 2.2 + 1.5,
-        pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.02 + Math.random() * 0.02,
-        color: Math.random() > 0.35 ? '#1E4F87' : '#3A72C4',
-      });
-    }
-
-    // Binary / Code Streams Floating in IT Sector Network (Orange/Amber Telemetry)
-    const codeChars = ['0', '1', 'AI', 'CLOUD', 'DEV', 'DATA', 'API', 'CYBER', '101', '010'];
-    const streamCount = 22;
-    const streams = [];
-
-    for (let i = 0; i < streamCount; i++) {
-      streams.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        text: codeChars[Math.floor(Math.random() * codeChars.length)],
-        speedY: -(0.3 + Math.random() * 0.5),
-        alpha: Math.random() * 0.45 + 0.15,
-        fontSize: Math.floor(Math.random() * 4) + 10,
-      });
-    }
-
-    // Expanding Server Pulse Waves (Logo Orange Glow)
-    const pulses = [
-      { r: 0, maxR: 280, speed: 0.6, alpha: 0.5, cx: width * 0.2, cy: height * 0.3 },
-      { r: 100, maxR: 350, speed: 0.5, alpha: 0.4, cx: width * 0.8, cy: height * 0.7 },
-    ];
-
-    let lastTime = performance.now();
-
-    const render = (now) => {
-      const delta = Math.min((now - lastTime) / 1000, 0.1);
-      lastTime = now;
-
-      ctx.clearRect(0, 0, width, height);
-
-      // 1. Draw Holographic Tech Grid Lines (Warm Brand Accent)
-      ctx.strokeStyle = 'rgba(255, 85, 0, 0.04)';
-      ctx.lineWidth = 1;
-      const gridSize = 45;
-      for (let x = 0; x < width; x += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-      for (let y = 0; y < height; y += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
-
-      // 2. Draw Server Data Pulse Waves (Vibrant Orange Glow)
-      pulses.forEach((p) => {
-        p.r += p.speed;
-        if (p.r > p.maxR) p.r = 0;
-        const fadeAlpha = (1 - p.r / p.maxR) * p.alpha;
-        ctx.beginPath();
-        ctx.arc(p.cx, p.cy, p.r, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(255, 85, 0, ${fadeAlpha})`;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-      });
-
-      // 3. Draw IT Data Streams (Code / Binary Telemetry in Amber/Orange)
-      streams.forEach((s) => {
-        s.y += s.speedY;
-        if (s.y < -20) {
-          s.y = height + 20;
-          s.x = Math.random() * width;
-          s.text = codeChars[Math.floor(Math.random() * codeChars.length)];
-        }
-        ctx.font = `${s.fontSize}px monospace`;
-        ctx.fillStyle = `rgba(255, 145, 0, ${s.alpha})`;
-        ctx.fillText(s.text, s.x, s.y);
-      });
-
-      // 4. Update & Draw IT Network Nodes and Inter-Connections (Logo Colors)
-      for (let i = 0; i < nodes.length; i++) {
-        const n = nodes[i];
-        n.x += n.vx;
-        n.y += n.vy;
-
-        // Glitch-Free Seamless Wrapping
-        if (n.x < -10) n.x = width + 10;
-        if (n.x > width + 10) n.x = -10;
-        if (n.y < -10) n.y = height + 10;
-        if (n.y > height + 10) n.y = -10;
-
-        n.pulse += n.pulseSpeed;
-        const currentRadius = n.radius + Math.sin(n.pulse) * 0.8;
-
-        // Draw connections between nearby IT nodes
-        for (let j = i + 1; j < nodes.length; j++) {
-          const n2 = nodes[j];
-          const dx = n.x - n2.x;
-          const dy = n.y - n2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < maxDistance) {
-            const lineAlpha = (1 - dist / maxDistance) * 0.4;
-            ctx.beginPath();
-            ctx.moveTo(n.x, n.y);
-            ctx.lineTo(n2.x, n2.y);
-
-            const gradient = ctx.createLinearGradient(n.x, n.y, n2.x, n2.y);
-            gradient.addColorStop(0, `rgba(255, 85, 0, ${lineAlpha})`);
-            gradient.addColorStop(1, `rgba(255, 183, 0, ${lineAlpha * 0.7})`);
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            // Draw glowing data packet along active connection
-            if (dist < maxDistance * 0.6 && (i + j) % 7 === 0) {
-              const packetPos = (now * 0.001 * 0.5 + (i * 0.1)) % 1;
-              const px = n.x + (n2.x - n.x) * packetPos;
-              const py = n.y + (n2.y - n.y) * packetPos;
-              ctx.beginPath();
-              ctx.arc(px, py, 2, 0, Math.PI * 2);
-              ctx.fillStyle = '#FFFFFF';
-              ctx.shadowColor = '#1E4F87';
-              ctx.shadowBlur = 8;
-              ctx.fill();
-              ctx.shadowBlur = 0;
-            }
-          }
-        }
-
-        // Draw Node Core
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, Math.max(0.5, currentRadius), 0, Math.PI * 2);
-        ctx.fillStyle = n.color;
-        ctx.shadowColor = n.color;
-        ctx.shadowBlur = 10;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    animationFrameId = requestAnimationFrame(render);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   return (
-    <section className="pt-24 sm:pt-28 pb-16 bg-white overflow-hidden">
-      {/* Full-width container */}
-      <div className="w-full max-w-[95%] xl:max-w-7xl mx-auto px-2 sm:px-4">
+    <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-mesh pointer-events-none" />
+      <div className="absolute inset-0 line-grid opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_0%,#000_30%,transparent_75%)] pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-indigoLight/20 rounded-full blur-[120px] animate-float-slow pointer-events-none" />
+      <div className="absolute top-10 right-0 w-[420px] h-[420px] bg-brand-violet/15 rounded-full blur-[130px] pointer-events-none" />
 
-        {/* IT Sector Cyber Hero Card with Logo Brand Orange Gradient & Sleek Obsidian Borders */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="relative w-full rounded-[3rem] bg-gradient-to-br from-[#061631] via-[#0A1E3F] to-[#061631] p-8 sm:p-14 lg:p-20 overflow-hidden border-2 border-[#1E4F87]/40 shadow-2xl shadow-[#1E4F87]/30 text-center group"
-        >
-
-          {/* 1. Ultra-Luxury 3D IT Background Image & Seamless Video Layer */}
-          <div className="absolute inset-0 w-full h-full z-0 pointer-events-none rounded-[3rem] overflow-hidden">
-            <img
-              src={`${import.meta.env.BASE_URL}assets/luxury_3d_it_hero.png`}
-              alt="3D Luxury IT Cloud Infrastructure"
-              className="w-full h-full object-cover opacity-45 mix-blend-screen transform scale-105 group-hover:scale-110 transition-transform duration-1000"
-            />
-          </div>
-
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={`${import.meta.env.BASE_URL}assets/luxury_3d_it_hero.png`}
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-25 mix-blend-screen pointer-events-none rounded-[3rem] transform scale-105 group-hover:scale-110 transition-transform duration-1000"
+      <div className="container-x relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+        {/* Left: copy */}
+        <div className="lg:col-span-6 text-center lg:text-left">
+          <motion.span
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease }}
+            className="eyebrow"
           >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-technology-network-lines-and-dots-loop-41561-large.mp4" type="video/mp4" />
-          </video>
+            <Sparkles className="w-3.5 h-3.5" /> Software Engineering Studio
+          </motion.span>
 
-          {/* 2. Full-bleed IT Cyber Network Canvas Layer (Logo Brand Orange Theme) */}
-          <canvas
-            ref={canvasRef}
-            className="absolute inset-0 w-full h-full z-0 pointer-events-none mix-blend-screen rounded-[3rem]"
-          />
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.05, ease }}
+            className="mt-5 font-heading font-bold tracking-tight text-ink text-4xl sm:text-6xl leading-[1.05]"
+          >
+            Engineering that <span className="gradient-text-anim animate-gradient-shift">moves business</span> forward.
+          </motion.h1>
 
-          {/* 3. Glowing Ambient Orbs (Brand Orange #1E4F87, Amber #3A72C4, Flame Red) */}
-          <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#1E4F87]/30 rounded-full blur-[120px] pointer-events-none animate-pulse" />
-          <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#3A72C4]/25 rounded-full blur-[140px] pointer-events-none animate-pulse" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0A1E3F]/20 rounded-full blur-[160px] pointer-events-none" />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15, ease }}
+            className="mt-6 text-lg text-brand-body max-w-xl mx-auto lg:mx-0 leading-relaxed"
+          >
+            We design and build high-performance mobile apps, web platforms, and AI-powered products — from first concept to production scale.
+          </motion.p>
 
-          {/* 4. Cyber Holographic Tech Dot Overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(#1E4F87_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-20 pointer-events-none" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25, ease }}
+            className="mt-9 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
+          >
+            <button onClick={onOpenQuoteModal} className="btn-primary w-full sm:w-auto px-8 py-3.5">
+              Start your project <ArrowRight className="w-4 h-4" />
+            </button>
+            <Link to="/solutions" className="btn-ghost w-full sm:w-auto px-8 py-3.5">Explore solutions</Link>
+          </motion.div>
 
-          {/* Hero Content */}
-          <div className="relative z-10 max-w-4xl mx-auto space-y-6">
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-brand-muted"
+          >
+            <div className="flex items-center gap-1.5">
+              <div className="flex text-amber-400">
+                {[0,1,2,3,4].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+              </div>
+              <span className="font-semibold text-ink">4.9</span>/5 client rating
+            </div>
+            <div className="hidden sm:block h-4 w-px bg-brand-line" />
+            <span className="hidden sm:inline"><span className="font-semibold text-ink">150+</span> projects shipped</span>
+          </motion.div>
+        </div>
 
-            {/* High-Tech IT Sector Top Tag (Logo Orange Styled) */}
+        {/* Right: floating product visual */}
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.8, delay: 0.2, ease }}
+          className="lg:col-span-6 relative"
+        >
+          <div className="relative mx-auto max-w-md lg:max-w-none">
+            {/* main dashboard card */}
+            <div className="card rounded-4xl p-5 shadow-lift">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-3 h-3 rounded-full bg-red-400" />
+                <span className="w-3 h-3 rounded-full bg-amber-400" />
+                <span className="w-3 h-3 rounded-full bg-emerald-400" />
+                <span className="ml-3 text-xs font-medium text-brand-muted">ramigani · analytics</span>
+              </div>
+              <div className="rounded-2xl bg-brand-tint/70 p-5">
+                <div className="flex items-end justify-between mb-4">
+                  <div>
+                    <div className="text-xs text-brand-muted">Deployments</div>
+                    <div className="font-heading text-2xl font-bold text-ink">1,284</div>
+                  </div>
+                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+24%</span>
+                </div>
+                {/* animated bars */}
+                <div className="flex items-end gap-2 h-28">
+                  {[40, 65, 50, 80, 60, 92, 74].map((h, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ height: 0 }}
+                      animate={{ height: `${h}%` }}
+                      transition={{ duration: 0.8, delay: 0.5 + i * 0.08, ease }}
+                      className="flex-1 rounded-t-lg bg-indigo-gradient"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* floating stat chips */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1E4F87]/25 backdrop-blur-md border border-[#1E4F87]/50 text-sky-200 text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#1E4F87]/20"
+              animate={{ y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -left-4 sm:-left-8 top-16 card rounded-2xl px-4 py-3 flex items-center gap-3"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#3A72C4] animate-spin" style={{ animationDuration: '8s' }} />
-              <span>RAMIGANI TECH SOLUTIONS PVT. LTD.</span>
+              <div className="w-9 h-9 rounded-xl bg-brand-tint grid place-items-center"><Activity className="w-4 h-4 text-brand-indigo" /></div>
+              <div><div className="text-xs text-brand-muted">Uptime</div><div className="font-bold text-ink text-sm">99.99%</div></div>
             </motion.div>
 
-            {/* Headline with High-Contrast Electric Cyan/Sky Glow Accent */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.18] font-heading drop-shadow-xl"
-            >
-              Building Tomorrow's <span className="bg-gradient-to-r from-cyan-300 via-sky-200 to-indigo-200 bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">Technology</span> <br className="hidden sm:inline" />
-              From Concept to Cloud
-            </motion.h1>
-
-            {/* Subheading */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-sm sm:text-base lg:text-lg text-slate-100 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-md"
-            >
-              Delivering high-performance mobile apps, full-stack web platforms, and data-driven digital growth strategies tailored to modern enterprise needs.
-            </motion.p>
-
-            {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4"
+              animate={{ y: [0, 12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -right-3 sm:-right-6 bottom-8 card rounded-2xl px-4 py-3 flex items-center gap-3"
             >
-              <Link
-                to="/about"
-                className="w-full sm:w-auto px-9 py-3.5 rounded-full font-extrabold text-sm text-slate-950 bg-white hover:bg-slate-100 shadow-xl shadow-red-950/40 hover:scale-105 active:scale-100 transition-all duration-300 flex items-center justify-center gap-2 group"
-              >
-                <span>Learn More</span>
-                <ArrowRight className="w-4 h-4 text-[#1E4F87] group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              <button
-                onClick={onOpenQuoteModal}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-sm text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-[#1E4F87]/50 shadow-xl transition-all duration-300 flex items-center justify-center gap-2 hover:border-[#1E4F87]"
-              >
-                <Rocket className="w-4 h-4 text-[#3A72C4]" />
-                <span>Get a Quote</span>
-              </button>
+              <div className="w-9 h-9 rounded-xl bg-brand-tint grid place-items-center"><Cpu className="w-4 h-4 text-brand-violet" /></div>
+              <div><div className="text-xs text-brand-muted">AI models</div><div className="font-bold text-ink text-sm">Production-ready</div></div>
             </motion.div>
 
+            <motion.div
+              animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute right-6 -top-4 card rounded-2xl px-4 py-3 flex items-center gap-2"
+            >
+              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <span className="text-xs font-semibold text-ink">Secure by design</span>
+            </motion.div>
           </div>
         </motion.div>
-
-        {/* Stats Strip below Hero Card with Logo Brand Orange Accents */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
-        >
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -8, scale: 1.04, transition: { type: "spring", stiffness: 300 } }}
-                className="p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:border-red-400 transition-all text-center group cursor-pointer"
-              >
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-red-50 text-[#1E4F87] mb-3 group-hover:scale-110 group-hover:bg-[#1E4F87] group-hover:text-white transition-all duration-300">
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div className="text-2xl sm:text-3xl font-black text-[#1E4F87] font-heading">
-                  {stat.value}
-                </div>
-                <div className="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
       </div>
     </section>
   );
 }
-
-

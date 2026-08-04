@@ -1,152 +1,66 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Cpu, Zap, DollarSign, Award, Users, ShieldCheck, Handshake, Target, ArrowRight } from 'lucide-react';
+import { Cpu, Zap, ShieldCheck, HeartHandshake } from 'lucide-react';
+import Reveal from './Reveal';
+import Counter from './Counter';
 
-export default function WhyChooseUs({ onOpenQuoteModal }) {
-  const miniCards = [
-    {
-      icon: Cpu,
-      title: 'Cutting-Edge Technology',
-      desc: 'Employing modern microservice architectures, cloud-native frameworks, and AI tools to deliver future-proof solutions.'
-    },
-    {
-      icon: Zap,
-      title: 'Agile Development',
-      desc: 'Adapting quickly to evolving requirements with rapid sprint cycles, transparent roadmap tracking, and prototype drops.'
-    },
-    {
-      icon: DollarSign,
-      title: 'Cost-Effective Solutions',
-      desc: 'Optimizing development pipelines to maximize return on investment without compromising quality or security.'
-    }
-  ];
+const values = [
+  { icon: Cpu, title: 'Modern engineering', desc: 'Cloud-native architectures, clean code, and CI/CD pipelines built for the long run.' },
+  { icon: Zap, title: 'Agile delivery', desc: 'Rapid sprints, transparent roadmaps, and frequent demos so you always know where things stand.' },
+  { icon: ShieldCheck, title: 'Quality & security', desc: 'Automated testing and security-first practices baked into every release.' },
+  { icon: HeartHandshake, title: 'True partnership', desc: 'A senior team that cares about your outcomes — not just shipping tickets.' },
+];
 
-  const trustPills = [
-    { icon: Award, label: 'Proven Track Record' },
-    { icon: Users, label: 'Strong Engineering Team' },
-    { icon: ShieldCheck, label: 'Quality Assurance Focus' },
-    { icon: Handshake, label: 'Strategic Partnerships' },
-    { icon: Target, label: 'Customer Centric Approach' }
-  ];
+const stats = [
+  { value: 10, suffix: '+', label: 'Years of experience' },
+  { value: 150, suffix: '+', label: 'Projects delivered' },
+  { value: 50, suffix: '+', label: 'Expert engineers' },
+  { value: 99, suffix: '%', label: 'Client satisfaction' },
+];
 
+export default function WhyChooseUs() {
   return (
-    <section id="about" className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Main Grid matching Screenshot #3 */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Arch Masked Image matching Screenshot #3 */}
-          <motion.div
-            initial={{ opacity: 0, x: -40, scale: 0.92 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-            className="lg:col-span-5 relative"
-          >
-            <div className="relative arch-image-mask overflow-hidden shadow-2xl border-4 border-white max-w-md mx-auto">
-              <img
-                src={`${import.meta.env.BASE_URL}assets/arch_tech_touch.jpg`}
-                alt="Technology interface with glowing orange light circles"
-                className="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-red-700/30 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
-
-          {/* Right Column: Text Content matching Screenshot #3 */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 space-y-6"
-          >
-            <div>
-              <span className="text-xs uppercase font-bold tracking-widest text-[#1E4F87] block mb-1">
-                About Ramigani
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-black text-[#1E4F87] font-heading tracking-tight">
-                Why Choose Us?
-              </h2>
-            </div>
-
-            <p className="text-slate-600 text-base leading-relaxed">
-              With years of experience in the software industry, our team possesses an in-depth understanding of the complexities involved in enterprise application engineering and cloud infrastructure.
+    <section id="about" className="py-24 bg-white border-y border-brand-line">
+      <div className="container-x">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <Reveal className="lg:col-span-5">
+            <span className="eyebrow">Why Ramigani</span>
+            <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-ink leading-tight">
+              A partner obsessed with <span className="gradient-text">your outcomes</span>
+            </h2>
+            <p className="mt-5 text-lg text-brand-body leading-relaxed">
+              We bring together engineers, designers, and strategists to turn ambitious ideas into reliable, scalable products. Every engagement is tailored to your goals.
             </p>
 
-            <p className="text-slate-600 text-base leading-relaxed">
-              At Ramigani Tech Solutions, our clients are at the center of everything we do. We understand that each project is unique, and we take the time to listen to your specific needs and requirements. Our customer-centric approach ensures that we deliver tailored solutions that align perfectly with your goals and objectives.
-            </p>
-
-            <p className="text-slate-700 font-semibold text-base leading-relaxed">
-              Let us help you transform your ideas into reality with our innovative and reliable technology solutions.
-            </p>
-
-            {/* Feature Cards with Staggered Scroll Animation */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              {miniCards.map((card, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -8, scale: 1.04, transition: { type: "spring", stiffness: 300 } }}
-                  className="rounded-2xl bg-white border border-red-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-red-500 transition-all group cursor-pointer"
-                >
-                  {/* Top orange gradient header block matching screenshot #3 */}
-                  <div className="bg-gradient-to-b from-[#EEF3FA] to-white p-4 border-b border-red-100 text-center group-hover:from-[#1E4F87] group-hover:to-[#1E4F87] transition-colors duration-300">
-                    <h4 className="text-sm font-black text-[#1E4F87] group-hover:text-white font-heading leading-tight transition-colors duration-300">
-                      {card.title}
-                    </h4>
+            {/* Stats */}
+            <div className="mt-8 grid grid-cols-2 gap-4">
+              {stats.map((s) => (
+                <div key={s.label} className="rounded-2xl bg-brand-tint/60 p-5">
+                  <div className="font-heading text-3xl font-bold text-ink">
+                    <Counter value={s.value} suffix={s.suffix} />
                   </div>
-                  <div className="p-4 text-center">
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {card.desc}
-                    </p>
-                  </div>
-                </motion.div>
+                  <div className="text-xs font-semibold text-brand-muted mt-1 uppercase tracking-wide">{s.label}</div>
+                </div>
               ))}
             </div>
+          </Reveal>
 
-          </motion.div>
-
-        </div>
-
-        {/* Marquee Strip below with Scroll Animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-          className="mt-20 pt-10 border-t border-slate-100 overflow-hidden marquee-container"
-        >
-          <div className="text-center mb-6">
-            <span className="text-xs uppercase tracking-widest text-slate-400 font-bold">
-              Our Core Engineering Pillars
-            </span>
-          </div>
-
-          <div className="relative w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent_0%,#000_15%,#000_85%,transparent_100%)]">
-            <div className="flex gap-4 animate-marquee whitespace-nowrap py-2">
-              {[...trustPills, ...trustPills, ...trustPills].map((pill, index) => {
-                const PillIcon = pill.icon;
-                return (
-                  <div
-                    key={index}
-                    className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#EEF3FA] border border-red-200 text-slate-800 text-xs font-bold shadow-sm"
-                  >
-                    <PillIcon className="w-4 h-4 text-[#1E4F87]" />
-                    <span>{pill.label}</span>
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+            {values.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <Reveal key={v.title} delay={(i % 2) * 0.1}>
+                  <div className="card rounded-3xl p-7 h-full hover:shadow-lift hover:-translate-y-1 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-2xl bg-brand-tint grid place-items-center">
+                      <Icon className="w-6 h-6 text-brand-indigo" />
+                    </div>
+                    <h3 className="mt-5 font-heading font-bold text-lg text-ink">{v.title}</h3>
+                    <p className="mt-2 text-sm text-brand-body leading-relaxed">{v.desc}</p>
                   </div>
-                );
-              })}
-            </div>
+                </Reveal>
+              );
+            })}
           </div>
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );

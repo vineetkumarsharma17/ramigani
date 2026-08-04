@@ -3,110 +3,87 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    color-scheme: light;
-  }
-
+  html { color-scheme: light; }
   body {
-    background-color: #FFFFFF;
-    color: #334155;
+    background-color: #FBFBFD;
+    color: #0B1220;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: #4F46E5; color: #fff; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #F1F1F6; }
+  ::-webkit-scrollbar-thumb { background: #C7C9D9; border-radius: 6px; }
+  ::-webkit-scrollbar-thumb:hover { background: #4F46E5; }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-brand-indigo text-white px-6 py-3 text-sm shadow-indigo hover:bg-brand-indigoDark hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-white text-ink px-6 py-3 text-sm border border-brand-line hover:border-brand-indigo hover:text-brand-indigo;
+  }
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-ink text-white px-6 py-3 text-sm hover:bg-black hover:-translate-y-0.5;
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 9px;
+  /* Cards */
+  .card {
+    @apply bg-white border border-brand-line rounded-3xl shadow-soft;
   }
-  ::-webkit-scrollbar-track {
-    background: #EEF3FA;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #143567;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #D62828;
+
+  /* Section rhythm */
+  .container-x { @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8; }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-tint text-brand-indigo text-[11px] font-bold uppercase tracking-widest;
   }
 }
 
 @layer utilities {
-  /* Legacy accent-card name, now a red-accented white card */
-  .orange-card-border {
-    border: 2px solid #D62828;
-    background: #FFFFFF;
-    box-shadow: 0 10px 30px -10px rgba(214, 40, 40, 0.10);
+  .font-heading { font-family: "Space Grotesk", Inter, sans-serif; }
+
+  .gradient-text {
+    background: linear-gradient(120deg, #6366F1 0%, #4F46E5 45%, #7C3AED 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
 
-  /* Legacy pill name, now red outline -> fill */
-  .orange-pill-btn {
-    border: 1.5px solid #D62828;
-    color: #D62828;
-    background: #FFFFFF;
-    transition: all 0.25s ease-in-out;
-  }
-  .orange-pill-btn:hover {
-    background: #D62828;
-    color: #FFFFFF;
-    box-shadow: 0 6px 18px rgba(214, 40, 40, 0.28);
+  /* Animated gradient text (needs bg-[length] + animate-gradient-shift) */
+  .gradient-text-anim {
+    background: linear-gradient(120deg,#6366F1,#7C3AED,#38BDF8,#4F46E5);
+    background-size: 300% 300%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
 
-  .red-pill-btn {
-    border: 1.5px solid #D62828;
-    color: #D62828;
-    background: #FFFFFF;
-    transition: all 0.25s ease-in-out;
-  }
-  .red-pill-btn:hover {
-    background: #D62828;
-    color: #FFFFFF;
-    box-shadow: 0 6px 18px rgba(214, 40, 40, 0.28);
+  /* Dotted grid backdrop */
+  .dot-grid {
+    background-image: radial-gradient(rgba(11,18,32,0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
 
-  .navy-card {
-    background: #FFFFFF;
-    border: 1px solid #DBE6F5;
-    box-shadow: 0 6px 24px -6px rgba(10, 30, 63, 0.10);
-  }
-
-  /* Legacy orange gradient text name, now red gradient */
-  .gradient-text-orange {
-    background: linear-gradient(135deg, #E63946 0%, #A81D22 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .gradient-text-red {
-    background: linear-gradient(135deg, #E63946 0%, #A81D22 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .gradient-text-blue {
-    background: linear-gradient(135deg, #3A72C4 0%, #1E4F87 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* Faint circuit grid used over dark navy panels */
-  .circuit-grid {
+  /* Fine line grid */
+  .line-grid {
     background-image:
-      linear-gradient(rgba(90, 155, 224, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(90, 155, 224, 0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(rgba(11,18,32,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11,18,32,0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
 
-  /* Arch shape clip for image */
-  .arch-image-mask {
-    border-top-left-radius: 200px;
-    border-top-right-radius: 200px;
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
-  }
-
-  /* Continuous marquee pause on hover */
-  .marquee-container:hover .animate-marquee {
-    animation-play-state: paused;
-  }
+  .marquee-paused:hover .animate-marquee { animation-play-state: paused; }
 }

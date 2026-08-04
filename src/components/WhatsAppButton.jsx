@@ -5,7 +5,7 @@ export default function WhatsAppButton() {
   return (
     <div className="fixed bottom-6 right-6 z-50 group">
       {/* Tooltip */}
-      <div className="absolute bottom-full right-0 mb-3 hidden group-hover:block whitespace-nowrap bg-navy-850 border border-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-xl animate-fade-in">
+      <div className="absolute bottom-full right-0 mb-3 hidden group-hover:block whitespace-nowrap bg-ink text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-xl">
         Chat on WhatsApp
       </div>
 

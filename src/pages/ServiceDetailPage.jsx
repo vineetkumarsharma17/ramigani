@@ -1,160 +1,112 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
-  Smartphone, Globe, Palette, TrendingUp, Search, BrainCircuit,
-  CheckSquare, Share2, ArrowLeft, ArrowRight, CheckCircle2, Layers, Sparkles
+  Smartphone, Globe, Palette, CheckSquare, BrainCircuit,
+  ArrowLeft, ArrowRight, Check, Layers,
 } from 'lucide-react';
 import { services, getService } from '../data/services';
 import CTA from '../components/CTA';
+import Reveal from '../components/Reveal';
 
 const iconMap = {
   'app-development': Smartphone,
   'web-development': Globe,
-  'digital-marketing': TrendingUp,
   'ui-ux-design': Palette,
-  'seo-optimization': Search,
-  'ai-ml-solutions': BrainCircuit,
   'qa-testing': CheckSquare,
-  'social-media': Share2,
+  'ai-ml-solutions': BrainCircuit,
 };
 
 export default function ServiceDetailPage({ onOpenQuoteModal }) {
   const { slug } = useParams();
   const service = getService(slug);
 
-  // Fallback for an unknown slug
   if (!service) {
     return (
-      <div className="pt-32 pb-24 text-center px-6 min-h-[60vh] flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-black text-slate-900 font-heading mb-3">Service not found</h1>
-        <p className="text-slate-600 mb-6">The service you're looking for doesn't exist.</p>
-        <Link to="/solutions" className="px-6 py-3 rounded-full text-sm font-bold text-white bg-[#1E4F87] hover:bg-[#1E4F87] transition-all">
-          View all services
-        </Link>
+      <div className="pt-40 pb-24 text-center container-x min-h-[60vh]">
+        <h1 className="font-heading font-bold text-3xl text-ink mb-3">Solution not found</h1>
+        <p className="text-brand-body mb-6">The page you're looking for doesn't exist.</p>
+        <Link to="/solutions" className="btn-primary">View all solutions</Link>
       </div>
     );
   }
 
   const Icon = iconMap[service.id] || Layers;
-  const others = services.filter((s) => s.id !== service.id).slice(0, 3);
+  const others = services.filter((s) => s.id !== service.id);
 
   return (
-    <div className="pt-20">
+    <div className="pt-28">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#EEF3FA] to-white py-16 sm:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/solutions" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#1E4F87] transition-colors mb-6">
-            <ArrowLeft className="w-4 h-4" />
-            All Services
+      <section className="relative overflow-hidden py-16 sm:py-20">
+        <div className="absolute inset-0 bg-mesh pointer-events-none" />
+        <div className="container-x relative z-10">
+          <Link to="/solutions" className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-muted hover:text-brand-indigo transition-colors mb-6">
+            <ArrowLeft className="w-4 h-4" /> All solutions
           </Link>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-7"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF3FA] text-[#1E4F87] text-xs font-bold uppercase tracking-wider mb-4">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Ramigani Tech Service</span>
-              </div>
-              <h1 className="text-3xl sm:text-5xl font-black text-slate-900 font-heading tracking-tight leading-tight">
-                {service.name}
-              </h1>
-              <p className="mt-4 text-lg text-[#1E4F87] font-semibold">
-                {service.tagline}
-              </p>
-              <p className="mt-4 text-slate-600 text-base leading-relaxed max-w-2xl">
-                {service.description}
-              </p>
+          <div className="grid lg:grid-cols-12 gap-10 items-center">
+            <Reveal className="lg:col-span-7">
+              <span className="eyebrow"><Icon className="w-3.5 h-3.5" /> {service.category}</span>
+              <h1 className="mt-4 font-heading font-bold text-4xl sm:text-5xl tracking-tight text-ink leading-[1.08]">{service.name}</h1>
+              <p className="mt-4 text-xl text-brand-indigo font-medium">{service.tagline}</p>
+              <p className="mt-4 text-lg text-brand-body leading-relaxed max-w-2xl">{service.description}</p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={onOpenQuoteModal}
-                  className="px-8 py-3.5 rounded-full text-sm font-bold text-white bg-[#1E4F87] hover:bg-[#1E4F87] shadow-md shadow-red-600/25 hover:-translate-y-0.5 transition-all"
-                >
-                  Get a Quote
-                </button>
-                <Link
-                  to="/contact"
-                  className="px-8 py-3.5 rounded-full text-sm font-bold text-slate-700 bg-white border border-slate-200 hover:border-[#1E4F87] hover:text-[#1E4F87] transition-all text-center"
-                >
-                  Talk to Us
-                </Link>
+                <button onClick={onOpenQuoteModal} className="btn-primary px-8 py-3.5">Get a quote <ArrowRight className="w-4 h-4" /></button>
+                <Link to="/contact" className="btn-ghost px-8 py-3.5">Talk to us</Link>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="lg:col-span-5 flex justify-center"
-            >
-              <div className="w-40 h-40 sm:w-52 sm:h-52 rounded-[2rem] bg-gradient-to-br from-[#3A72C4] via-[#1E4F87] to-[#0A1E3F] flex items-center justify-center shadow-2xl shadow-red-600/30">
-                <Icon className="w-20 h-20 sm:w-24 sm:h-24 text-white" />
+            </Reveal>
+            <Reveal delay={0.1} className="lg:col-span-5">
+              <div className="relative mx-auto w-52 h-52 sm:w-64 sm:h-64">
+                <div className="absolute inset-0 rounded-4xl bg-indigo-gradient shadow-indigo animate-float-slow" />
+                <div className="absolute inset-0 grid place-items-center">
+                  <Icon className="w-24 h-24 text-white" />
+                </div>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 font-heading">
-              What's <span className="text-[#1E4F87]">Included</span>
-            </h2>
-            <p className="mt-3 text-slate-600">Everything you get with our {service.name.toLowerCase()} service.</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <section className="py-16 sm:py-20 bg-white border-y border-brand-line">
+        <div className="container-x">
+          <Reveal className="max-w-2xl mx-auto text-center mb-12">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl text-ink">What's included</h2>
+            <p className="mt-3 text-brand-body">Everything you get with our {service.name.toLowerCase()} service.</p>
+          </Reveal>
+          <div className="grid sm:grid-cols-2 gap-5">
             {service.features.map((f, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#EEF3FA] text-[#1E4F87] flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 className="w-5 h-5" />
+              <Reveal key={i} delay={(i % 2) * 0.08}>
+                <div className="card rounded-3xl p-6 flex items-start gap-4 h-full">
+                  <div className="w-10 h-10 rounded-xl bg-brand-tint grid place-items-center flex-shrink-0">
+                    <Check className="w-5 h-5 text-brand-indigo" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-bold text-lg text-ink">{f.title}</h3>
+                    <p className="mt-1 text-sm text-brand-body leading-relaxed">{f.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 font-heading mb-1">{f.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{f.desc}</p>
-                </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Other services */}
-      <section className="py-16 bg-[#EEF3FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Other solutions */}
+      <section className="py-16">
+        <div className="container-x">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-black text-slate-900 font-heading">Explore Other Services</h2>
-            <Link to="/solutions" className="text-xs font-bold text-[#1E4F87] hover:underline inline-flex items-center gap-1">
-              View all <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            <h2 className="font-heading font-bold text-2xl text-ink">Other solutions</h2>
+            <Link to="/solutions" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-indigo hover:gap-2.5 transition-all">View all <ArrowRight className="w-4 h-4" /></Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {others.map((s) => {
               const OIcon = iconMap[s.id] || Layers;
               return (
-                <Link
-                  key={s.id}
-                  to={`/solutions/${s.id}`}
-                  className="group block p-6 rounded-2xl bg-white border border-slate-100 hover:border-[#1E4F87] hover:shadow-md transition-all"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#EEF3FA] group-hover:bg-[#1E4F87] flex items-center justify-center mb-3 transition-colors">
-                    <OIcon className="w-5 h-5 text-[#1E4F87] group-hover:text-white transition-colors" />
+                <Link key={s.id} to={`/solutions/${s.id}`} className="group card rounded-3xl p-6 hover:shadow-lift hover:-translate-y-1 transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-brand-tint grid place-items-center mb-3">
+                    <OIcon className="w-5 h-5 text-brand-indigo" />
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-[#1E4F87] font-heading transition-colors">{s.name}</h3>
-                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">{s.short}</p>
+                  <h3 className="font-heading font-bold text-ink group-hover:text-brand-indigo transition-colors">{s.name}</h3>
+                  <p className="mt-1 text-xs text-brand-muted leading-relaxed">{s.short}</p>
                 </Link>
               );
             })}

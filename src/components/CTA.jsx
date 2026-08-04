@@ -1,56 +1,34 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Calendar } from 'lucide-react';
+import Reveal from './Reveal';
 
 export default function CTA({ onOpenQuoteModal }) {
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Banner Card with Ember Gradient and Motion Scroll Animation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 40 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          whileHover={{ scale: 1.015, transition: { duration: 0.3 } }}
-          className="relative rounded-[2.5rem] bg-ember-gradient p-8 sm:p-14 lg:p-16 text-center text-white shadow-2xl shadow-red-600/25 overflow-hidden group"
-        >
-          
-          <div className="absolute top-0 right-0 w-80 h-80 bg-sky-300/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-red-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+    <section className="py-24">
+      <div className="container-x">
+        <Reveal className="relative overflow-hidden rounded-[2.5rem] bg-indigo-gradient px-8 py-14 sm:px-14 sm:py-20 text-center">
+          <div className="absolute inset-0 line-grid opacity-20 pointer-events-none" />
+          <div className="absolute -top-16 -right-10 w-72 h-72 bg-white/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-10 w-72 h-72 bg-brand-sky/25 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-            
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-sky-300" />
-              <span>Let's Build Together</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight font-heading leading-tight">
-              Ready to Start Your Project?
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="font-heading font-bold text-3xl sm:text-5xl tracking-tight text-white leading-tight">
+              Ready to build something great?
             </h2>
-
-            <p className="text-white/90 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
-              From idea to launch, we've got you covered. Partner with Ramigani Tech Solutions for reliable technology solutions, high performance engineering, and measurable growth.
+            <p className="mt-5 text-lg text-white/85">
+              Tell us about your project and we'll get back within 24 hours with a plan and a quote.
             </p>
-
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={onOpenQuoteModal}
-                className="w-full sm:w-auto px-10 py-4 rounded-full font-extrabold text-sm text-slate-900 bg-white hover:bg-slate-100 shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Calendar className="w-4 h-4 text-[#1E4F87]" />
-                <span>Book a Consultation</span>
-              </motion.button>
+            <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button onClick={onOpenQuoteModal} className="btn w-full sm:w-auto bg-white text-brand-indigo px-8 py-3.5 font-bold hover:-translate-y-0.5 shadow-lift">
+                <Calendar className="w-4 h-4" /> Book a consultation
+              </button>
+              <Link to="/contact" className="btn w-full sm:w-auto bg-white/10 text-white border border-white/30 px-8 py-3.5 font-semibold hover:bg-white/20">
+                Contact us <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-
           </div>
-
-        </motion.div>
-
+        </Reveal>
       </div>
     </section>
   );

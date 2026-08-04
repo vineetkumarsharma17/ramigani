@@ -26,10 +26,10 @@ function AnimatedRoutes({ onOpenQuoteModal }) {
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage onOpenQuoteModal={onOpenQuoteModal} />} />
@@ -57,7 +57,7 @@ export default function App() {
 
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <div className="min-h-screen bg-[#0B0F19] text-[#A8B0C3] selection:bg-accent-cyan selection:text-[#0B0F19] font-sans flex flex-col justify-between">
+      <div className="min-h-screen bg-paper text-ink font-sans flex flex-col justify-between overflow-x-hidden">
         <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
 
         <main className="flex-grow">

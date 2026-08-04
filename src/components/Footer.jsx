@@ -1,38 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  MapPin, 
-  Mail, 
-  Phone, 
-  Send, 
-  CheckCircle2, 
-  Twitter, 
-  Facebook, 
-  Linkedin, 
-  Instagram, 
-  Youtube,
-  ArrowUp
-} from 'lucide-react';
+import { MapPin, Mail, Phone, ArrowRight, Twitter, Facebook, Linkedin, Instagram, Youtube, ArrowUp } from 'lucide-react';
 import Brand from './Brand';
+import { services } from '../data/services';
 
 export default function Footer() {
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+  const [email, setEmail] = useState('');
+  const [done, setDone] = useState(false);
 
-  const handleSubscribe = (e) => {
+  const subscribe = (e) => {
     e.preventDefault();
-    if (newsletterEmail) {
-      setSubscribed(true);
-      setNewsletterEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
-    }
+    if (email) { setDone(true); setEmail(''); setTimeout(() => setDone(false), 5000); }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const socialLinks = [
+  const socials = [
     { name: 'X/Twitter', icon: Twitter, href: 'https://x.com/RamiganiTe99276' },
     { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61567290185769' },
     { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/ramigani-tech-solutions-3176a9327/' },
@@ -41,165 +22,87 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-16 pb-12 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
-          
-          {/* Brand Info & Contact Column (4 cols) */}
+    <footer className="bg-white border-t border-brand-line pt-16 pb-8">
+      <div className="container-x">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-brand-line">
+          {/* Brand + contact */}
           <div className="lg:col-span-4 space-y-4">
-            <Brand variant="dark" />
-
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Building Tomorrow's Technology — From Concept to Cloud. Dedicated to delivering exceptional service and innovative solutions for enterprises worldwide.
+            <Brand variant="light" />
+            <p className="text-sm text-brand-body leading-relaxed max-w-sm">
+              A software engineering studio building high-performance apps, web platforms, and AI products — from concept to scale.
             </p>
-
-            <div className="space-y-2 text-xs text-slate-300 pt-2">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#1E4F87] flex-shrink-0 mt-0.5" />
-                <span className="text-[11px] leading-relaxed text-slate-300">
-                  8-3-191/95, MIG-H, 3rd Floor, Laxmi Plaza, Vengalrao Nagar Circle, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038
-                </span>
+            <div className="space-y-2.5 pt-1">
+              <div className="flex items-start gap-2.5 text-sm text-brand-body">
+                <MapPin className="w-4 h-4 text-brand-indigo flex-shrink-0 mt-0.5" />
+                <span className="text-[13px] leading-relaxed">8-3-191/95, MIG-H, 3rd Floor, Laxmi Plaza, Vengalrao Nagar Circle, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#1E4F87] flex-shrink-0" />
-                <a href="mailto:info@ramigani.com" className="text-[11px] hover:text-[#1E4F87] transition-colors">
-                  info@ramigani.com
-                </a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#1E4F87] flex-shrink-0" />
-                <a href="tel:+919912340255" className="text-[11px] hover:text-[#1E4F87] transition-colors">
-                  +91 99123 40255
-                </a>
-              </div>
+              <a href="mailto:info@ramigani.com" className="flex items-center gap-2.5 text-[13px] text-brand-body hover:text-brand-indigo transition-colors">
+                <Mail className="w-4 h-4 text-brand-indigo" /> info@ramigani.com
+              </a>
+              <a href="tel:+919912340255" className="flex items-center gap-2.5 text-[13px] text-brand-body hover:text-brand-indigo transition-colors">
+                <Phone className="w-4 h-4 text-brand-indigo" /> +91 99123 40255
+              </a>
             </div>
           </div>
 
-          {/* Quick Links Column (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white font-heading">
-              Quick Links
-            </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              <li>
-                <Link to="/" className="hover:text-[#1E4F87] transition-colors">Home</Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-[#1E4F87] transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/solutions" className="hover:text-[#1E4F87] transition-colors">Solutions</Link>
-              </li>
-              <li>
-                <Link to="/careers" className="hover:text-[#1E4F87] transition-colors">Careers</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-[#1E4F87] transition-colors">Contact</Link>
-              </li>
+          {/* Company */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-ink mb-4">Company</h4>
+            <ul className="space-y-3 text-sm text-brand-body">
+              <li><Link to="/" className="hover:text-brand-indigo transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-brand-indigo transition-colors">About</Link></li>
+              <li><Link to="/solutions" className="hover:text-brand-indigo transition-colors">Solutions</Link></li>
+              <li><Link to="/careers" className="hover:text-brand-indigo transition-colors">Careers</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-indigo transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Our Services Column (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white font-heading">
-              Our Solutions
-            </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              <li>
-                <Link to="/solutions/app-development" className="hover:text-[#1E4F87] transition-colors">Mobile App Development</Link>
-              </li>
-              <li>
-                <Link to="/solutions/web-development" className="hover:text-[#1E4F87] transition-colors">Web Development</Link>
-              </li>
-              <li>
-                <Link to="/solutions/ui-ux-design" className="hover:text-[#1E4F87] transition-colors">UI/UX Design</Link>
-              </li>
-              <li>
-                <Link to="/solutions/qa-testing" className="hover:text-[#1E4F87] transition-colors">Software Testing & QA</Link>
-              </li>
-              <li>
-                <Link to="/solutions/ai-ml-solutions" className="hover:text-[#1E4F87] transition-colors">AI/ML Solutions</Link>
-              </li>
+          {/* Solutions */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-ink mb-4">Solutions</h4>
+            <ul className="space-y-3 text-sm text-brand-body">
+              {services.map((s) => (
+                <li key={s.id}><Link to={`/solutions/${s.id}`} className="hover:text-brand-indigo transition-colors">{s.name}</Link></li>
+              ))}
             </ul>
           </div>
 
-          {/* Newsletter Column (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white font-heading">
-              Subscribe to Updates
-            </h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Dedicated to delivering exceptional service and innovative solutions. Join our quarterly tech insights newsletter.
-            </p>
-
-            {subscribed ? (
-              <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
-                <span>Thank you for subscribing!</span>
-              </div>
+          {/* Newsletter */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-ink mb-4">Stay in the loop</h4>
+            <p className="text-sm text-brand-body mb-3">Occasional engineering insights. No spam.</p>
+            {done ? (
+              <div className="text-sm font-medium text-emerald-600">Thanks for subscribing! ✓</div>
             ) : (
-              <form onSubmit={handleSubscribe} className="space-y-2">
-                <div className="relative">
-                  <input
-                    type="email"
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-[#1E4F87]"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-2.5 rounded-full text-xs font-bold text-white bg-[#1E4F87] hover:bg-[#1E4F87] shadow-md transition-all flex items-center justify-center gap-1.5"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Sign Up</span>
+              <form onSubmit={subscribe} className="flex items-center gap-2">
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com"
+                  className="flex-grow px-4 py-2.5 rounded-full bg-paper border border-brand-line text-sm text-ink placeholder-brand-muted focus:outline-none focus:border-brand-indigo" />
+                <button type="submit" className="w-10 h-10 flex-shrink-0 rounded-full bg-brand-indigo text-white grid place-items-center hover:bg-brand-indigoDark transition-colors" aria-label="Subscribe">
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             )}
           </div>
-
         </div>
 
-        {/* Bottom Footer Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          
-          <div className="text-xs text-slate-400 text-center sm:text-left">
-            © 2026 Ramigani Tech Solutions Pvt. Ltd. All rights reserved.
-          </div>
-
-          {/* Social Icons Row */}
-          <div className="flex items-center gap-3">
-            {socialLinks.map((s) => {
-              const IconComp = s.icon;
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-brand-muted">© 2026 Ramigani Tech Solutions Pvt. Ltd. All rights reserved.</p>
+          <div className="flex items-center gap-2.5">
+            {socials.map((s) => {
+              const Icon = s.icon;
               return (
-                <a
-                  key={s.name}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-400 hover:text-white hover:bg-[#1E4F87] hover:border-[#1E4F87] transition-all flex items-center justify-center"
-                  aria-label={s.name}
-                >
-                  <IconComp className="w-3.5 h-3.5" />
+                <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}
+                  className="w-9 h-9 rounded-full bg-paper border border-brand-line text-brand-muted grid place-items-center hover:bg-brand-indigo hover:text-white hover:border-brand-indigo transition-all">
+                  <Icon className="w-4 h-4" />
                 </a>
               );
             })}
-
-            <button
-              onClick={scrollToTop}
-              className="w-8 h-8 rounded-full bg-[#1E4F87]/20 text-[#1E4F87] hover:bg-[#1E4F87] hover:text-white transition-all flex items-center justify-center ml-2"
-              aria-label="Scroll to top"
-            >
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top"
+              className="w-9 h-9 rounded-full bg-brand-tint text-brand-indigo grid place-items-center hover:bg-brand-indigo hover:text-white transition-all ml-1">
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
-
         </div>
-
       </div>
     </footer>
   );

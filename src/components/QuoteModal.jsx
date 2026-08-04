@@ -114,7 +114,7 @@ export default function QuoteModal({ isOpen, onClose }) {
               <div className="pt-4">
                 <button
                   onClick={handleClose}
-                  className="px-8 py-3 rounded-full text-xs font-bold text-white bg-[#1E4F87] shadow-md hover:bg-[#1E4F87] transition-all"
+                  className="px-8 py-3 rounded-full text-xs font-bold text-white bg-[#4F46E5] shadow-md hover:bg-[#4F46E5] transition-all"
                 >
                   Close Window
                 </button>
@@ -123,13 +123,13 @@ export default function QuoteModal({ isOpen, onClose }) {
           ) : (
             <div>
               
-              <div className="flex items-center gap-2 text-[#1E4F87] text-xs font-bold uppercase tracking-wider mb-2">
+              <div className="flex items-center gap-2 text-[#4F46E5] text-xs font-bold uppercase tracking-wider mb-2">
                 <Sparkles className="w-4 h-4 text-red-600" />
                 <span>Custom Solution Proposal</span>
               </div>
               
               <h3 className="text-2xl font-black text-slate-900 font-heading mb-1">
-                Get a Custom <span className="text-[#1E4F87]">Quote</span>
+                Get a Custom <span className="text-[#4F46E5]">Quote</span>
               </h3>
               <p className="text-xs text-slate-500 mb-6">
                 Tell us about your project requirements and budget to receive a tailored technical proposal.
@@ -146,7 +146,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                 {/* Full Name */}
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                    Full Name <span className="text-[#1E4F87]">*</span>
+                    Full Name <span className="text-[#4F46E5]">*</span>
                   </label>
                   <input
                     type="text"
@@ -155,14 +155,14 @@ export default function QuoteModal({ isOpen, onClose }) {
                     onChange={handleChange}
                     placeholder="Enter your full name"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                    Email Address <span className="text-[#1E4F87]">*</span>
+                    Email Address <span className="text-[#4F46E5]">*</span>
                   </label>
                   <input
                     type="email"
@@ -171,7 +171,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                     onChange={handleChange}
                     placeholder="your.email@company.com"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                   />
                 </div>
 
@@ -185,7 +185,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                       name="countryCode"
                       value={formData.countryCode}
                       onChange={handleChange}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#1E4F87]"
+                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
                     >
                       {countryCodes.map((c) => (
                         <option key={c.code} value={c.code}>
@@ -196,7 +196,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                   </div>
                   <div className="col-span-8">
                     <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                      Mobile Number <span className="text-[#1E4F87]">*</span>
+                      Mobile Number <span className="text-[#4F46E5]">*</span>
                     </label>
                     <input
                       type="tel"
@@ -205,7 +205,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                       onChange={handleChange}
                       placeholder="99123 40255"
                       required
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                     />
                   </div>
                 </div>
@@ -220,7 +220,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#1E4F87]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
                     >
                       {budgetRanges.map((b) => (
                         <option key={b} value={b}>
@@ -238,7 +238,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                       name="purpose"
                       value={formData.purpose}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#1E4F87]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
                     >
                       {projectPurposes.map((p) => (
                         <option key={p} value={p}>
@@ -260,7 +260,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Briefly describe target features, platform, or timeline..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#1E4F87]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
                   />
                 </div>
 
@@ -268,7 +268,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 rounded-full font-bold text-xs text-white bg-[#1E4F87] hover:bg-[#1E4F87] shadow-md shadow-red-600/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-full font-bold text-xs text-white bg-[#4F46E5] hover:bg-[#4F46E5] shadow-md shadow-red-600/20 transition-all flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <span>Submitting Request...</span>
