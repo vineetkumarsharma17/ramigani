@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramigani Tech — Design Previews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #0A0A0F;
+      color: #E5E7EB;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 48px 20px;
+      background-image:
+        radial-gradient(60% 50% at 20% 10%, rgba(139,92,246,0.18), transparent 60%),
+        radial-gradient(50% 50% at 85% 20%, rgba(37,99,235,0.16), transparent 55%),
+        radial-gradient(60% 60% at 60% 100%, rgba(34,211,238,0.10), transparent 55%);
+    }
+    .wrap { max-width: 1040px; width: 100%; }
+    .eyebrow { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #A78BFA; font-weight: 700; }
+    h1 { font-family: "Space Grotesk", sans-serif; font-size: clamp(30px, 5vw, 48px); font-weight: 700; margin: 12px 0 8px; color: #fff; letter-spacing: -0.02em; }
+    p.lead { color: #9CA3AF; font-size: 16px; max-width: 620px; margin-bottom: 40px; line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    a.card {
+      display: block; text-decoration: none; color: inherit;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 22px; padding: 26px;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+      position: relative; overflow: hidden;
+    }
+    a.card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.07); }
+    .swatch { height: 84px; border-radius: 14px; margin-bottom: 18px; position: relative; overflow: hidden; }
+    .s-current { background: linear-gradient(135deg,#eef0ff,#ffffff); border: 1px solid #e5e7eb; }
+    .s-current::after { content:""; position:absolute; left:16px; bottom:14px; width:46px; height:8px; border-radius:6px; background:#4F46E5; }
+    .s-aurora { background: radial-gradient(120% 120% at 20% 20%, #8B5CF6, #6366F1 45%, #0A0A0F 100%); }
+    .s-aurora::after { content:""; position:absolute; right:14px; top:14px; width:40px; height:40px; border-radius:50%; background:#22D3EE; filter: blur(10px); }
+    .s-gradient { background: linear-gradient(135deg,#6D28D9,#2563EB); }
+    .s-gradient::after { content:""; position:absolute; right:14px; bottom:12px; width:44px; height:44px; border-radius:50%; background:#EC4899; }
+    .s-mono { background: #0A0A0A; }
+    .s-mono::after { content:"Aa"; position:absolute; left:16px; bottom:8px; font-family: Georgia, serif; font-size: 44px; color:#FAFAF9; }
+    .s-mono::before { content:""; position:absolute; right:16px; top:18px; width:34px; height:6px; border-radius:4px; background:#10B981; }
+    .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 18px; color:#fff; }
+    .desc { color:#9CA3AF; font-size: 13px; margin-top: 6px; line-height: 1.5; }
+    .go { display:inline-flex; align-items:center; gap:6px; margin-top: 16px; font-size: 13px; font-weight: 600; color:#A78BFA; }
+    .foot { margin-top: 40px; font-size: 12px; color:#6B7280; }
+    .tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9CA3AF; border:1px solid rgba(255,255,255,0.14); border-radius:999px; padding:3px 9px; margin-bottom:14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Ramigani Tech Solutions</div>
+    <h1>Website design previews</h1>
+    <p class="lead">Three brand-new design directions built on the same content — plus the current live version. Open each to explore the full site, then pick a winner.</p>
+
+    <div class="grid">
+      <a class="card" href="./design-1/">
+        <div class="swatch s-aurora"></div>
+        <div class="tag">Design 1</div>
+        <div class="name">Aurora Dark</div>
+        <div class="desc">Glassy dark SaaS with violet→cyan aurora glow and a bento layout.</div>
+        <span class="go">View site →</span>
+      </a>
+      <a class="card" href="./design-2/">
+        <div class="swatch s-gradient"></div>
+        <div class="tag">Design 2</div>
+        <div class="name">Bold Gradient</div>
+        <div class="desc">Vibrant purple→blue gradients, big rounded cards, energetic motion.</div>
+        <span class="go">View site →</span>
+      </a>
+      <a class="card" href="./design-3/">
+        <div class="swatch s-mono"></div>
+        <div class="tag">Design 3</div>
+        <div class="name">Premium Mono</div>
+        <div class="desc">Editorial black & white with serif headlines and an emerald accent.</div>
+        <span class="go">View site →</span>
+      </a>
+      <a class="card" href="./current/">
+        <div class="swatch s-current"></div>
+        <div class="tag">Current</div>
+        <div class="name">Clean Light Minimal</div>
+        <div class="desc">The current live version — light, indigo accent, Space Grotesk.</div>
+        <span class="go">View site →</span>
+      </a>
+    </div>
+
+    <div class="foot">All four run from one repository via subfolders. Branches: <code>design-1-aurora</code>, <code>design-2-gradient</code>, <code>design-3-mono</code>, <code>main</code>.</div>
+  </div>
+</body>
+</html>

@@ -18,28 +18,72 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout main (current design)
         uses: actions/checkout@v4
+        with:
+          path: main-src
+
+      - name: Checkout design-1 (Aurora Dark)
+        uses: actions/checkout@v4
+        with:
+          ref: design-1-aurora
+          path: d1
+
+      - name: Checkout design-2 (Bold Gradient)
+        uses: actions/checkout@v4
+        with:
+          ref: design-2-gradient
+          path: d2
+
+      - name: Checkout design-3 (Premium Mono)
+        uses: actions/checkout@v4
+        with:
+          ref: design-3-mono
+          path: d3
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Build current (main) at /ramigani/current/
+        run: cd main-src && npm ci && npm run build -- --base=/ramigani/current/
 
-      - name: Build
-        run: npm run build
+      - name: Build design-1 (base already /ramigani/design-1/)
+        run: cd d1 && npm ci && npm run build
 
-      - name: SPA fallback (serve index.html for all routes)
-        run: cp dist/index.html dist/404.html
+      - name: Build design-2
+        run: cd d2 && npm ci && npm run build
+
+      - name: Build design-3
+        run: cd d3 && npm ci && npm run build
+
+      - name: Assemble combined site
+        run: |
+          mkdir -p site/current site/design-1 site/design-2 site/design-3
+          cp -r main-src/dist/* site/current/
+          cp -r d1/dist/* site/design-1/
+          cp -r d2/dist/* site/design-2/
+          cp -r d3/dist/* site/design-3/
+          # Landing page at the site root
+          cp main-src/.github/landing/index.html site/index.html
+          # Per-subsite SPA fallback (client-side routing within each app)
+          cp site/current/index.html   site/current/404.html
+          cp site/design-1/index.html  site/design-1/404.html
+          cp site/design-2/index.html  site/design-2/404.html
+          cp site/design-3/index.html  site/design-3/404.html
+          # Root 404: send unknown deep paths to the correct subsite home
+          cat > site/404.html <<'EOF'
+          <!DOCTYPE html><html><head><meta charset="utf-8"><script>
+          (function(){var m=location.pathname.match(/(\/ramigani\/(design-1|design-2|design-3|current))(\/|$)/);
+          location.replace(m?m[1]+"/":"/ramigani/");})();
+          </script></head><body></body></html>
+          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
   deploy:
     needs: build
