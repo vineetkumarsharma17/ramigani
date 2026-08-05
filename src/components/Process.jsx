@@ -11,27 +11,27 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="py-24">
+    <section className="py-24 relative">
       <div className="container-x">
-        <Reveal className="max-w-2xl mx-auto text-center mb-14">
+        <Reveal className="max-w-2xl mx-auto text-center mb-16">
           <span className="eyebrow">How we work</span>
-          <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-ink">
+          <h2 className="mt-5 font-heading font-extrabold text-4xl sm:text-5xl tracking-tight text-ink">
             A clear path from <span className="gradient-text">idea to impact</span>
           </h2>
         </Reveal>
 
         <div className="relative grid md:grid-cols-4 gap-6">
-          {/* connecting line */}
-          <div className="hidden md:block absolute top-9 left-0 right-0 h-px bg-brand-line" />
+          {/* connecting gradient line */}
+          <div className="hidden md:block absolute top-10 left-0 right-0 h-1 rounded-full bg-indigo-gradient opacity-25" />
           {steps.map((s, i) => {
             const Icon = s.icon;
             return (
               <Reveal key={s.title} delay={i * 0.1} className="relative">
-                <div className="relative z-10 mx-auto md:mx-0 w-[72px] h-[72px] rounded-2xl bg-white border border-brand-line shadow-soft grid place-items-center">
-                  <Icon className="w-7 h-7 text-brand-indigo" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-gradient text-white text-xs font-bold grid place-items-center shadow-indigo">{i + 1}</span>
+                <div className="relative z-10 mx-auto md:mx-0 w-20 h-20 rounded-3xl bg-indigo-gradient shadow-indigo grid place-items-center group hover:scale-105 transition-transform">
+                  <Icon className="w-8 h-8 text-white" />
+                  <span className="absolute -top-2.5 -right-2.5 w-7 h-7 rounded-full bg-white text-brand-purple text-sm font-extrabold grid place-items-center shadow-soft border border-brand-line">{i + 1}</span>
                 </div>
-                <h3 className="mt-5 font-heading font-bold text-lg text-ink text-center md:text-left">{s.title}</h3>
+                <h3 className="mt-6 font-heading font-extrabold text-xl text-ink text-center md:text-left">{s.title}</h3>
                 <p className="mt-2 text-sm text-brand-body leading-relaxed text-center md:text-left">{s.desc}</p>
               </Reveal>
             );

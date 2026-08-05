@@ -7,45 +7,60 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Clean Light Minimal — paper / ink / indigo
-        paper: '#FBFBFD',
-        ink: '#0B1220',
+        // Bold Gradient — white base, purple→blue signature, pink pop
+        paper: '#FAFAFC',
+        ink: '#0F172A',
         brand: {
-          indigo: '#4F46E5',
-          indigoDark: '#4338CA',
-          indigoLight: '#6366F1',
+          // Signature gradient stops
+          purple: '#6D28D9',
+          blue: '#2563EB',
+          pink: '#EC4899',
+          // Back-compat accent aliases (map onto the new palette)
+          indigo: '#6D28D9',
+          indigoDark: '#5B21B6',
+          indigoLight: '#7C3AED',
           violet: '#7C3AED',
           sky: '#38BDF8',
-          ink: '#0B1220',
+          ink: '#0F172A',
           body: '#475569',
-          muted: '#94A3B8',
-          line: '#ECECF1',
-          lineSoft: '#F1F1F6',
-          tint: '#EEF0FF',      // very light indigo wash
+          muted: '#8A93A6',
+          line: '#ECE7F6',
+          lineSoft: '#F4F0FC',
+          tint: '#F3EEFF',      // very light purple wash
+          tintBlue: '#EAF1FF',  // very light blue wash
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        heading: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        heading: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
       },
       backgroundImage: {
-        'indigo-gradient': 'linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #7C3AED 100%)',
-        'indigo-soft': 'linear-gradient(180deg, #EEF0FF 0%, #FBFBFD 100%)',
-        'mesh': 'radial-gradient(60% 60% at 20% 15%, rgba(99,102,241,0.18) 0%, transparent 60%), radial-gradient(50% 50% at 85% 20%, rgba(124,58,237,0.14) 0%, transparent 55%), radial-gradient(60% 60% at 70% 90%, rgba(56,189,248,0.12) 0%, transparent 55%)',
+        // The signature purple→blue gradient
+        'indigo-gradient': 'linear-gradient(135deg, #6D28D9 0%, #4F46E5 45%, #2563EB 100%)',
+        'brand-gradient': 'linear-gradient(135deg, #6D28D9 0%, #4F46E5 45%, #2563EB 100%)',
+        'brand-gradient-pink': 'linear-gradient(135deg, #6D28D9 0%, #DB2777 55%, #EC4899 100%)',
+        'indigo-soft': 'linear-gradient(180deg, #F3EEFF 0%, #FAFAFC 100%)',
+        // Colorful soft blobs for light sections
+        'mesh': 'radial-gradient(55% 55% at 15% 15%, rgba(109,40,217,0.20) 0%, transparent 60%), radial-gradient(50% 50% at 88% 12%, rgba(37,99,235,0.18) 0%, transparent 55%), radial-gradient(55% 55% at 75% 92%, rgba(236,72,153,0.16) 0%, transparent 55%)',
       },
       boxShadow: {
-        'soft': '0 1px 2px rgba(11,18,32,0.04), 0 8px 24px -12px rgba(11,18,32,0.12)',
-        'lift': '0 10px 40px -12px rgba(11,18,32,0.18)',
-        'indigo': '0 12px 30px -8px rgba(79,70,229,0.45)',
+        'soft': '0 1px 2px rgba(15,23,42,0.04), 0 10px 30px -14px rgba(15,23,42,0.14)',
+        'lift': '0 22px 60px -18px rgba(76,29,149,0.30)',
+        'indigo': '0 14px 34px -10px rgba(109,40,217,0.50)',
+        'pink': '0 14px 34px -10px rgba(236,72,153,0.45)',
+        'glow': '0 0 0 1px rgba(255,255,255,0.5), 0 20px 50px -18px rgba(37,99,235,0.45)',
       },
       borderRadius: {
         '4xl': '2rem',
+        '5xl': '2.75rem',
       },
       animation: {
         'marquee': 'marquee 32s linear infinite',
         'float-slow': 'floatSlow 9s ease-in-out infinite',
-        'gradient-shift': 'gradientShift 12s ease infinite',
-        'spin-slow': 'spin 18s linear infinite',
+        'float-slower': 'floatSlow 13s ease-in-out infinite',
+        'gradient-shift': 'gradientShift 10s ease infinite',
+        'spin-slow': 'spin 22s linear infinite',
+        'blob': 'blob 16s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
@@ -59,6 +74,11 @@ export default {
         gradientShift: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
+        },
+        blob: {
+          '0%, 100%': { transform: 'translate(0px,0px) scale(1)' },
+          '33%': { transform: 'translate(24px,-30px) scale(1.08)' },
+          '66%': { transform: 'translate(-18px,18px) scale(0.94)' },
         },
       },
     },

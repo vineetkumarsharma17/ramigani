@@ -5,16 +5,20 @@
 @layer base {
   html { color-scheme: light; }
   body {
-    background-color: #FBFBFD;
-    color: #0B1220;
+    background-color: #FAFAFC;
+    color: #0F172A;
     -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: #4F46E5; color: #fff; }
+  ::selection { background: #6D28D9; color: #fff; }
 
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: #F1F1F6; }
-  ::-webkit-scrollbar-thumb { background: #C7C9D9; border-radius: 6px; }
-  ::-webkit-scrollbar-thumb:hover { background: #4F46E5; }
+  ::-webkit-scrollbar { width: 11px; }
+  ::-webkit-scrollbar-track { background: #F4F0FC; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6D28D9, #2563EB);
+    border-radius: 8px;
+    border: 2px solid #F4F0FC;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #5B21B6, #1D4ED8); }
 
   /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
@@ -28,61 +32,83 @@
 }
 
 @layer components {
-  /* Buttons */
+  /* Chunky pill buttons */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none;
+    @apply inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all duration-200 select-none;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-brand-indigo text-white px-6 py-3 text-sm shadow-indigo hover:bg-brand-indigoDark hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all duration-200 select-none bg-indigo-gradient text-white px-7 py-3.5 text-sm shadow-indigo hover:shadow-lift hover:-translate-y-0.5 active:translate-y-0;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-white text-ink px-6 py-3 text-sm border border-brand-line hover:border-brand-indigo hover:text-brand-indigo;
+    @apply inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all duration-200 select-none bg-white text-ink px-7 py-3.5 text-sm border-2 border-brand-line hover:border-brand-purple hover:text-brand-purple hover:-translate-y-0.5;
   }
   .btn-dark {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-ink text-white px-6 py-3 text-sm hover:bg-black hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all duration-200 select-none bg-ink text-white px-7 py-3.5 text-sm hover:bg-black hover:-translate-y-0.5;
+  }
+  .btn-pink {
+    @apply inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all duration-200 select-none bg-brand-gradient-pink text-white px-7 py-3.5 text-sm shadow-pink hover:-translate-y-0.5;
   }
 
-  /* Cards */
+  /* Big rounded cards */
   .card {
-    @apply bg-white border border-brand-line rounded-3xl shadow-soft;
+    @apply bg-white border border-brand-line rounded-4xl shadow-soft;
   }
 
   /* Section rhythm */
   .container-x { @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8; }
 
-  /* Eyebrow label */
+  /* Eyebrow label — gradient outline pill */
   .eyebrow {
-    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-tint text-brand-indigo text-[11px] font-bold uppercase tracking-widest;
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brand-line text-brand-purple text-[11px] font-extrabold uppercase tracking-widest shadow-soft;
   }
 }
 
 @layer utilities {
-  .font-heading { font-family: "Space Grotesk", Inter, sans-serif; }
+  .font-heading { font-family: "Plus Jakarta Sans", Inter, sans-serif; }
 
   .gradient-text {
-    background: linear-gradient(120deg, #6366F1 0%, #4F46E5 45%, #7C3AED 100%);
+    background: linear-gradient(120deg, #6D28D9 0%, #4F46E5 45%, #2563EB 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-text-pink {
+    background: linear-gradient(120deg, #6D28D9 0%, #DB2777 60%, #EC4899 100%);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
 
   /* Animated gradient text (needs bg-[length] + animate-gradient-shift) */
   .gradient-text-anim {
-    background: linear-gradient(120deg,#6366F1,#7C3AED,#38BDF8,#4F46E5);
+    background: linear-gradient(120deg,#6D28D9,#2563EB,#EC4899,#6D28D9);
     background-size: 300% 300%;
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
 
   /* Dotted grid backdrop */
   .dot-grid {
-    background-image: radial-gradient(rgba(11,18,32,0.06) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(109,40,217,0.10) 1px, transparent 1px);
     background-size: 22px 22px;
   }
 
   /* Fine line grid */
   .line-grid {
     background-image:
-      linear-gradient(rgba(11,18,32,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(11,18,32,0.04) 1px, transparent 1px);
-    background-size: 44px 44px;
+      linear-gradient(rgba(15,23,42,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,23,42,0.045) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+
+  /* Gradient-tinted section band */
+  .section-tint {
+    background:
+      radial-gradient(60% 80% at 100% 0%, rgba(37,99,235,0.08) 0%, transparent 60%),
+      radial-gradient(60% 80% at 0% 100%, rgba(109,40,217,0.09) 0%, transparent 60%),
+      #FFFFFF;
+  }
+
+  /* Gradient border wrapper: apply to a rounded element, put a white inner card inside */
+  .gradient-ring {
+    background: linear-gradient(135deg, #6D28D9, #2563EB);
+    padding: 1.5px;
   }
 
   .marquee-paused:hover .animate-marquee { animation-play-state: paused; }

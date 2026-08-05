@@ -56,10 +56,11 @@ export default function ServiceDetailPage({ onOpenQuoteModal }) {
               </div>
             </Reveal>
             <Reveal delay={0.1} className="lg:col-span-5">
-              <div className="relative mx-auto w-52 h-52 sm:w-64 sm:h-64">
-                <div className="absolute inset-0 rounded-4xl bg-indigo-gradient shadow-indigo animate-float-slow" />
+              <div className="relative mx-auto w-56 h-56 sm:w-72 sm:h-72">
+                <div className="absolute -inset-6 bg-indigo-gradient rounded-[3rem] blur-3xl opacity-30 pointer-events-none" />
+                <div className="absolute inset-0 rounded-5xl bg-indigo-gradient shadow-lift animate-float-slow" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <Icon className="w-24 h-24 text-white" />
+                  <Icon className="w-28 h-28 text-white" />
                 </div>
               </div>
             </Reveal>
@@ -77,9 +78,9 @@ export default function ServiceDetailPage({ onOpenQuoteModal }) {
           <div className="grid sm:grid-cols-2 gap-5">
             {service.features.map((f, i) => (
               <Reveal key={i} delay={(i % 2) * 0.08}>
-                <div className="card rounded-3xl p-6 flex items-start gap-4 h-full">
-                  <div className="w-10 h-10 rounded-xl bg-brand-tint grid place-items-center flex-shrink-0">
-                    <Check className="w-5 h-5 text-brand-indigo" />
+                <div className="card rounded-4xl p-7 flex items-start gap-4 h-full hover:shadow-lift hover:-translate-y-1 transition-all duration-300">
+                  <div className="w-11 h-11 rounded-2xl bg-indigo-gradient grid place-items-center flex-shrink-0 shadow-indigo">
+                    <Check className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-lg text-ink">{f.title}</h3>
@@ -103,11 +104,11 @@ export default function ServiceDetailPage({ onOpenQuoteModal }) {
             {others.map((s) => {
               const OIcon = iconMap[s.id] || Layers;
               return (
-                <Link key={s.id} to={`/solutions/${s.id}`} className="group card rounded-3xl p-6 hover:shadow-lift hover:-translate-y-1 transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-brand-tint grid place-items-center mb-3">
-                    <OIcon className="w-5 h-5 text-brand-indigo" />
+                <Link key={s.id} to={`/solutions/${s.id}`} className="group card rounded-4xl p-6 hover:shadow-lift hover:-translate-y-1.5 transition-all">
+                  <div className="w-11 h-11 rounded-2xl bg-indigo-gradient grid place-items-center mb-4 shadow-indigo group-hover:scale-110 transition-transform">
+                    <OIcon className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="font-heading font-bold text-ink group-hover:text-brand-indigo transition-colors">{s.name}</h3>
+                  <h3 className="font-heading font-extrabold text-ink group-hover:text-brand-purple transition-colors">{s.name}</h3>
                   <p className="mt-1 text-xs text-brand-muted leading-relaxed">{s.short}</p>
                 </Link>
               );
