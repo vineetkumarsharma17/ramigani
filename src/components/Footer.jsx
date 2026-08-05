@@ -22,62 +22,63 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white border-t border-brand-line pt-16 pb-8">
-      <div className="container-x">
+    <footer className="relative bg-brand-base2 border-t border-brand-line pt-16 pb-8 overflow-hidden">
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[24rem] bg-brand-violet/10 blur-[140px] pointer-events-none" />
+      <div className="container-x relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-brand-line">
           {/* Brand + contact */}
           <div className="lg:col-span-4 space-y-4">
-            <Brand variant="light" />
+            <Brand />
             <p className="text-sm text-brand-body leading-relaxed max-w-sm">
               A software engineering studio building high-performance apps, web platforms, and AI products — from concept to scale.
             </p>
             <div className="space-y-2.5 pt-1">
               <div className="flex items-start gap-2.5 text-sm text-brand-body">
-                <MapPin className="w-4 h-4 text-brand-indigo flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-brand-violet flex-shrink-0 mt-0.5" />
                 <span className="text-[13px] leading-relaxed">8-3-191/95, MIG-H, 3rd Floor, Laxmi Plaza, Vengalrao Nagar Circle, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038</span>
               </div>
-              <a href="mailto:info@ramigani.com" className="flex items-center gap-2.5 text-[13px] text-brand-body hover:text-brand-indigo transition-colors">
-                <Mail className="w-4 h-4 text-brand-indigo" /> info@ramigani.com
+              <a href="mailto:info@ramigani.com" className="flex items-center gap-2.5 text-[13px] text-brand-body hover:text-brand-violet transition-colors">
+                <Mail className="w-4 h-4 text-brand-violet" /> info@ramigani.com
               </a>
-              <a href="tel:+919912340255" className="flex items-center gap-2.5 text-[13px] text-brand-body hover:text-brand-indigo transition-colors">
-                <Phone className="w-4 h-4 text-brand-indigo" /> +91 99123 40255
+              <a href="tel:+919912340255" className="flex items-center gap-2.5 text-[13px] text-brand-body hover:text-brand-violet transition-colors">
+                <Phone className="w-4 h-4 text-brand-violet" /> +91 99123 40255
               </a>
             </div>
           </div>
 
           {/* Company */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-ink mb-4">Company</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-4">Company</h4>
             <ul className="space-y-3 text-sm text-brand-body">
-              <li><Link to="/" className="hover:text-brand-indigo transition-colors">Home</Link></li>
-              <li><Link to="/about" className="hover:text-brand-indigo transition-colors">About</Link></li>
-              <li><Link to="/solutions" className="hover:text-brand-indigo transition-colors">Solutions</Link></li>
-              <li><Link to="/careers" className="hover:text-brand-indigo transition-colors">Careers</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-indigo transition-colors">Contact</Link></li>
+              <li><Link to="/" className="hover:text-brand-violet transition-colors">Home</Link></li>
+              <li><Link to="/about" className="hover:text-brand-violet transition-colors">About</Link></li>
+              <li><Link to="/solutions" className="hover:text-brand-violet transition-colors">Solutions</Link></li>
+              <li><Link to="/careers" className="hover:text-brand-violet transition-colors">Careers</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-violet transition-colors">Contact</Link></li>
             </ul>
           </div>
 
           {/* Solutions */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-ink mb-4">Solutions</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-4">Solutions</h4>
             <ul className="space-y-3 text-sm text-brand-body">
               {services.map((s) => (
-                <li key={s.id}><Link to={`/solutions/${s.id}`} className="hover:text-brand-indigo transition-colors">{s.name}</Link></li>
+                <li key={s.id}><Link to={`/solutions/${s.id}`} className="hover:text-brand-violet transition-colors">{s.name}</Link></li>
               ))}
             </ul>
           </div>
 
           {/* Newsletter */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-ink mb-4">Stay in the loop</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-4">Stay in the loop</h4>
             <p className="text-sm text-brand-body mb-3">Occasional engineering insights. No spam.</p>
             {done ? (
-              <div className="text-sm font-medium text-emerald-600">Thanks for subscribing! ✓</div>
+              <div className="text-sm font-medium text-emerald-400">Thanks for subscribing! ✓</div>
             ) : (
               <form onSubmit={subscribe} className="flex items-center gap-2">
                 <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com"
-                  className="flex-grow px-4 py-2.5 rounded-full bg-paper border border-brand-line text-sm text-ink placeholder-brand-muted focus:outline-none focus:border-brand-indigo" />
-                <button type="submit" className="w-10 h-10 flex-shrink-0 rounded-full bg-brand-indigo text-white grid place-items-center hover:bg-brand-indigoDark transition-colors" aria-label="Subscribe">
+                  className="flex-grow px-4 py-2.5 rounded-full bg-white/[0.04] border border-brand-line text-sm text-ink placeholder-brand-muted focus:outline-none focus:border-brand-violet" />
+                <button type="submit" className="w-10 h-10 flex-shrink-0 rounded-full bg-indigo-gradient text-white grid place-items-center shadow-glow hover:-translate-y-0.5 transition-transform" aria-label="Subscribe">
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
@@ -92,13 +93,13 @@ export default function Footer() {
               const Icon = s.icon;
               return (
                 <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}
-                  className="w-9 h-9 rounded-full bg-paper border border-brand-line text-brand-muted grid place-items-center hover:bg-brand-indigo hover:text-white hover:border-brand-indigo transition-all">
+                  className="w-9 h-9 rounded-full bg-white/[0.04] border border-brand-line text-brand-muted grid place-items-center hover:bg-indigo-gradient hover:text-white hover:border-transparent transition-all">
                   <Icon className="w-4 h-4" />
                 </a>
               );
             })}
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top"
-              className="w-9 h-9 rounded-full bg-brand-tint text-brand-indigo grid place-items-center hover:bg-brand-indigo hover:text-white transition-all ml-1">
+              className="w-9 h-9 rounded-full bg-brand-tint text-brand-violet grid place-items-center hover:bg-indigo-gradient hover:text-white transition-all ml-1">
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>

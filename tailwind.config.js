@@ -7,21 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Clean Light Minimal — paper / ink / indigo
-        paper: '#FBFBFD',
-        ink: '#0B1220',
+        // Aurora Dark — near-black base, glass panels, aurora accent
+        paper: '#0A0A0F',        // base background
+        ink: '#F1F5F9',          // primary near-white text
         brand: {
-          indigo: '#4F46E5',
-          indigoDark: '#4338CA',
-          indigoLight: '#6366F1',
-          violet: '#7C3AED',
-          sky: '#38BDF8',
-          ink: '#0B1220',
-          body: '#475569',
-          muted: '#94A3B8',
-          line: '#ECECF1',
-          lineSoft: '#F1F1F6',
-          tint: '#EEF0FF',      // very light indigo wash
+          // aurora accents
+          violet: '#8B5CF6',
+          indigo: '#6366F1',
+          indigoDark: '#4F46E5',
+          indigoLight: '#818CF8',
+          cyan: '#22D3EE',
+          sky: '#22D3EE',        // legacy alias → cyan
+          // surfaces
+          base: '#0A0A0F',
+          base2: '#0B0B12',
+          panel: '#12121B',
+          panel2: '#171723',
+          ink: '#F1F5F9',        // legacy alias → near-white
+          // text
+          body: '#CBD5E1',       // slate-300
+          muted: '#94A3B8',      // slate-400
+          dim: '#64748B',        // slate-500
+          // hairlines (white with low alpha)
+          line: '#ffffff14',     // white / 8%
+          lineSoft: '#ffffff0d',  // white / 5%
+          lineStrong: '#ffffff26', // white / 15%
+          tint: '#8b5cf61f',      // violet wash ~12%
         },
       },
       fontFamily: {
@@ -29,14 +40,19 @@ export default {
         heading: ['"Space Grotesk"', 'Inter', 'sans-serif'],
       },
       backgroundImage: {
-        'indigo-gradient': 'linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #7C3AED 100%)',
-        'indigo-soft': 'linear-gradient(180deg, #EEF0FF 0%, #FBFBFD 100%)',
-        'mesh': 'radial-gradient(60% 60% at 20% 15%, rgba(99,102,241,0.18) 0%, transparent 60%), radial-gradient(50% 50% at 85% 20%, rgba(124,58,237,0.14) 0%, transparent 55%), radial-gradient(60% 60% at 70% 90%, rgba(56,189,248,0.12) 0%, transparent 55%)',
+        // aurora gradient (violet → indigo → cyan) — reused via legacy name too
+        'indigo-gradient': 'linear-gradient(135deg, #8B5CF6 0%, #6366F1 50%, #22D3EE 100%)',
+        'aurora': 'linear-gradient(135deg, #8B5CF6 0%, #6366F1 50%, #22D3EE 100%)',
+        'aurora-soft': 'linear-gradient(180deg, rgba(139,92,246,0.12) 0%, rgba(10,10,15,0) 100%)',
+        // radial aurora blobs over the dark base
+        'mesh': 'radial-gradient(55% 55% at 18% 12%, rgba(139,92,246,0.28) 0%, transparent 60%), radial-gradient(50% 50% at 85% 18%, rgba(34,211,238,0.16) 0%, transparent 55%), radial-gradient(60% 60% at 72% 92%, rgba(99,102,241,0.20) 0%, transparent 55%)',
       },
       boxShadow: {
-        'soft': '0 1px 2px rgba(11,18,32,0.04), 0 8px 24px -12px rgba(11,18,32,0.12)',
-        'lift': '0 10px 40px -12px rgba(11,18,32,0.18)',
-        'indigo': '0 12px 30px -8px rgba(79,70,229,0.45)',
+        'soft': '0 1px 2px rgba(0,0,0,0.35), 0 12px 32px -16px rgba(0,0,0,0.6)',
+        'lift': '0 24px 70px -24px rgba(0,0,0,0.75)',
+        'indigo': '0 10px 40px -10px rgba(139,92,246,0.5)',   // legacy name → aurora glow
+        'glow': '0 0 60px -12px rgba(139,92,246,0.55)',
+        'glow-cyan': '0 0 60px -12px rgba(34,211,238,0.45)',
       },
       borderRadius: {
         '4xl': '2rem',
@@ -45,7 +61,9 @@ export default {
         'marquee': 'marquee 32s linear infinite',
         'float-slow': 'floatSlow 9s ease-in-out infinite',
         'gradient-shift': 'gradientShift 12s ease infinite',
-        'spin-slow': 'spin 18s linear infinite',
+        'spin-slow': 'spin 26s linear infinite',
+        'aurora-drift': 'auroraDrift 16s ease-in-out infinite',
+        'glow-pulse': 'glowPulse 4s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
@@ -59,6 +77,15 @@ export default {
         gradientShift: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
+        },
+        auroraDrift: {
+          '0%, 100%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '33%': { transform: 'translate3d(6%,-8%,0) scale(1.12)' },
+          '66%': { transform: 'translate3d(-6%,6%,0) scale(0.94)' },
+        },
+        glowPulse: {
+          '0%, 100%': { opacity: '0.55' },
+          '50%': { opacity: '1' },
         },
       },
     },

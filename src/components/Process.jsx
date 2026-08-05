@@ -15,23 +15,23 @@ export default function Process() {
       <div className="container-x">
         <Reveal className="max-w-2xl mx-auto text-center mb-14">
           <span className="eyebrow">How we work</span>
-          <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-ink">
+          <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-white">
             A clear path from <span className="gradient-text">idea to impact</span>
           </h2>
         </Reveal>
 
         <div className="relative grid md:grid-cols-4 gap-6">
-          {/* connecting line */}
-          <div className="hidden md:block absolute top-9 left-0 right-0 h-px bg-brand-line" />
+          {/* connecting aurora line */}
+          <div className="hidden md:block absolute top-9 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-violet/50 to-transparent" />
           {steps.map((s, i) => {
             const Icon = s.icon;
             return (
               <Reveal key={s.title} delay={i * 0.1} className="relative">
-                <div className="relative z-10 mx-auto md:mx-0 w-[72px] h-[72px] rounded-2xl bg-white border border-brand-line shadow-soft grid place-items-center">
-                  <Icon className="w-7 h-7 text-brand-indigo" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-gradient text-white text-xs font-bold grid place-items-center shadow-indigo">{i + 1}</span>
+                <div className="relative z-10 mx-auto md:mx-0 w-[72px] h-[72px] rounded-2xl bg-brand-panel border border-brand-line shadow-soft grid place-items-center aurora-ring">
+                  <Icon className="w-7 h-7 text-brand-violet" />
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-gradient text-white text-xs font-bold grid place-items-center shadow-glow">{i + 1}</span>
                 </div>
-                <h3 className="mt-5 font-heading font-bold text-lg text-ink text-center md:text-left">{s.title}</h3>
+                <h3 className="mt-5 font-heading font-bold text-lg text-white text-center md:text-left">{s.title}</h3>
                 <p className="mt-2 text-sm text-brand-body leading-relaxed text-center md:text-left">{s.desc}</p>
               </Reveal>
             );

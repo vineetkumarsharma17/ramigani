@@ -25,9 +25,10 @@ export default function Careers({ onOpenQuoteModal }) {
   ];
 
   return (
-    <section id="careers" className="py-20 bg-white relative overflow-hidden">
+    <section id="careers" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-aurora-soft pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,14 +36,14 @@ export default function Careers({ onOpenQuoteModal }) {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF0FF] text-[#4F46E5] text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-tint border border-brand-violet/20 text-brand-indigoLight text-xs font-bold uppercase tracking-wider mb-3">
             <Briefcase className="w-3.5 h-3.5" />
             <span>Join Our Team</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-heading">
-            Build Your Career at <span className="text-[#4F46E5]">Ramigani</span>
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-heading">
+            Build Your Career at <span className="gradient-text">Ramigani</span>
           </h2>
-          <p className="mt-3 text-slate-600 text-base sm:text-lg">
+          <p className="mt-3 text-brand-body text-base sm:text-lg">
             We are always looking for passionate software engineers, product designers, and growth marketers.
           </p>
         </motion.div>
@@ -56,23 +57,23 @@ export default function Careers({ onOpenQuoteModal }) {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -8, scale: 1.03, transition: { type: "spring", stiffness: 300 } }}
-              className="bg-white border border-slate-200 hover:border-red-400 p-6 rounded-3xl flex flex-col justify-between shadow-sm hover:shadow-xl transition-all group cursor-pointer"
+              className="card p-6 rounded-3xl flex flex-col justify-between aurora-ring hover:shadow-glow transition-all group cursor-pointer"
             >
               <div>
-                <span className="text-[10px] uppercase font-bold text-[#4F46E5] tracking-wider bg-[#EEF0FF] group-hover:bg-[#4F46E5] group-hover:text-white px-3 py-1 rounded-full inline-block mb-3 transition-colors duration-300">
+                <span className="text-[10px] uppercase font-bold text-brand-indigoLight tracking-wider bg-brand-tint border border-brand-violet/20 group-hover:bg-indigo-gradient group-hover:text-white group-hover:border-transparent px-3 py-1 rounded-full inline-block mb-3 transition-all duration-300">
                   {job.dept}
                 </span>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading group-hover:text-[#4F46E5] transition-colors duration-300">
+                <h3 className="text-base font-bold text-white mb-2 font-heading group-hover:text-brand-indigoLight transition-colors duration-300">
                   {job.title}
                 </h3>
-                <p className="text-xs text-slate-500 mb-1">{job.type}</p>
-                <p className="text-xs text-slate-500">{job.exp}</p>
+                <p className="text-xs text-brand-muted mb-1">{job.type}</p>
+                <p className="text-xs text-brand-muted">{job.exp}</p>
               </div>
 
               <div className="pt-6">
                 <button
                   onClick={onOpenQuoteModal}
-                  className="w-full py-2.5 rounded-full bg-slate-100 hover:bg-[#4F46E5] text-xs font-bold text-slate-700 hover:text-white flex items-center justify-center gap-2 transition-all shadow-sm"
+                  className="w-full py-2.5 rounded-full bg-white/[0.05] border border-brand-line hover:bg-indigo-gradient hover:border-transparent text-xs font-bold text-brand-body hover:text-white flex items-center justify-center gap-2 transition-all"
                 >
                   <span>Apply Now</span>
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

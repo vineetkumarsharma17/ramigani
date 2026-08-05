@@ -57,14 +57,23 @@ export default function App() {
 
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <div className="min-h-screen bg-paper text-ink font-sans flex flex-col justify-between overflow-x-hidden">
-        <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
+      <div className="relative min-h-screen bg-paper text-ink font-sans flex flex-col overflow-x-hidden">
+        {/* Global aurora backdrop */}
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <div className="absolute -top-40 -left-40 w-[42rem] h-[42rem] rounded-full bg-brand-violet/20 blur-[160px] animate-aurora-drift" />
+          <div className="absolute top-1/3 -right-40 w-[38rem] h-[38rem] rounded-full bg-brand-cyan/10 blur-[160px] animate-aurora-drift [animation-delay:-6s]" />
+          <div className="absolute bottom-0 left-1/3 w-[36rem] h-[36rem] rounded-full bg-brand-indigo/15 blur-[160px] animate-aurora-drift [animation-delay:-11s]" />
+        </div>
 
-        <main className="flex-grow">
-          <AnimatedRoutes onOpenQuoteModal={handleOpenQuoteModal} />
-        </main>
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
 
-        <Footer />
+          <main className="flex-grow">
+            <AnimatedRoutes onOpenQuoteModal={handleOpenQuoteModal} />
+          </main>
+
+          <Footer />
+        </div>
 
         <QuoteModal
           isOpen={isQuoteModalOpen}

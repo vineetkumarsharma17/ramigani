@@ -19,12 +19,13 @@ const stats = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="py-24 bg-white border-y border-brand-line">
-      <div className="container-x">
+    <section id="about" className="py-24 relative border-y border-brand-line">
+      <div className="absolute inset-0 bg-aurora-soft pointer-events-none" />
+      <div className="container-x relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <Reveal className="lg:col-span-5">
             <span className="eyebrow">Why Ramigani</span>
-            <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-ink leading-tight">
+            <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-white leading-tight">
               A partner obsessed with <span className="gradient-text">your outcomes</span>
             </h2>
             <p className="mt-5 text-lg text-brand-body leading-relaxed">
@@ -34,8 +35,8 @@ export default function WhyChooseUs() {
             {/* Stats */}
             <div className="mt-8 grid grid-cols-2 gap-4">
               {stats.map((s) => (
-                <div key={s.label} className="rounded-2xl bg-brand-tint/60 p-5">
-                  <div className="font-heading text-3xl font-bold text-ink">
+                <div key={s.label} className="rounded-2xl bg-white/[0.04] border border-brand-line p-5">
+                  <div className="font-heading text-3xl font-bold gradient-text">
                     <Counter value={s.value} suffix={s.suffix} />
                   </div>
                   <div className="text-xs font-semibold text-brand-muted mt-1 uppercase tracking-wide">{s.label}</div>
@@ -49,11 +50,11 @@ export default function WhyChooseUs() {
               const Icon = v.icon;
               return (
                 <Reveal key={v.title} delay={(i % 2) * 0.1}>
-                  <div className="card rounded-3xl p-7 h-full hover:shadow-lift hover:-translate-y-1 transition-all duration-300">
+                  <div className="card rounded-3xl p-7 h-full aurora-ring hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
                     <div className="w-12 h-12 rounded-2xl bg-brand-tint grid place-items-center">
-                      <Icon className="w-6 h-6 text-brand-indigo" />
+                      <Icon className="w-6 h-6 text-brand-violet" />
                     </div>
-                    <h3 className="mt-5 font-heading font-bold text-lg text-ink">{v.title}</h3>
+                    <h3 className="mt-5 font-heading font-bold text-lg text-white">{v.title}</h3>
                     <p className="mt-2 text-sm text-brand-body leading-relaxed">{v.desc}</p>
                   </div>
                 </Reveal>

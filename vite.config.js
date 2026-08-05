@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/ramigani/',
+  base: '/ramigani/design-1/',
   plugins: [react()],
   server: {
     port: 3000,

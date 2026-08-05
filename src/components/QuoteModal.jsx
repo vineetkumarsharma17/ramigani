@@ -80,7 +80,7 @@ export default function QuoteModal({ isOpen, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={handleClose}
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/70 backdrop-blur-md"
         />
 
         {/* Modal Window */}
@@ -89,54 +89,55 @@ export default function QuoteModal({ isOpen, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ duration: 0.3 }}
-          className="relative w-full max-w-xl bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 overflow-hidden my-auto"
+          className="relative w-full max-w-xl bg-brand-panel border border-brand-line rounded-3xl p-6 sm:p-8 shadow-lift z-10 overflow-hidden my-auto aurora-ring backdrop-blur-xl"
         >
+          <div className="absolute -top-24 -right-16 w-64 h-64 bg-brand-violet/20 blur-[90px] pointer-events-none" />
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors"
+            className="absolute top-5 right-5 p-2 rounded-xl bg-white/[0.06] border border-brand-line text-brand-muted hover:text-white transition-colors z-10"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
 
           {isSubmitted ? (
-            <div className="py-8 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+            <div className="relative py-8 text-center space-y-4">
+              <div className="w-16 h-16 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-black text-slate-900 font-heading">
+              <h3 className="text-2xl font-black text-white font-heading">
                 Quote Request Submitted!
               </h3>
-              <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
+              <p className="text-xs text-brand-body max-w-md mx-auto leading-relaxed">
                 Your quote request has been successfully submitted. We'll send you a detailed proposal within 48 hours.
               </p>
               <div className="pt-4">
                 <button
                   onClick={handleClose}
-                  className="px-8 py-3 rounded-full text-xs font-bold text-white bg-[#4F46E5] shadow-md hover:bg-[#4F46E5] transition-all"
+                  className="px-8 py-3 rounded-full text-xs font-bold text-white bg-indigo-gradient shadow-glow hover:-translate-y-0.5 transition-all"
                 >
                   Close Window
                 </button>
               </div>
             </div>
           ) : (
-            <div>
-              
-              <div className="flex items-center gap-2 text-[#4F46E5] text-xs font-bold uppercase tracking-wider mb-2">
-                <Sparkles className="w-4 h-4 text-red-600" />
+            <div className="relative">
+
+              <div className="flex items-center gap-2 text-brand-indigoLight text-xs font-bold uppercase tracking-wider mb-2">
+                <Sparkles className="w-4 h-4 text-brand-violet" />
                 <span>Custom Solution Proposal</span>
               </div>
-              
-              <h3 className="text-2xl font-black text-slate-900 font-heading mb-1">
-                Get a Custom <span className="text-[#4F46E5]">Quote</span>
+
+              <h3 className="text-2xl font-black text-white font-heading mb-1">
+                Get a Custom <span className="gradient-text">Quote</span>
               </h3>
-              <p className="text-xs text-slate-500 mb-6">
+              <p className="text-xs text-brand-muted mb-6">
                 Tell us about your project requirements and budget to receive a tailored technical proposal.
               </p>
 
               {errorMessage && (
-                <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs text-center font-bold">
+                <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs text-center font-bold">
                   {errorMessage}
                 </div>
               )}
@@ -145,8 +146,8 @@ export default function QuoteModal({ isOpen, onClose }) {
                 
                 {/* Full Name */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                    Full Name <span className="text-[#4F46E5]">*</span>
+                  <label className="block text-[11px] font-bold text-brand-body mb-1">
+                    Full Name <span className="text-brand-violet">*</span>
                   </label>
                   <input
                     type="text"
@@ -155,14 +156,14 @@ export default function QuoteModal({ isOpen, onClose }) {
                     onChange={handleChange}
                     placeholder="Enter your full name"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-brand-line text-white text-xs placeholder-brand-muted focus:outline-none focus:border-brand-violet"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                    Email Address <span className="text-[#4F46E5]">*</span>
+                  <label className="block text-[11px] font-bold text-brand-body mb-1">
+                    Email Address <span className="text-brand-violet">*</span>
                   </label>
                   <input
                     type="email"
@@ -171,21 +172,21 @@ export default function QuoteModal({ isOpen, onClose }) {
                     onChange={handleChange}
                     placeholder="your.email@company.com"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-brand-line text-white text-xs placeholder-brand-muted focus:outline-none focus:border-brand-violet"
                   />
                 </div>
 
                 {/* Country Code & Mobile Number */}
                 <div className="grid grid-cols-12 gap-3">
                   <div className="col-span-4">
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    <label className="block text-[11px] font-bold text-brand-body mb-1">
                       Code
                     </label>
                     <select
                       name="countryCode"
                       value={formData.countryCode}
                       onChange={handleChange}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
+                      className="w-full px-3 py-2.5 rounded-xl bg-white/[0.04] border border-brand-line text-white text-xs focus:outline-none focus:border-brand-violet [&>option]:bg-brand-panel [&>option]:text-white"
                     >
                       {countryCodes.map((c) => (
                         <option key={c.code} value={c.code}>
@@ -195,8 +196,8 @@ export default function QuoteModal({ isOpen, onClose }) {
                     </select>
                   </div>
                   <div className="col-span-8">
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                      Mobile Number <span className="text-[#4F46E5]">*</span>
+                    <label className="block text-[11px] font-bold text-brand-body mb-1">
+                      Mobile Number <span className="text-brand-violet">*</span>
                     </label>
                     <input
                       type="tel"
@@ -205,7 +206,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                       onChange={handleChange}
                       placeholder="99123 40255"
                       required
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-brand-line text-white text-xs placeholder-brand-muted focus:outline-none focus:border-brand-violet"
                     />
                   </div>
                 </div>
@@ -213,14 +214,14 @@ export default function QuoteModal({ isOpen, onClose }) {
                 {/* Budget & Purpose */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    <label className="block text-[11px] font-bold text-brand-body mb-1">
                       Estimated Budget
                     </label>
                     <select
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-brand-line text-white text-xs focus:outline-none focus:border-brand-violet [&>option]:bg-brand-panel [&>option]:text-white"
                     >
                       {budgetRanges.map((b) => (
                         <option key={b} value={b}>
@@ -231,14 +232,14 @@ export default function QuoteModal({ isOpen, onClose }) {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                    <label className="block text-[11px] font-bold text-brand-body mb-1">
                       Project Purpose
                     </label>
                     <select
                       name="purpose"
                       value={formData.purpose}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-brand-line text-white text-xs focus:outline-none focus:border-brand-violet [&>option]:bg-brand-panel [&>option]:text-white"
                     >
                       {projectPurposes.map((p) => (
                         <option key={p} value={p}>
@@ -251,7 +252,7 @@ export default function QuoteModal({ isOpen, onClose }) {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                  <label className="block text-[11px] font-bold text-brand-body mb-1">
                     Project Requirements / Notes
                   </label>
                   <textarea
@@ -260,7 +261,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Briefly describe target features, platform, or timeline..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-brand-line text-white text-xs placeholder-brand-muted focus:outline-none focus:border-brand-violet"
                   />
                 </div>
 
@@ -268,7 +269,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 rounded-full font-bold text-xs text-white bg-[#4F46E5] hover:bg-[#4F46E5] shadow-md shadow-red-600/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 rounded-full font-bold text-xs text-white bg-indigo-gradient shadow-glow hover:-translate-y-0.5 hover:shadow-[0_0_60px_-8px_rgba(139,92,246,0.7)] transition-all flex items-center justify-center gap-2 disabled:opacity-60"
                   >
                     {isSubmitting ? (
                       <span>Submitting Request...</span>
