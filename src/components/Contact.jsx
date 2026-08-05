@@ -56,82 +56,75 @@ export default function Contact() {
     { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/channel/UCFgSevZ1lcbs_iimYaDuB-Q' },
   ];
 
+  const inputCls =
+    'w-full px-0 py-3 bg-transparent border-b border-brand-lineStrong text-ink text-sm placeholder-brand-muted focus:outline-none focus:border-ink transition-colors';
+
   return (
-    <section id="contact" className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="contact" className="py-24 sm:py-28 relative overflow-hidden">
+      <div className="container-x relative z-10">
 
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="border-b border-brand-line pb-8 mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF0FF] text-[#4F46E5] text-xs font-bold uppercase tracking-wider mb-3">
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Get In Touch</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-heading">
-            Let's <span className="text-[#4F46E5]">Connect</span>
+          <span className="eyebrow"><MessageSquare className="w-3.5 h-3.5 text-brand-accent" /> Get in touch</span>
+          <h2 className="mt-4 font-display font-normal text-4xl sm:text-6xl tracking-tight text-ink leading-[1.02]">
+            Let's <span className="italic accent-underline">connect</span>
           </h2>
-          <p className="mt-3 text-slate-600 text-base sm:text-lg">
+          <p className="mt-5 text-lg text-brand-body max-w-2xl">
             Have a project in mind or want to discuss technology solutions? Our team in Hyderabad is ready to help.
           </p>
         </motion.div>
 
         {/* Top Split Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16">
 
-          {/* Left Column: Contact Info Card */}
+          {/* Left Column: Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -40, scale: 0.96 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -4, transition: { duration: 0.3 } }}
-            className="lg:col-span-5 bg-white border border-slate-200 hover:border-red-400 p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+            className="lg:col-span-5 flex flex-col"
           >
             <div>
-              <h3 className="text-xl font-bold text-slate-900 font-heading mb-1">
+              <h3 className="font-display text-2xl text-ink mb-1">
                 Ramigani Tech Solutions Pvt. Ltd.
               </h3>
-              <p className="text-xs text-[#4F46E5] font-bold mb-6">
+              <p className="text-[11px] uppercase tracking-widest2 text-brand-accent font-semibold mb-8">
                 Corporate Office & Development Hub
               </p>
 
-              <div className="space-y-4 text-xs text-slate-600">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-[#EEF0FF] text-[#4F46E5] flex-shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block mb-0.5">Address:</span>
+              <div className="divide-y divide-brand-line border-y border-brand-line">
+                <div className="flex items-start gap-4 py-4">
+                  <MapPin className="w-4 h-4 text-brand-accent flex-shrink-0 mt-1" />
+                  <div className="text-sm text-brand-soft">
+                    <span className="text-[10px] uppercase tracking-widest2 text-brand-muted block mb-1">Address</span>
                     <span className="leading-relaxed">
                       8-3-191/95, MIG-H, 3rd Floor, Laxmi Plaza, Vengalrao Nagar Circle, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-[#EEF0FF] text-[#4F46E5] flex-shrink-0">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block mb-0.5">Email:</span>
-                    <a href="mailto:info@ramigani.com" className="hover:text-[#4F46E5] transition-colors font-medium">
+                <div className="flex items-start gap-4 py-4">
+                  <Mail className="w-4 h-4 text-brand-accent flex-shrink-0 mt-1" />
+                  <div className="text-sm text-brand-soft">
+                    <span className="text-[10px] uppercase tracking-widest2 text-brand-muted block mb-1">Email</span>
+                    <a href="mailto:info@ramigani.com" className="hover:text-brand-accent transition-colors">
                       info@ramigani.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-[#EEF0FF] text-[#4F46E5] flex-shrink-0">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block mb-0.5">Phone:</span>
-                    <a href="tel:+919912340255" className="hover:text-[#4F46E5] transition-colors font-medium">
+                <div className="flex items-start gap-4 py-4">
+                  <Phone className="w-4 h-4 text-brand-accent flex-shrink-0 mt-1" />
+                  <div className="text-sm text-brand-soft">
+                    <span className="text-[10px] uppercase tracking-widest2 text-brand-muted block mb-1">Phone</span>
+                    <a href="tel:+919912340255" className="hover:text-brand-accent transition-colors">
                       +91 99123 40255
                     </a>
                   </div>
@@ -144,7 +137,7 @@ export default function Contact() {
                   href="https://api.whatsapp.com/send/?phone=919912340255&text=I%27m+interested+in+your+Product.&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all hover:scale-102"
+                  className="w-full py-3.5 px-4 bg-brand-accent hover:bg-ink text-white font-medium text-[12px] uppercase tracking-widest flex items-center justify-center gap-2 transition-colors duration-300"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
                   <span>Chat on WhatsApp (+91 99123 40255)</span>
@@ -152,72 +145,67 @@ export default function Contact() {
               </div>
 
               {/* Business Hours */}
-              <div className="mt-6 pt-6 border-t border-slate-100">
-                <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-3">
-                  <Clock className="w-4 h-4 text-[#4F46E5]" />
+              <div className="mt-8">
+                <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted mb-3">
+                  <Clock className="w-3.5 h-3.5 text-brand-accent" />
                   <span>Business Hours</span>
                 </div>
-                <div className="space-y-1.5 text-[11px] text-slate-600">
-                  <div className="flex justify-between">
-                    <span>Monday – Friday:</span>
-                    <span className="text-slate-900 font-semibold">9:00 AM – 7:00 PM</span>
+                <div className="divide-y divide-brand-line border-t border-brand-line text-sm text-brand-soft">
+                  <div className="flex justify-between py-2.5">
+                    <span>Monday – Friday</span>
+                    <span className="text-ink font-medium">9:00 AM – 7:00 PM</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Saturday:</span>
-                    <span className="text-slate-900 font-semibold">10:00 AM – 5:00 PM</span>
+                  <div className="flex justify-between py-2.5">
+                    <span>Saturday</span>
+                    <span className="text-ink font-medium">10:00 AM – 5:00 PM</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Sunday:</span>
-                    <span className="text-red-500 font-semibold">Closed</span>
+                  <div className="flex justify-between py-2.5">
+                    <span>Sunday</span>
+                    <span className="text-brand-muted font-medium">Closed</span>
                   </div>
                 </div>
               </div>
-
             </div>
 
             {/* Social Icons */}
-            <div className="mt-8 pt-6 border-t border-slate-100">
-              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-3">
+            <div className="mt-8 pt-6 border-t border-brand-line">
+              <span className="text-[10px] uppercase font-semibold text-brand-muted tracking-widest2 block mb-4">
                 Follow Ramigani Tech
               </span>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1">
                 {socialLinks.map((s) => {
                   const IconComp = s.icon;
                   return (
-                    <motion.a
-                      whileHover={{ scale: 1.15, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
+                    <a
                       key={s.name}
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full bg-slate-100 hover:bg-[#4F46E5] text-slate-600 hover:text-white flex items-center justify-center transition-colors shadow-sm"
+                      className="w-10 h-10 border border-brand-line text-brand-soft hover:bg-ink hover:text-paper hover:border-ink flex items-center justify-center transition-colors"
                       aria-label={s.name}
                     >
                       <IconComp className="w-4 h-4" />
-                    </motion.a>
+                    </a>
                   );
                 })}
               </div>
             </div>
-
           </motion.div>
 
           {/* Right Column: Embedded Google Map */}
           <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.96 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -4, transition: { duration: 0.3 } }}
-            className="lg:col-span-7 bg-white border border-slate-200 hover:border-red-400 p-2 rounded-3xl shadow-sm hover:shadow-xl transition-all min-h-[400px] flex flex-col"
+            className="lg:col-span-7 border border-brand-line p-1.5 min-h-[420px] flex flex-col"
           >
             <iframe
               title="Ramigani Tech Solutions Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.651447058531!2d78.4380077!3d17.4419967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9176f71f2eb3%3A0xcdc6e4991b124dd9!2sRamigani%20Tech%20Solutions%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
-              style={{ border: 0, borderRadius: '1.25rem', minHeight: '400px' }}
+              style={{ border: 0, minHeight: '420px', filter: 'grayscale(1) contrast(1.05)' }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -229,132 +217,94 @@ export default function Contact() {
 
         {/* Contact Form Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-white border border-slate-200 hover:border-red-400 p-8 sm:p-12 rounded-3xl shadow-sm hover:shadow-xl transition-all max-w-4xl mx-auto"
+          className="border-t border-brand-line pt-14 max-w-3xl mx-auto"
         >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-slate-900 font-heading">
-              Send Us a Message
+          <div className="text-center mb-10">
+            <h3 className="font-display text-3xl sm:text-4xl text-ink">
+              Send us a message
             </h3>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-sm text-brand-soft mt-2">
               Fill in your inquiry details below and our team will respond promptly.
             </p>
           </div>
 
           {submittedSuccess ? (
-            <div className="bg-emerald-50 border border-emerald-200 p-8 rounded-2xl text-center space-y-3">
-              <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-              <h4 className="text-lg font-bold text-slate-900">Message Sent Successfully!</h4>
-              <p className="text-xs text-slate-600 max-w-md mx-auto">
+            <div className="border border-brand-line p-10 text-center space-y-4">
+              <CheckCircle2 className="w-12 h-12 text-brand-accent mx-auto" />
+              <h4 className="font-display text-2xl text-ink">Message sent successfully</h4>
+              <p className="text-sm text-brand-soft max-w-md mx-auto">
                 Your message has been sent successfully! We'll get back to you soon.
               </p>
               <button
                 onClick={() => setSubmittedSuccess(false)}
-                className="mt-4 px-6 py-2.5 rounded-full text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200"
+                className="mt-4 btn-ghost"
               >
-                Send Another Message
+                Send another message
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {errorMessage && (
-                <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs text-center font-bold">
+                <div className="p-3 border border-brand-accent/40 bg-brand-accentSoft text-brand-accentDark text-xs text-center font-medium">
                   {errorMessage}
                 </div>
               )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-2">
-                    Your Name <span className="text-[#4F46E5]">*</span>
+                  <label className="block text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted mb-2">
+                    Your name <span className="text-brand-accent">*</span>
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                  />
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John Doe" required className={inputCls} />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-2">
-                    Email Address <span className="text-[#4F46E5]">*</span>
+                  <label className="block text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted mb-2">
+                    Email address <span className="text-brand-accent">*</span>
                   </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="john@example.com"
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                  />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" required className={inputCls} />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-2">
-                    Phone Number
+                  <label className="block text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted mb-2">
+                    Phone number
                   </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 99123 40255"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                  />
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 99123 40255" className={inputCls} />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-2">
+                  <label className="block text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted mb-2">
                     Subject
                   </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Project Inquiry / Consultation"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                  />
+                  <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="Project Inquiry / Consultation" className={inputCls} />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-2">
-                  Message <span className="text-[#4F46E5]">*</span>
+                <label className="block text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted mb-2">
+                  Message <span className="text-brand-accent">*</span>
                 </label>
-                <textarea
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your project goals, timelines, or technical requirements..."
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                />
+                <textarea name="message" rows={4} value={formData.message} onChange={handleChange} placeholder="Tell us about your project goals, timelines, or technical requirements..." required className={inputCls} />
               </div>
 
-              <div className="text-center">
+              <div className="text-center pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-xs text-white bg-[#4F46E5] hover:bg-[#4F46E5] shadow-md shadow-red-600/20 transition-all flex items-center justify-center gap-2 mx-auto disabled:opacity-50"
+                  className="btn-primary w-full sm:w-auto disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Sending Message...</span>
+                    <span>Sending message...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Submit Message</span>
+                      <span>Submit message</span>
                     </>
                   )}
                 </button>

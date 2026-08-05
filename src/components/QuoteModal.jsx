@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle2, Sparkles, Send } from 'lucide-react';
+import { X, CheckCircle2, Send } from 'lucide-react';
 
 export default function QuoteModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -70,31 +70,35 @@ export default function QuoteModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  const fieldCls =
+    'w-full px-0 py-2.5 bg-transparent border-b border-brand-lineStrong text-ink text-sm placeholder-brand-muted focus:outline-none focus:border-ink transition-colors';
+  const labelCls = 'block text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted mb-1.5';
+
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-        
+
         {/* Overlay */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={handleClose}
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-ink/50 backdrop-blur-sm"
         />
 
         {/* Modal Window */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          initial={{ opacity: 0, scale: 0.97, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          transition={{ duration: 0.3 }}
-          className="relative w-full max-w-xl bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 overflow-hidden my-auto"
+          exit={{ opacity: 0, scale: 0.97, y: 12 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full max-w-xl bg-paper border border-brand-line p-6 sm:p-9 shadow-lift z-10 overflow-hidden my-auto"
         >
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors"
+            className="absolute top-5 right-5 p-2 text-brand-muted hover:text-ink transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -102,148 +106,86 @@ export default function QuoteModal({ isOpen, onClose }) {
 
           {isSubmitted ? (
             <div className="py-8 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-10 h-10" />
+              <div className="w-16 h-16 border border-brand-accent text-brand-accent flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-9 h-9" />
               </div>
-              <h3 className="text-2xl font-black text-slate-900 font-heading">
-                Quote Request Submitted!
+              <h3 className="font-display text-3xl text-ink">
+                Quote request submitted
               </h3>
-              <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
+              <p className="text-sm text-brand-soft max-w-md mx-auto leading-relaxed">
                 Your quote request has been successfully submitted. We'll send you a detailed proposal within 48 hours.
               </p>
               <div className="pt-4">
-                <button
-                  onClick={handleClose}
-                  className="px-8 py-3 rounded-full text-xs font-bold text-white bg-[#4F46E5] shadow-md hover:bg-[#4F46E5] transition-all"
-                >
-                  Close Window
+                <button onClick={handleClose} className="btn-primary">
+                  Close window
                 </button>
               </div>
             </div>
           ) : (
             <div>
-              
-              <div className="flex items-center gap-2 text-[#4F46E5] text-xs font-bold uppercase tracking-wider mb-2">
-                <Sparkles className="w-4 h-4 text-red-600" />
-                <span>Custom Solution Proposal</span>
+              <div className="text-[10px] uppercase tracking-widest2 font-semibold text-brand-accent mb-3">
+                Custom Solution Proposal
               </div>
-              
-              <h3 className="text-2xl font-black text-slate-900 font-heading mb-1">
-                Get a Custom <span className="text-[#4F46E5]">Quote</span>
+
+              <h3 className="font-display text-3xl sm:text-4xl text-ink mb-2">
+                Get a custom <span className="italic accent-underline">quote</span>
               </h3>
-              <p className="text-xs text-slate-500 mb-6">
+              <p className="text-sm text-brand-soft mb-7">
                 Tell us about your project requirements and budget to receive a tailored technical proposal.
               </p>
 
               {errorMessage && (
-                <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs text-center font-bold">
+                <div className="mb-5 p-3 border border-brand-accent/40 bg-brand-accentSoft text-brand-accentDark text-xs text-center font-medium">
                   {errorMessage}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                
+              <form onSubmit={handleSubmit} className="space-y-5">
+
                 {/* Full Name */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                    Full Name <span className="text-[#4F46E5]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    placeholder="Enter your full name"
-                    required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                  />
+                  <label className={labelCls}>Full Name <span className="text-brand-accent">*</span></label>
+                  <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter your full name" required className={fieldCls} />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                    Email Address <span className="text-[#4F46E5]">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your.email@company.com"
-                    required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                  />
+                  <label className={labelCls}>Email Address <span className="text-brand-accent">*</span></label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your.email@company.com" required className={fieldCls} />
                 </div>
 
                 {/* Country Code & Mobile Number */}
-                <div className="grid grid-cols-12 gap-3">
+                <div className="grid grid-cols-12 gap-4">
                   <div className="col-span-4">
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                      Code
-                    </label>
-                    <select
-                      name="countryCode"
-                      value={formData.countryCode}
-                      onChange={handleChange}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
-                    >
+                    <label className={labelCls}>Code</label>
+                    <select name="countryCode" value={formData.countryCode} onChange={handleChange} className={fieldCls}>
                       {countryCodes.map((c) => (
-                        <option key={c.code} value={c.code}>
-                          {c.code}
-                        </option>
+                        <option key={c.code} value={c.code}>{c.code}</option>
                       ))}
                     </select>
                   </div>
                   <div className="col-span-8">
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                      Mobile Number <span className="text-[#4F46E5]">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      name="mobileNumber"
-                      value={formData.mobileNumber}
-                      onChange={handleChange}
-                      placeholder="99123 40255"
-                      required
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                    />
+                    <label className={labelCls}>Mobile Number <span className="text-brand-accent">*</span></label>
+                    <input type="tel" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} placeholder="99123 40255" required className={fieldCls} />
                   </div>
                 </div>
 
                 {/* Budget & Purpose */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                      Estimated Budget
-                    </label>
-                    <select
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
-                    >
+                    <label className={labelCls}>Estimated Budget</label>
+                    <select name="budget" value={formData.budget} onChange={handleChange} className={fieldCls}>
                       {budgetRanges.map((b) => (
-                        <option key={b} value={b}>
-                          {b}
-                        </option>
+                        <option key={b} value={b}>{b}</option>
                       ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                      Project Purpose
-                    </label>
-                    <select
-                      name="purpose"
-                      value={formData.purpose}
-                      onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-[#4F46E5]"
-                    >
+                    <label className={labelCls}>Project Purpose</label>
+                    <select name="purpose" value={formData.purpose} onChange={handleChange} className={fieldCls}>
                       {projectPurposes.map((p) => (
-                        <option key={p} value={p}>
-                          {p}
-                        </option>
+                        <option key={p} value={p}>{p}</option>
                       ))}
                     </select>
                   </div>
@@ -251,25 +193,12 @@ export default function QuoteModal({ isOpen, onClose }) {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                    Project Requirements / Notes
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={3}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Briefly describe target features, platform, or timeline..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#4F46E5]"
-                  />
+                  <label className={labelCls}>Project Requirements / Notes</label>
+                  <textarea name="message" rows={3} value={formData.message} onChange={handleChange} placeholder="Briefly describe target features, platform, or timeline..." className={fieldCls} />
                 </div>
 
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-3.5 rounded-full font-bold text-xs text-white bg-[#4F46E5] hover:bg-[#4F46E5] shadow-md shadow-red-600/20 transition-all flex items-center justify-center gap-2"
-                  >
+                <div className="pt-3">
+                  <button type="submit" disabled={isSubmitting} className="btn-primary w-full disabled:opacity-50">
                     {isSubmitting ? (
                       <span>Submitting Request...</span>
                     ) : (
@@ -282,7 +211,6 @@ export default function QuoteModal({ isOpen, onClose }) {
                 </div>
 
               </form>
-
             </div>
           )}
 

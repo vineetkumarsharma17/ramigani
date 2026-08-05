@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function Careers({ onOpenQuoteModal }) {
   const openings = [
@@ -25,63 +25,56 @@ export default function Careers({ onOpenQuoteModal }) {
   ];
 
   return (
-    <section id="careers" className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+    <section id="careers" className="py-24 sm:py-28">
+      <div className="container-x">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="grid lg:grid-cols-12 gap-6 items-end border-b border-brand-line pb-8 mb-2"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF0FF] text-[#4F46E5] text-xs font-bold uppercase tracking-wider mb-3">
-            <Briefcase className="w-3.5 h-3.5" />
-            <span>Join Our Team</span>
+          <div className="lg:col-span-8">
+            <span className="eyebrow"><span className="font-display accent text-sm">✳</span> Join our team</span>
+            <h2 className="mt-4 font-display font-normal text-4xl sm:text-6xl tracking-tight text-ink leading-[1.02]">
+              Build your career at <span className="italic accent-underline">Ramigani</span>
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-heading">
-            Build Your Career at <span className="text-[#4F46E5]">Ramigani</span>
-          </h2>
-          <p className="mt-3 text-slate-600 text-base sm:text-lg">
+          <p className="lg:col-span-4 text-brand-body leading-relaxed lg:text-right lg:self-end">
             We are always looking for passionate software engineers, product designers, and growth marketers.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="border-b border-brand-line">
           {openings.map((job, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 40, scale: 0.92 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -8, scale: 1.03, transition: { type: "spring", stiffness: 300 } }}
-              className="bg-white border border-slate-200 hover:border-red-400 p-6 rounded-3xl flex flex-col justify-between shadow-sm hover:shadow-xl transition-all group cursor-pointer"
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="group grid grid-cols-12 gap-4 items-center py-8 border-t border-brand-line"
             >
-              <div>
-                <span className="text-[10px] uppercase font-bold text-[#4F46E5] tracking-wider bg-[#EEF0FF] group-hover:bg-[#4F46E5] group-hover:text-white px-3 py-1 rounded-full inline-block mb-3 transition-colors duration-300">
-                  {job.dept}
-                </span>
-                <h3 className="text-base font-bold text-slate-900 mb-2 font-heading group-hover:text-[#4F46E5] transition-colors duration-300">
-                  {job.title}
-                </h3>
-                <p className="text-xs text-slate-500 mb-1">{job.type}</p>
-                <p className="text-xs text-slate-500">{job.exp}</p>
+              <div className="col-span-12 sm:col-span-7">
+                <span className="text-[10px] uppercase font-semibold tracking-widest2 text-brand-muted">{job.dept}</span>
+                <h3 className="mt-2 font-display text-2xl sm:text-3xl text-ink">{job.title}</h3>
               </div>
-
-              <div className="pt-6">
+              <div className="col-span-6 sm:col-span-3 text-sm text-brand-soft">
+                <p>{job.type}</p>
+                <p className="mt-1 text-brand-muted">{job.exp}</p>
+              </div>
+              <div className="col-span-6 sm:col-span-2 flex justify-end">
                 <button
                   onClick={onOpenQuoteModal}
-                  className="w-full py-2.5 rounded-full bg-slate-100 hover:bg-[#4F46E5] text-xs font-bold text-slate-700 hover:text-white flex items-center justify-center gap-2 transition-all shadow-sm"
+                  className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-ink border-b border-transparent hover:border-ink pb-1 transition-colors"
                 >
-                  <span>Apply Now</span>
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Apply</span>
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-accent" />
                 </button>
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

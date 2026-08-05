@@ -7,16 +7,17 @@ const stack = [
 
 export default function TrustStrip() {
   return (
-    <section className="py-10 border-y border-brand-line bg-white/60">
+    <section className="py-12 border-y border-brand-line">
       <div className="container-x">
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-brand-muted mb-6">
+        <p className="text-center text-[11px] font-semibold uppercase tracking-widest2 text-brand-muted mb-7">
           Building with a modern, battle-tested stack
         </p>
-        <div className="relative overflow-hidden marquee-paused [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
-          <div className="flex gap-4 animate-marquee whitespace-nowrap">
+        <div className="relative overflow-hidden marquee-paused [mask-image:linear-gradient(to_right,transparent,#000_10%,#000_90%,transparent)]">
+          <div className="flex gap-10 animate-marquee whitespace-nowrap">
             {[...stack, ...stack].map((t, i) => (
-              <span key={i} className="inline-flex items-center px-5 py-2 rounded-full border border-brand-line bg-white text-sm font-semibold text-brand-body">
+              <span key={i} className="inline-flex items-center gap-3 text-lg font-display text-brand-soft">
                 {t}
+                <span className="text-brand-accent text-xs">/</span>
               </span>
             ))}
           </div>

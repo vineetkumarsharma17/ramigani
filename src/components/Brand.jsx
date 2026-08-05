@@ -2,22 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 /**
- * Minimal text wordmark. variant: 'light' (dark text) | 'dark' (white text)
+ * Editorial serif wordmark. variant: 'light' (dark text) | 'dark' (paper text)
  */
 export default function Brand({ variant = 'light', className = '' }) {
-  const nameColor = variant === 'dark' ? 'text-white' : 'text-ink';
+  const nameColor = variant === 'dark' ? 'text-paper' : 'text-ink';
+  const subColor = variant === 'dark' ? 'text-paper/45' : 'text-brand-muted';
   return (
-    <Link to="/" className={`group inline-flex items-center gap-2.5 ${className}`} aria-label="Ramigani Tech — Home">
-      {/* Monogram tile */}
-      <span className="relative grid place-items-center w-9 h-9 rounded-xl bg-indigo-gradient shadow-indigo overflow-hidden group-hover:scale-105 transition-transform">
-        <span className="text-white font-heading font-bold text-[15px] leading-none">R</span>
-        <span className="absolute -right-1 -bottom-1 w-3 h-3 rounded-full bg-brand-sky/80 blur-[2px]" />
+    <Link to="/" className={`group inline-flex items-center gap-3 ${className}`} aria-label="Ramigani Tech — Home">
+      {/* Serif monogram in a hairline square */}
+      <span className={`relative grid place-items-center w-10 h-10 border ${variant === 'dark' ? 'border-paper/25' : 'border-brand-lineStrong'} rounded-none group-hover:border-brand-accent transition-colors`}>
+        <span className={`font-display font-semibold text-[19px] leading-none ${nameColor}`}>R</span>
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-heading font-bold text-[1.15rem] tracking-tight">
-          <span className={nameColor}>Ramigani</span><span className="text-brand-indigo">Tech</span>
+        <span className={`font-display font-semibold text-[1.2rem] tracking-tight ${nameColor}`}>
+          Ramigani<span className="accent">.</span>
         </span>
-        <span className={`text-[8.5px] tracking-[0.3em] font-semibold uppercase mt-1 ${variant === 'dark' ? 'text-white/50' : 'text-brand-muted'}`}>
+        <span className={`text-[8.5px] tracking-widest2 font-semibold uppercase mt-1.5 ${subColor}`}>
           Software Engineering
         </span>
       </span>

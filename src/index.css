@@ -5,16 +5,16 @@
 @layer base {
   html { color-scheme: light; }
   body {
-    background-color: #FBFBFD;
-    color: #0B1220;
+    background-color: #FAFAF9;
+    color: #0A0A0A;
     -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: #4F46E5; color: #fff; }
+  ::selection { background: #0A0A0A; color: #FAFAF9; }
 
   ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: #F1F1F6; }
-  ::-webkit-scrollbar-thumb { background: #C7C9D9; border-radius: 6px; }
-  ::-webkit-scrollbar-thumb:hover { background: #4F46E5; }
+  ::-webkit-scrollbar-track { background: #F5F5F4; }
+  ::-webkit-scrollbar-thumb { background: #D6D3D1; border-radius: 0; }
+  ::-webkit-scrollbar-thumb:hover { background: #0A0A0A; }
 
   /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
@@ -28,61 +28,64 @@
 }
 
 @layer components {
-  /* Buttons */
+  /* Layout rhythm */
+  .container-x { @apply max-w-6xl mx-auto px-5 sm:px-8 lg:px-10; }
+
+  /* Buttons — editorial, rectangular, high-contrast */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none;
+    @apply inline-flex items-center justify-center gap-2 font-medium transition-all duration-300 select-none text-[13px];
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-brand-indigo text-white px-6 py-3 text-sm shadow-indigo hover:bg-brand-indigoDark hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 select-none text-[13px] font-medium uppercase tracking-widest
+           bg-ink text-paper border border-ink px-7 py-3.5 rounded-none
+           transition-colors duration-300 hover:bg-paper hover:text-ink;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-white text-ink px-6 py-3 text-sm border border-brand-line hover:border-brand-indigo hover:text-brand-indigo;
+    @apply inline-flex items-center justify-center gap-2 select-none text-[13px] font-medium uppercase tracking-widest
+           bg-transparent text-ink border border-brand-lineStrong px-7 py-3.5 rounded-none
+           transition-colors duration-300 hover:border-ink;
   }
-  .btn-dark {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 select-none bg-ink text-white px-6 py-3 text-sm hover:bg-black hover:-translate-y-0.5;
+  .btn-invert {
+    @apply inline-flex items-center justify-center gap-2 select-none text-[13px] font-medium uppercase tracking-widest
+           bg-paper text-ink border border-paper px-7 py-3.5 rounded-none
+           transition-colors duration-300 hover:bg-transparent hover:text-paper hover:border-paper;
   }
 
-  /* Cards */
-  .card {
-    @apply bg-white border border-brand-line rounded-3xl shadow-soft;
-  }
-
-  /* Section rhythm */
-  .container-x { @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8; }
-
-  /* Eyebrow label */
+  /* Editorial eyebrow — index + label */
   .eyebrow {
-    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-tint text-brand-indigo text-[11px] font-bold uppercase tracking-widest;
+    @apply inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-widest2 text-brand-soft;
+  }
+
+  /* Bordered surface (hairline card) */
+  .surface {
+    @apply bg-paper border border-brand-line rounded-none;
   }
 }
 
 @layer utilities {
-  .font-heading { font-family: "Space Grotesk", Inter, sans-serif; }
+  .font-display { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
 
-  .gradient-text {
-    background: linear-gradient(120deg, #6366F1 0%, #4F46E5 45%, #7C3AED 100%);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  /* Emerald accent — one word / underline */
+  .accent { color: #10B981; }
+  .accent-underline {
+    background-image: linear-gradient(#10B981, #10B981);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 2px;
+    padding-bottom: 0.06em;
   }
 
-  /* Animated gradient text (needs bg-[length] + animate-gradient-shift) */
-  .gradient-text-anim {
-    background: linear-gradient(120deg,#6366F1,#7C3AED,#38BDF8,#4F46E5);
-    background-size: 300% 300%;
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  /* Animated hairline that draws in */
+  .rule-draw {
+    transform-origin: left center;
   }
 
-  /* Dotted grid backdrop */
-  .dot-grid {
-    background-image: radial-gradient(rgba(11,18,32,0.06) 1px, transparent 1px);
-    background-size: 22px 22px;
-  }
-
-  /* Fine line grid */
-  .line-grid {
+  /* Fine editorial grid backdrop */
+  .grid-lines {
     background-image:
-      linear-gradient(rgba(11,18,32,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(11,18,32,0.04) 1px, transparent 1px);
-    background-size: 44px 44px;
+      linear-gradient(rgba(10,10,10,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10,10,10,0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
 
   .marquee-paused:hover .animate-marquee { animation-play-state: paused; }

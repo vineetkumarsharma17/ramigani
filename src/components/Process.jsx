@@ -1,41 +1,36 @@
 import React from 'react';
-import { Search, PenTool, Code2, Rocket } from 'lucide-react';
 import Reveal from './Reveal';
 
 const steps = [
-  { icon: Search, title: 'Discover', desc: 'We dig into your goals, users, and constraints to define the right problem to solve.' },
-  { icon: PenTool, title: 'Design', desc: 'Wireframes, prototypes, and a clear architecture — validated before a line of code.' },
-  { icon: Code2, title: 'Build', desc: 'Agile sprints with clean, tested code and continuous delivery you can watch progress on.' },
-  { icon: Rocket, title: 'Launch & scale', desc: 'Ship to production, monitor, and iterate — with support that grows alongside you.' },
+  { title: 'Discover', desc: 'We dig into your goals, users, and constraints to define the right problem to solve.' },
+  { title: 'Design', desc: 'Wireframes, prototypes, and a clear architecture — validated before a line of code.' },
+  { title: 'Build', desc: 'Agile sprints with clean, tested code and continuous delivery you can watch progress on.' },
+  { title: 'Launch & scale', desc: 'Ship to production, monitor, and iterate — with support that grows alongside you.' },
 ];
 
 export default function Process() {
   return (
-    <section className="py-24">
+    <section className="py-24 sm:py-28 border-t border-brand-line">
       <div className="container-x">
-        <Reveal className="max-w-2xl mx-auto text-center mb-14">
-          <span className="eyebrow">How we work</span>
-          <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-ink">
-            A clear path from <span className="gradient-text">idea to impact</span>
-          </h2>
+        <Reveal className="grid lg:grid-cols-12 gap-6 items-end border-b border-brand-line pb-8 mb-14">
+          <div className="lg:col-span-8">
+            <span className="eyebrow"><span className="font-display accent text-sm">03</span> How we work</span>
+            <h2 className="mt-4 font-display font-normal text-4xl sm:text-6xl tracking-tight text-ink leading-[1.02]">
+              A clear path from <span className="italic">idea to impact</span>
+            </h2>
+          </div>
         </Reveal>
 
-        <div className="relative grid md:grid-cols-4 gap-6">
-          {/* connecting line */}
-          <div className="hidden md:block absolute top-9 left-0 right-0 h-px bg-brand-line" />
-          {steps.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <Reveal key={s.title} delay={i * 0.1} className="relative">
-                <div className="relative z-10 mx-auto md:mx-0 w-[72px] h-[72px] rounded-2xl bg-white border border-brand-line shadow-soft grid place-items-center">
-                  <Icon className="w-7 h-7 text-brand-indigo" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-gradient text-white text-xs font-bold grid place-items-center shadow-indigo">{i + 1}</span>
-                </div>
-                <h3 className="mt-5 font-heading font-bold text-lg text-ink text-center md:text-left">{s.title}</h3>
-                <p className="mt-2 text-sm text-brand-body leading-relaxed text-center md:text-left">{s.desc}</p>
-              </Reveal>
-            );
-          })}
+        <div className="grid md:grid-cols-4">
+          {steps.map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.1}
+              className="relative px-0 md:px-7 py-8 md:py-0 border-b md:border-b-0 md:border-l border-brand-line first:md:border-l-0 first:md:pl-0">
+              <span className="font-display text-5xl text-brand-lineStrong">{String(i + 1).padStart(2, '0')}</span>
+              <div className="mt-6 h-px w-10 bg-brand-accent" />
+              <h3 className="mt-5 font-display text-2xl text-ink">{s.title}</h3>
+              <p className="mt-3 text-sm text-brand-soft leading-relaxed max-w-xs">{s.desc}</p>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
