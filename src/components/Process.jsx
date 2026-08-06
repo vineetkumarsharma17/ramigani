@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Search, PenTool, Code2, Rocket } from 'lucide-react';
 import Reveal from './Reveal';
 
@@ -9,31 +10,53 @@ const steps = [
   { icon: Rocket, title: 'Launch & scale', desc: 'Ship to production, monitor, and iterate — with support that grows alongside you.' },
 ];
 
+const ease = [0.16, 1, 0.3, 1];
+
 export default function Process() {
   return (
-    <section className="py-24">
+    <section className="py-24 relative overflow-hidden">
       <div className="container-x">
-        <Reveal className="max-w-2xl mx-auto text-center mb-14">
+        <Reveal className="max-w-2xl mx-auto text-center mb-16">
           <span className="eyebrow">How we work</span>
           <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-white">
             A clear path from <span className="gradient-text">idea to impact</span>
           </h2>
         </Reveal>
 
-        <div className="relative grid md:grid-cols-4 gap-6">
-          {/* connecting aurora line */}
-          <div className="hidden md:block absolute top-9 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-violet/50 to-transparent" />
+        {/* Vertical timeline */}
+        <div className="relative max-w-3xl mx-auto pl-16 sm:pl-24">
+          {/* glowing left rail */}
+          <div className="absolute left-6 sm:left-9 top-2 bottom-2 w-px bg-gradient-to-b from-brand-violet via-brand-indigo to-brand-cyan" />
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1.4, ease }}
+            style={{ transformOrigin: 'top' }}
+            className="absolute left-6 sm:left-9 top-2 bottom-2 w-px bg-gradient-to-b from-brand-violet via-brand-indigo to-brand-cyan blur-[2px]"
+          />
+
           {steps.map((s, i) => {
             const Icon = s.icon;
             return (
-              <Reveal key={s.title} delay={i * 0.1} className="relative">
-                <div className="relative z-10 mx-auto md:mx-0 w-[72px] h-[72px] rounded-2xl bg-brand-panel border border-brand-line shadow-soft grid place-items-center aurora-ring">
-                  <Icon className="w-7 h-7 text-brand-violet" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-gradient text-white text-xs font-bold grid place-items-center shadow-glow">{i + 1}</span>
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: i * 0.12, ease }}
+                className="relative pb-14 last:pb-0"
+              >
+                {/* node on the rail */}
+                <div className="absolute -left-[3.25rem] sm:-left-[4.75rem] top-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-panel border border-brand-line grid place-items-center shadow-glow aurora-ring">
+                  <Icon className="w-6 h-6 text-brand-violet" />
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-gradient text-white text-xs font-bold grid place-items-center">{i + 1}</span>
                 </div>
-                <h3 className="mt-5 font-heading font-bold text-lg text-white text-center md:text-left">{s.title}</h3>
-                <p className="mt-2 text-sm text-brand-body leading-relaxed text-center md:text-left">{s.desc}</p>
-              </Reveal>
+                <div className="card rounded-3xl p-6 aurora-ring hover:shadow-glow transition-all duration-300">
+                  <h3 className="font-heading font-bold text-xl text-white">{s.title}</h3>
+                  <p className="mt-2 text-brand-body leading-relaxed">{s.desc}</p>
+                </div>
+              </motion.div>
             );
           })}
         </div>

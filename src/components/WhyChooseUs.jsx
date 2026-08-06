@@ -1,7 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Cpu, Zap, ShieldCheck, HeartHandshake } from 'lucide-react';
 import Reveal from './Reveal';
-import Counter from './Counter';
 
 const values = [
   { icon: Cpu, title: 'Modern engineering', desc: 'Cloud-native architectures, clean code, and CI/CD pipelines built for the long run.' },
@@ -10,20 +10,17 @@ const values = [
   { icon: HeartHandshake, title: 'True partnership', desc: 'A senior team that cares about your outcomes — not just shipping tickets.' },
 ];
 
-const stats = [
-  { value: 10, suffix: '+', label: 'Years of experience' },
-  { value: 150, suffix: '+', label: 'Projects delivered' },
-  { value: 50, suffix: '+', label: 'Expert engineers' },
-  { value: 99, suffix: '%', label: 'Client satisfaction' },
-];
+const ease = [0.16, 1, 0.3, 1];
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="py-24 relative border-y border-brand-line">
+    <section id="about" className="py-24 relative border-y border-brand-line overflow-hidden">
       <div className="absolute inset-0 bg-aurora-soft pointer-events-none" />
+      <div className="absolute -left-40 top-1/4 w-[30rem] h-[30rem] bg-brand-violet/10 blur-[150px] pointer-events-none" />
       <div className="container-x relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          <Reveal className="lg:col-span-5">
+        <div className="grid lg:grid-cols-12 gap-14 items-start">
+          {/* Left: sticky intro */}
+          <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
             <span className="eyebrow">Why Ramigani</span>
             <h2 className="mt-4 font-heading font-bold text-3xl sm:text-5xl tracking-tight text-white leading-tight">
               A partner obsessed with <span className="gradient-text">your outcomes</span>
@@ -31,33 +28,46 @@ export default function WhyChooseUs() {
             <p className="mt-5 text-lg text-brand-body leading-relaxed">
               We bring together engineers, designers, and strategists to turn ambitious ideas into reliable, scalable products. Every engagement is tailored to your goals.
             </p>
-
-            {/* Stats */}
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="rounded-2xl bg-white/[0.04] border border-brand-line p-5">
-                  <div className="font-heading text-3xl font-bold gradient-text">
-                    <Counter value={s.value} suffix={s.suffix} />
-                  </div>
-                  <div className="text-xs font-semibold text-brand-muted mt-1 uppercase tracking-wide">{s.label}</div>
-                </div>
-              ))}
+            <div className="mt-8 inline-flex items-center gap-3 rounded-2xl bg-white/[0.04] border border-brand-line px-5 py-4">
+              <div className="w-10 h-10 rounded-xl bg-indigo-gradient grid place-items-center shadow-glow">
+                <HeartHandshake className="w-5 h-5 text-white" />
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-bold text-white">Senior team, end to end</div>
+                <div className="text-xs text-brand-muted">No hand-offs to juniors after the pitch.</div>
+              </div>
             </div>
           </Reveal>
 
-          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+          {/* Right: large glowing numbered value list */}
+          <div className="lg:col-span-7 divide-y divide-brand-line">
             {values.map((v, i) => {
               const Icon = v.icon;
               return (
-                <Reveal key={v.title} delay={(i % 2) * 0.1}>
-                  <div className="card rounded-3xl p-7 h-full aurora-ring hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
-                    <div className="w-12 h-12 rounded-2xl bg-brand-tint grid place-items-center">
-                      <Icon className="w-6 h-6 text-brand-violet" />
-                    </div>
-                    <h3 className="mt-5 font-heading font-bold text-lg text-white">{v.title}</h3>
-                    <p className="mt-2 text-sm text-brand-body leading-relaxed">{v.desc}</p>
+                <motion.div
+                  key={v.title}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease }}
+                  className="group flex items-start gap-6 py-7 first:pt-0"
+                >
+                  {/* big glowing number */}
+                  <div className="relative flex-shrink-0">
+                    <span className="font-heading text-5xl sm:text-6xl font-bold text-transparent [-webkit-text-stroke:1px_rgba(139,92,246,0.55)] group-hover:[-webkit-text-stroke:1px_rgba(139,92,246,0.9)] transition-all">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
                   </div>
-                </Reveal>
+                  <div className="flex-grow">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-brand-tint grid place-items-center group-hover:shadow-glow transition-shadow">
+                        <Icon className="w-5 h-5 text-brand-violet" />
+                      </div>
+                      <h3 className="font-heading font-bold text-xl text-white group-hover:text-brand-indigoLight transition-colors">{v.title}</h3>
+                    </div>
+                    <p className="mt-3 text-brand-body leading-relaxed">{v.desc}</p>
+                  </div>
+                </motion.div>
               );
             })}
           </div>

@@ -39,13 +39,13 @@ export default function Navbar({ onOpenQuoteModal }) {
       isScrolled ? 'py-2.5' : 'py-4'
     }`}>
       <div className="container-x">
-        <div className={`flex items-center justify-between rounded-2xl transition-all duration-300 ${
+        <div className={`relative flex items-center justify-between rounded-2xl transition-all duration-300 ${
           isScrolled ? 'bg-brand-panel/70 backdrop-blur-xl border border-brand-line shadow-soft px-4 py-2.5' : 'px-1 py-1'
         }`}>
           <Brand />
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop nav — centered floating glass pill */}
+          <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 rounded-full bg-brand-panel/60 border border-brand-line backdrop-blur-xl px-2 py-1 shadow-soft">
             {topLinks.map((l) => (
               <Link key={l.name} to={l.path} className={linkCls(location.pathname === l.path)}>{l.name}</Link>
             ))}
