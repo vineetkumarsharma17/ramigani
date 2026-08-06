@@ -1,5 +1,6 @@
 import React from 'react';
 import Reveal from './Reveal';
+import SectionHead from './SectionHead';
 
 // Placeholder testimonials — replace with real client quotes.
 const items = [
@@ -12,16 +13,13 @@ export default function Testimonials() {
   return (
     <section className="py-24 sm:py-28 border-t border-brand-line">
       <div className="container-x">
-        <Reveal className="grid lg:grid-cols-12 gap-6 items-end border-b border-brand-line pb-8 mb-2">
-          <div className="lg:col-span-8">
-            <span className="eyebrow"><span className="font-display accent text-sm">04</span> Testimonials</span>
-            <h2 className="mt-4 font-display font-normal text-4xl sm:text-6xl tracking-tight text-ink leading-[1.02]">
-              Trusted by teams that <span className="italic">ship</span>
-            </h2>
-          </div>
-        </Reveal>
+        <SectionHead
+          index="04"
+          label="Testimonials"
+          title={<>Trusted by teams that <span className="italic">ship</span></>}
+        />
 
-        <div className="grid md:grid-cols-3 border-b border-brand-line">
+        <div className="grid md:grid-cols-3 border-b border-brand-line mt-2">
           {items.map((t, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <figure className="h-full flex flex-col py-10 md:px-8 border-t md:border-t-0 border-brand-line md:border-l first:md:border-l-0 md:first:pl-0">

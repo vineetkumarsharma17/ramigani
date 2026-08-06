@@ -1,5 +1,6 @@
 import React from 'react';
 import Reveal from './Reveal';
+import SectionHead from './SectionHead';
 
 const steps = [
   { title: 'Discover', desc: 'We dig into your goals, users, and constraints to define the right problem to solve.' },
@@ -12,22 +13,19 @@ export default function Process() {
   return (
     <section className="py-24 sm:py-28 border-t border-brand-line">
       <div className="container-x">
-        <Reveal className="grid lg:grid-cols-12 gap-6 items-end border-b border-brand-line pb-8 mb-14">
-          <div className="lg:col-span-8">
-            <span className="eyebrow"><span className="font-display accent text-sm">03</span> How we work</span>
-            <h2 className="mt-4 font-display font-normal text-4xl sm:text-6xl tracking-tight text-ink leading-[1.02]">
-              A clear path from <span className="italic">idea to impact</span>
-            </h2>
-          </div>
-        </Reveal>
+        <SectionHead
+          index="03"
+          label="How we work"
+          title={<>A clear path from <span className="italic">idea to impact</span></>}
+        />
 
-        <div className="grid md:grid-cols-4">
+        <div className="grid md:grid-cols-4 mt-10">
           {steps.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.1}
-              className="relative px-0 md:px-7 py-8 md:py-0 border-b md:border-b-0 md:border-l border-brand-line first:md:border-l-0 first:md:pl-0">
-              <span className="font-display text-5xl text-brand-lineStrong">{String(i + 1).padStart(2, '0')}</span>
-              <div className="mt-6 h-px w-10 bg-brand-accent" />
-              <h3 className="mt-5 font-display text-2xl text-ink">{s.title}</h3>
+              className="relative py-8 md:py-10 md:px-8 border-b md:border-b-0 md:border-l border-brand-line first:md:border-l-0 first:md:pl-0">
+              <span className="font-display text-6xl sm:text-7xl text-brand-lineStrong leading-none">{String(i + 1).padStart(2, '0')}</span>
+              <div className="mt-6 h-px w-full bg-brand-line" />
+              <h3 className="mt-6 font-display text-2xl sm:text-3xl text-ink">{s.title}</h3>
               <p className="mt-3 text-sm text-brand-soft leading-relaxed max-w-xs">{s.desc}</p>
             </Reveal>
           ))}

@@ -1,12 +1,13 @@
 import React from 'react';
 import Reveal from './Reveal';
 import Counter from './Counter';
+import SectionHead from './SectionHead';
 
-const values = [
-  { n: '01', title: 'Modern engineering', desc: 'Cloud-native architectures, clean code, and CI/CD pipelines built for the long run.' },
-  { n: '02', title: 'Agile delivery', desc: 'Rapid sprints, transparent roadmaps, and frequent demos so you always know where things stand.' },
-  { n: '03', title: 'Quality & security', desc: 'Automated testing and security-first practices baked into every release.' },
-  { n: '04', title: 'True partnership', desc: 'A senior team that cares about your outcomes — not just shipping tickets.' },
+const pillars = [
+  'Modern engineering',
+  'Agile delivery',
+  'Quality & security',
+  'True partnership',
 ];
 
 const stats = [
@@ -20,44 +21,57 @@ export default function WhyChooseUs() {
   return (
     <section id="about" className="py-24 sm:py-28 border-t border-brand-line">
       <div className="container-x">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-          <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
-            <span className="eyebrow"><span className="font-display accent text-sm">02</span> Why Ramigani</span>
-            <h2 className="mt-4 font-display font-normal text-4xl sm:text-5xl tracking-tight text-ink leading-[1.05]">
-              A partner obsessed with <span className="italic accent-underline">your outcomes</span>
-            </h2>
-            <p className="mt-6 text-lg text-brand-body leading-relaxed">
-              We bring together engineers, designers, and strategists to turn ambitious ideas into reliable, scalable products. Every engagement is tailored to your goals.
-            </p>
+        <SectionHead
+          index="02"
+          label="Why Ramigani"
+          title={<>A partner obsessed with <span className="italic accent-underline">your outcomes</span></>}
+        />
 
-            {/* Stats */}
-            <div className="mt-10 grid grid-cols-2 border-t border-l border-brand-line">
-              {stats.map((s) => (
-                <div key={s.label} className="border-b border-r border-brand-line p-5">
-                  <div className="font-display text-4xl text-ink">
-                    <Counter value={s.value} suffix={s.suffix} />
-                  </div>
-                  <div className="text-[11px] font-semibold text-brand-muted mt-2 uppercase tracking-widest">{s.label}</div>
-                </div>
-              ))}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 mt-10">
+          {/* Justified two-column editorial body with a drop cap */}
+          <Reveal className="lg:col-span-8">
+            <div className="lg:columns-2 lg:gap-10 text-brand-body leading-relaxed text-justify [&>p]:mb-5">
+              <p className="first-letter:font-display first-letter:text-7xl first-letter:leading-[0.7] first-letter:float-left first-letter:pr-3 first-letter:pt-1 first-letter:text-ink">
+                Ramigani Tech Solutions brings together engineers, designers, and strategists to turn ambitious ideas into reliable, scalable products. Every engagement is tailored to your goals — never forced through a template.
+              </p>
+              <p>
+                We build on modern engineering foundations: cloud-native architectures, clean code, and CI/CD pipelines built for the long run. Delivery is agile and transparent — rapid sprints, open roadmaps, and frequent demos, so you always know exactly where things stand.
+              </p>
+              <p>
+                Quality and security are never an afterthought. Automated testing and security-first practices are baked into every release we ship. Above all, we work as a true partner: a senior team that cares about your outcomes, not just closing tickets.
+              </p>
             </div>
           </Reveal>
 
-          <div className="lg:col-span-7 lg:col-start-6">
-            <div className="border-t border-brand-line">
-              {values.map((v, i) => (
-                <Reveal key={v.title} delay={(i % 2) * 0.08}>
-                  <div className="group grid grid-cols-12 gap-4 py-8 border-b border-brand-line">
-                    <span className="col-span-2 font-display text-xl text-brand-muted group-hover:text-brand-accent transition-colors">{v.n}</span>
-                    <div className="col-span-10">
-                      <h3 className="font-display text-2xl text-ink">{v.title}</h3>
-                      <p className="mt-2 text-brand-soft leading-relaxed max-w-lg">{v.desc}</p>
+          {/* Hairline-bordered stat sidebar */}
+          <Reveal delay={0.1} className="lg:col-span-4">
+            <div className="border border-brand-line">
+              <div className="px-5 py-3 border-b border-brand-line">
+                <span className="text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted">By the numbers</span>
+              </div>
+              <div className="grid grid-cols-2">
+                {stats.map((s, i) => (
+                  <div key={s.label} className={`p-5 border-brand-line ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b' : ''}`}>
+                    <div className="font-display text-4xl text-ink">
+                      <Counter value={s.value} suffix={s.suffix} />
                     </div>
+                    <div className="text-[10px] font-semibold text-brand-muted mt-2 uppercase tracking-widest leading-tight">{s.label}</div>
                   </div>
-                </Reveal>
-              ))}
+                ))}
+              </div>
+              <div className="px-5 py-4 border-t border-brand-line">
+                <span className="text-[10px] uppercase tracking-widest2 font-semibold text-brand-muted block mb-3">The pillars</span>
+                <ul className="space-y-2">
+                  {pillars.map((p, i) => (
+                    <li key={p} className="flex items-baseline gap-3 text-sm text-brand-body">
+                      <span className="font-display text-brand-accent">{String(i + 1).padStart(2, '0')}</span>
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
