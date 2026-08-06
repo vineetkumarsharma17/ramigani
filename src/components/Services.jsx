@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
-  Smartphone, Globe, Palette, CheckSquare, BrainCircuit, Search, Share2, ArrowUpRight, Layers,
+  Smartphone, Globe, Palette, CheckSquare, BrainCircuit, Search, Share2, ArrowUpRight, Layers, Check,
 } from 'lucide-react';
 import { services } from '../data/services';
 import Reveal from './Reveal';
+
+const ease = [0.16, 1, 0.3, 1];
 
 const iconMap = {
   'app-development': Smartphone,
@@ -16,7 +19,7 @@ const iconMap = {
   'social-media': Share2,
 };
 
-// Per-card gradient accents to keep it colorful but cohesive
+// Per-row gradient accents to keep it colorful but cohesive
 const gradients = {
   'app-development': 'from-violet-600 to-indigo-600',
   'web-development': 'from-indigo-600 to-blue-600',
@@ -29,58 +32,105 @@ const gradients = {
 
 export default function Services({ onOpenQuoteModal }) {
   return (
-    <section id="solutions" className="py-24 relative">
-      <div className="absolute inset-0 bg-mesh opacity-40 pointer-events-none" />
+    <section id="solutions" className="py-24 relative overflow-hidden">
       <div className="container-x relative">
-        <Reveal className="max-w-2xl mx-auto text-center mb-16">
+        <Reveal className="max-w-2xl mx-auto text-center mb-20">
           <span className="eyebrow"><Layers className="w-3.5 h-3.5 text-brand-blue" /> What we do</span>
           <h2 className="mt-5 font-heading font-extrabold text-4xl sm:text-5xl tracking-tight text-ink">
             Solutions built to <span className="gradient-text">scale</span>
           </h2>
           <p className="mt-4 text-lg text-brand-body">
-            End-to-end product engineering across mobile, web, design, quality, and AI. Explore each solution in detail.
+            End-to-end product engineering across mobile, web, design, quality, and AI — explored one by one.
           </p>
         </Reveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Zig-zag alternating feature rows */}
+        <div className="space-y-24 sm:space-y-28">
           {services.map((svc, i) => {
             const Icon = iconMap[svc.id] || Layers;
             const grad = gradients[svc.id] || 'from-violet-600 to-blue-600';
-            const big = i === 0; // feature the first card across 2 cols on lg
+            const index = String(i + 1).padStart(2, '0');
+            const flip = i % 2 === 1; // alternate visual side
             return (
-              <Reveal key={svc.id} delay={(i % 3) * 0.08} className={big ? 'lg:col-span-2' : ''}>
-                <Link
-                  to={`/solutions/${svc.id}`}
-                  className="group relative block h-full card rounded-4xl p-8 overflow-hidden hover:shadow-lift hover:-translate-y-1.5 transition-all duration-300"
+              <div key={svc.id} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                {/* Visual panel */}
+                <motion.div
+                  initial={{ opacity: 0, x: flip ? 60 : -60, scale: 0.94 }}
+                  whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7, ease }}
+                  className={`relative ${flip ? 'lg:order-2' : 'lg:order-1'}`}
                 >
-                  {/* colorful hover wash */}
-                  <div className={`absolute -right-16 -top-16 w-48 h-48 rounded-full bg-gradient-to-br ${grad} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`} />
-                  <div className="relative flex items-start justify-between">
-                    <div className={`w-14 h-14 rounded-3xl bg-gradient-to-br ${grad} grid place-items-center shadow-indigo group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300`}>
-                      <Icon className="w-7 h-7 text-white" />
+                  <div className={`relative aspect-[4/3] rounded-5xl bg-gradient-to-br ${grad} shadow-lift overflow-hidden`}>
+                    <div className="absolute inset-0 line-grid opacity-20" />
+                    {/* giant faded index */}
+                    <span className="absolute -bottom-6 -right-2 font-heading font-extrabold text-white/15 text-[11rem] leading-none select-none">{index}</span>
+                    {/* centered glass icon tile */}
+                    <div className="absolute inset-0 grid place-items-center">
+                      <motion.div
+                        whileHover={{ scale: 1.08, rotate: -4 }}
+                        className="w-28 h-28 rounded-4xl bg-white/15 backdrop-blur-md border border-white/25 grid place-items-center shadow-2xl"
+                      >
+                        <Icon className="w-14 h-14 text-white" />
+                      </motion.div>
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-brand-muted group-hover:text-brand-purple group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    {/* floating mini chips */}
+                    <motion.span
+                      animate={{ y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                      className="absolute top-6 left-6 px-3 py-1.5 rounded-full bg-white text-[11px] font-extrabold text-ink shadow-lift"
+                    >
+                      {svc.category}
+                    </motion.span>
+                    <motion.span
+                      animate={{ y: [0, 8, 0] }} transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                      className="absolute bottom-6 left-6 px-3 py-1.5 rounded-full bg-white/90 text-[11px] font-bold text-brand-purple shadow-lift"
+                    >
+                      {svc.features.length} capabilities
+                    </motion.span>
                   </div>
-                  <h3 className="relative mt-6 font-heading font-extrabold text-2xl text-ink group-hover:text-brand-purple transition-colors">{svc.name}</h3>
-                  <p className="relative mt-2 text-sm text-brand-body leading-relaxed max-w-md">{svc.short}</p>
-                  {big && (
-                    <div className="relative mt-5 flex flex-wrap gap-2">
-                      {svc.features.slice(0, 3).map((f) => (
-                        <span key={f.title} className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-brand-tint text-brand-purple">{f.title}</span>
-                      ))}
-                    </div>
-                  )}
-                  <span className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-extrabold text-brand-purple">
+                </motion.div>
+
+                {/* Text side */}
+                <motion.div
+                  initial={{ opacity: 0, x: flip ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7, delay: 0.1, ease }}
+                  className={`${flip ? 'lg:order-1' : 'lg:order-2'}`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className={`font-heading font-extrabold text-5xl bg-gradient-to-br ${grad} bg-clip-text text-transparent`}>{index}</span>
+                    <span className="h-px flex-grow bg-brand-line" />
+                  </div>
+                  <h3 className="mt-5 font-heading font-extrabold text-3xl sm:text-4xl text-ink tracking-tight">{svc.name}</h3>
+                  <p className="mt-3 text-base text-brand-purple font-bold">{svc.tagline}</p>
+                  <p className="mt-4 text-lg text-brand-body leading-relaxed">{svc.short}</p>
+
+                  <ul className="mt-6 grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                    {svc.features.map((f) => (
+                      <li key={f.title} className="flex items-start gap-2.5 text-sm text-ink font-semibold">
+                        <span className={`mt-0.5 w-5 h-5 rounded-full bg-gradient-to-br ${grad} grid place-items-center flex-shrink-0`}>
+                          <Check className="w-3 h-3 text-white" />
+                        </span>
+                        {f.title}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    to={`/solutions/${svc.id}`}
+                    className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink text-white text-sm font-extrabold hover:-translate-y-0.5 transition-transform"
+                  >
                     View details <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </Link>
-              </Reveal>
+                  </Link>
+                </motion.div>
+              </div>
             );
           })}
         </div>
 
-        <Reveal delay={0.1} className="mt-12 text-center">
-          <button onClick={onOpenQuoteModal} className="btn-dark px-9 py-4 text-base">Request a custom solution</button>
+        <Reveal delay={0.1} className="mt-24 text-center">
+          <button onClick={onOpenQuoteModal} className="btn-primary px-9 py-4 text-base">Request a custom solution</button>
         </Reveal>
       </div>
     </section>

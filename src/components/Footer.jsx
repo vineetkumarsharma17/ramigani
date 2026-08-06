@@ -22,7 +22,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white border-t border-brand-line pt-16 pb-8">
+    <footer className="relative bg-white border-t border-brand-line pt-16 pb-8">
+      <div className="absolute top-0 inset-x-0 h-1 bg-indigo-gradient" />
       <div className="container-x">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-brand-line">
           {/* Brand + contact */}
@@ -77,7 +78,7 @@ export default function Footer() {
               <form onSubmit={subscribe} className="flex items-center gap-2">
                 <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com"
                   className="flex-grow px-4 py-2.5 rounded-full bg-paper border border-brand-line text-sm text-ink placeholder-brand-muted focus:outline-none focus:border-brand-indigo" />
-                <button type="submit" className="w-10 h-10 flex-shrink-0 rounded-full bg-brand-indigo text-white grid place-items-center hover:bg-brand-indigoDark transition-colors" aria-label="Subscribe">
+                <button type="submit" className="w-11 h-11 flex-shrink-0 rounded-full bg-indigo-gradient text-white grid place-items-center shadow-indigo hover:-translate-y-0.5 transition-transform" aria-label="Subscribe">
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>

@@ -53,7 +53,9 @@ export default function Navbar({ onOpenQuoteModal }) {
     }`}>
       <div className="container-x">
         <div className={`flex items-center justify-between rounded-3xl transition-all duration-300 ${
-          isScrolled ? 'bg-white/85 backdrop-blur-xl border border-brand-line shadow-lift px-4 py-2.5' : 'px-1 py-1'
+          isScrolled
+            ? 'bg-white/90 backdrop-blur-xl border border-brand-line shadow-lift px-4 py-2.5'
+            : 'bg-white/70 backdrop-blur-md border border-white/70 shadow-soft px-4 py-2.5'
         }`}>
           <Brand variant="light" />
 
